@@ -1,0 +1,3 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {confirmedInstallationReadiness as resolve} from '../shared/procurement-readiness.ts';
+test('arrival dates never produce numeric readiness, including actual arrival',()=>{for(const kind of ['arrival','forecast','actual'])assert.equal(resolve([{kind,date:'2026-11-19',basis:'到货'}]).date,'')});
+test('confirmed readiness requires evidence and one unambiguous date',()=>{assert.equal(resolve([{kind:'confirmed',date:'2026-11-19'}]).date,'');assert.equal(resolve([{kind:'confirmed',date:'2026-11-19',basis:'验收及齐套确认'}]).date,'2026-11-19');assert.equal(resolve([{kind:'confirmed',date:'2026-11-19',basis:'批次一'},{kind:'confirmed',date:'2026-11-20',basis:'批次二'}]).date,'')});

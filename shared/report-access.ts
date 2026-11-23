@@ -1,0 +1,1 @@
+export function reportSourceIds(layout:any):string[]{return [...new Set<string>(Object.values(layout?.sections||{}).flat().filter((b:any)=>b.source==='business_table'&&b.tableId).map((b:any)=>b.tableId))];}

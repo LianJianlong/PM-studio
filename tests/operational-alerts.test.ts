@@ -1,0 +1,3 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {operationalAlerts} from '../shared/operational-alerts.ts';
+test('healthy and small-sample metrics do not imply an error-rate incident',()=>{assert.deepEqual(operationalAlerts({window:10,server_errors:1},{total_bytes:100,free_bytes:50},[],[]),[])});
+test('capacity, sustained error window, task and unverified outcomes produce actionable alerts',()=>{const alerts=operationalAlerts({window:100,server_errors:2,queries:{slow:1},models:{timeouts:1}},{total_bytes:100,free_bytes:5},[{status:'failed'}],[{status:'unknown',count:1}]);assert.equal(alerts.length,6);assert(alerts.some(a=>a.includes('勿重复提交')))});

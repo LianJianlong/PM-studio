@@ -1,0 +1,2262 @@
+[
+  {
+    "id": "algebra",
+    "title": "代数",
+    "titleEn": "Algebra",
+    "topics": [
+      {
+        "id": "algebra-1",
+        "title": "因式分解与恒等式",
+        "titleEn": "Factorization and identities",
+        "explain": "把多项式写成较简单因子的乘积，方便求根及化简。",
+        "explainEn": "Express a polynomial as a product to simplify it or find roots.",
+        "formula": "a²−b²=(a−b)(a+b); (a±b)²=a²±2ab+b²",
+        "condition": "恒等式在实数或复数范围成立。",
+        "conditionEn": "Valid over real or complex numbers.",
+        "application": "例如x²−9=0得到x=±3；用于尺寸关系和公式整理。",
+        "applicationEn": "For x²−9=0, x=±3; useful for dimension relations and formula rearrangement."
+      },
+      {
+        "id": "algebra-2",
+        "title": "一元二次方程",
+        "titleEn": "Quadratic equations",
+        "explain": "二次方程的判别式决定实根数量，配方给出求根公式。",
+        "explainEn": "The discriminant determines the number of real roots; completing the square gives the formula.",
+        "formula": "ax²+bx+c=0; Δ=b²−4ac; x=(−b±√Δ)/(2a)",
+        "condition": "a≠0；Δ<0时无实根，但有复根。",
+        "conditionEn": "a≠0; a negative discriminant gives complex rather than real roots.",
+        "application": "抛物线轨迹、面积约束；x²−5x+6=0的根为2和3。",
+        "applicationEn": "Parabolic trajectories and area constraints; x²−5x+6=0 has roots 2 and 3."
+      },
+      {
+        "id": "algebra-3",
+        "title": "多项式余式与因式定理",
+        "titleEn": "Polynomial remainder and factor theorems",
+        "explain": "除以x−a的余式等于在a处的函数值；余式为零即存在该因式。",
+        "explainEn": "The remainder on division by x−a equals the value at a; a zero value identifies a factor.",
+        "formula": "p(x)=(x−a)q(x)+p(a); p(a)=0 ⇔ (x−a) divides p(x)",
+        "condition": "p为域上的一元多项式。",
+        "conditionEn": "p is a univariate polynomial over a field.",
+        "application": "快速检测候选根；p(2)=0说明x−2为因式。",
+        "applicationEn": "Test candidate roots quickly; p(2)=0 identifies x−2 as a factor."
+      },
+      {
+        "id": "algebra-4",
+        "title": "指数与对数",
+        "titleEn": "Exponents and logarithms",
+        "explain": "指数描述乘法增长，对数把乘法转成加法，两者互为逆运算。",
+        "explainEn": "Exponentials describe multiplicative growth; logarithms convert products to sums and invert exponentials.",
+        "formula": "a^(x+y)=aˣaʸ; logₐ(xy)=logₐx+logₐy; logₐx=ln x/ln a",
+        "condition": "实对数要求a>0、a≠1、x>0、y>0。",
+        "conditionEn": "Real logarithms require a>0, a≠1 and positive arguments.",
+        "application": "复利、衰减及增长时间；2ᵗ=8给出t=3。",
+        "applicationEn": "Compound interest, decay and growth time; 2ᵗ=8 gives t=3."
+      },
+      {
+        "id": "algebra-5",
+        "title": "等差与等比数列",
+        "titleEn": "Arithmetic and geometric sequences",
+        "explain": "等差数列相邻差固定，等比数列相邻比固定。",
+        "explainEn": "Arithmetic sequences have a constant difference; geometric sequences have a constant ratio.",
+        "formula": "aₙ=a₁+(n−1)d; Sₙ=n(a₁+aₙ)/2; aₙ=a₁qⁿ⁻¹; Sₙ=a₁(1−qⁿ)/(1−q)",
+        "condition": "n为正整数；等比求和q=1时Sₙ=na₁。",
+        "conditionEn": "n is a positive integer; for q=1 the geometric sum is na₁.",
+        "application": "分期投入、逐月增长预算；无穷等比和在abs(q)<1时为a₁/(1−q)。",
+        "applicationEn": "Staged expenditure and growing budgets; the infinite geometric sum is a₁/(1−q) when abs(q)<1."
+      },
+      {
+        "id": "algebra-6",
+        "title": "二项式定理",
+        "titleEn": "Binomial theorem",
+        "explain": "给出和的整数次幂展开，系数为组合数。",
+        "explainEn": "Expands a nonnegative integer power of a sum using binomial coefficients.",
+        "formula": "(a+b)ⁿ=Σₖ₌₀ⁿ C(n,k)aⁿ⁻ᵏbᵏ; C(n,k)=n!/[k!(n−k)!]",
+        "condition": "n为非负整数；广义实指数展开需另外检查收敛。",
+        "conditionEn": "n is a nonnegative integer; generalized real powers need convergence conditions.",
+        "application": "组合计数、概率计算；(a+b)³=a³+3a²b+3ab²+b³。",
+        "applicationEn": "Counting and probability; (a+b)³=a³+3a²b+3ab²+b³."
+      },
+      {
+        "id": "algebra-7",
+        "title": "复数与欧拉公式",
+        "titleEn": "Complex numbers and Euler formula",
+        "explain": "复数把平面旋转和伸缩统一为乘法；欧拉公式连接指数与三角函数。",
+        "explainEn": "Complex multiplication combines rotation and scaling; Euler formula links exponentials and trigonometry.",
+        "formula": "z=a+bi=r(cos θ+i sin θ)=re^(iθ); e^(iθ)=cos θ+i sin θ",
+        "condition": "i²=−1；角度使用弧度，非零复数的辐角模2π确定。",
+        "conditionEn": "i²=−1; angles are in radians and nonzero arguments are defined modulo 2π.",
+        "application": "交流电相量、振动；乘以i相当于逆时针旋转90°。",
+        "applicationEn": "AC phasors and vibrations; multiplying by i rotates by 90° counterclockwise."
+      },
+      {
+        "id": "algebra-8",
+        "title": "不等式与估计",
+        "titleEn": "Inequalities and estimates",
+        "explain": "不等式为误差、最值和可行范围提供边界。",
+        "explainEn": "Inequalities bound errors, extrema and feasible values.",
+        "formula": "(a+b)/2≥√(ab); (Σaᵢbᵢ)²≤(Σaᵢ²)(Σbᵢ²)",
+        "condition": "均值不等式要求a,b≥0；柯西不等式适用于有限实向量。",
+        "conditionEn": "AM–GM requires nonnegative values; Cauchy–Schwarz applies to finite real vectors.",
+        "application": "固定周长矩形以正方形面积最大；估计测量误差上界。",
+        "applicationEn": "A square maximizes rectangle area at fixed perimeter; bound measurement errors."
+      },
+      {
+        "id": "algebra-9",
+        "title": "群与同态",
+        "titleEn": "Groups and homomorphisms",
+        "explain": "群抽象可逆的对称操作，同态保留运算结构。",
+        "explainEn": "A group abstracts reversible symmetries; a homomorphism preserves its operation.",
+        "formula": "φ(ab)=φ(a)φ(b); ker φ={g:φ(g)=e}; G/ker φ ≅ im φ",
+        "condition": "群满足结合律、单位元和逆元；商群要求正规子群。",
+        "conditionEn": "Associativity, identity and inverses are required; quotient groups need normal subgroups.",
+        "application": "旋转对称、密码学；整数模n的加法构成群。",
+        "applicationEn": "Rotational symmetry and cryptography; addition modulo n forms a group."
+      },
+      {
+        "id": "algebra-10",
+        "title": "环与域",
+        "titleEn": "Rings and fields",
+        "explain": "环把加法与乘法结合；域要求每个非零元素都有乘法逆。",
+        "explainEn": "Rings combine addition and multiplication; fields make every nonzero element invertible.",
+        "formula": "a(b+c)=ab+ac; in a field: a≠0 ⇒ a·a⁻¹=1",
+        "condition": "一般环未必交换或无零因子；域必交换且无零因子。",
+        "conditionEn": "A general ring need not be commutative or free of zero divisors; fields are both.",
+        "application": "整数是环但不是域；有理数、实数和复数是域，用于方程求解。",
+        "applicationEn": "Integers form a ring but not a field; rational, real and complex fields support equation solving."
+      },
+      {
+        "id": "algebra-11",
+        "title": "模运算与中国剩余定理",
+        "titleEn": "Modular arithmetic and Chinese remainder theorem",
+        "explain": "同余把整数按余数归类，互素模数的条件可合成为唯一余数类。",
+        "explainEn": "Congruence groups integers by residues; coprime modular constraints combine uniquely.",
+        "formula": "a≡b (mod m) ⇔ m divides (a−b); x≡aᵢ (mod mᵢ) has one class mod ∏mᵢ",
+        "condition": "中国剩余定理此形式要求mᵢ两两互素。",
+        "conditionEn": "This form requires pairwise coprime positive moduli.",
+        "application": "周期排班、校验码；x≡2(mod3)、x≡3(mod5)给出x≡8(mod15)。",
+        "applicationEn": "Periodic schedules and checksums; residues 2 modulo 3 and 3 modulo 5 give 8 modulo 15."
+      },
+      {
+        "id": "algebra-12",
+        "title": "域扩张与伽罗瓦思想",
+        "titleEn": "Field extensions and Galois theory",
+        "explain": "研究增添代数元素后得到的域，以及保持基域不变的自同构。",
+        "explainEn": "Studies fields obtained by adjoining algebraic elements and automorphisms fixing the base field.",
+        "formula": "[K:F]=dim_F K; finite Galois: [K:F]=abs(Gal(K/F))",
+        "condition": "伽罗瓦对应要求扩张正规且可分；一般五次方程无通用根式公式。",
+        "conditionEn": "Galois correspondence needs a normal separable extension; a general quintic has no radical formula.",
+        "application": "理解方程可解性、尺规作图；Q(√2)在Q上次数为2。",
+        "applicationEn": "Understand equation solvability and constructibility; Q(√2) has degree 2 over Q."
+      },
+      {
+        "id": "algebra-golden",
+        "title": "黄金分割与递推",
+        "titleEn": "Golden ratio and recurrence",
+        "explain": "一段长度分为较长段a和较短段b，整体与长段之比等于长段与短段之比。",
+        "explainEn": "Split a length into a longer part a and a shorter part b so that whole-to-long equals long-to-short.",
+        "formula": "(a+b)/a=a/b=φ; φ²=φ+1; φ=(1+√5)/2",
+        "condition": "a、b为正数；这是比例性质，不代表所有设计或自然对象均服从此比率。",
+        "conditionEn": "a and b are positive. This ratio is not a universal law of design or nature.",
+        "application": "比例构图及斐波那契递推的极限比值。",
+        "applicationEn": "Proportional layouts and limiting ratios of Fibonacci numbers.",
+        "source": "https://mathworld.wolfram.com/GoldenRatio.html",
+        "diagram": "golden",
+        "steps": [
+          "令r=a/b，则r=1+1/r。",
+          "解r²−r−1=0，取正根约1.618。"
+        ],
+        "stepsEn": [
+          "Let r=a/b, giving r=1+1/r.",
+          "Solve r²−r−1=0; the positive root is about 1.618."
+        ],
+        "related": [
+          "algebra-2",
+          "algebra-5"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "geometry",
+    "title": "几何与三角学",
+    "titleEn": "Geometry and trigonometry",
+    "topics": [
+      {
+        "id": "geometry-1",
+        "title": "三角形面积与海伦公式",
+        "titleEn": "Triangle area and Heron formula",
+        "explain": "三角形可用底高、夹角或三边计算面积。",
+        "explainEn": "A triangle area follows from a base and height, two sides and an included angle, or all three sides.",
+        "formula": "S=bh/2=ab sin C/2; S=√[s(s−a)(s−b)(s−c)], s=(a+b+c)/2",
+        "condition": "三边为正且满足三角不等式；C为a、b夹角。",
+        "conditionEn": "Positive sides satisfy triangle inequalities; C is the angle between a and b.",
+        "application": "地块测量；3、4、5直角三角形面积为6。",
+        "applicationEn": "Land surveying; a 3–4–5 triangle has area 6."
+      },
+      {
+        "id": "geometry-2",
+        "title": "圆、扇形与弧长",
+        "titleEn": "Circle, sector and arc length",
+        "explain": "圆的长度与半径成正比，面积与半径平方成正比。",
+        "explainEn": "Circumference is linear in radius, while area is quadratic.",
+        "formula": "C=2πr; S=πr²; arc=rθ; sector=r²θ/2",
+        "condition": "r≥0；θ以弧度计。",
+        "conditionEn": "r≥0; θ is in radians.",
+        "application": "弯管长度、环形场地；半径2的半圆弧长为2π。",
+        "applicationEn": "Curved pipe lengths and circular sites; a semicircle of radius 2 has arc length 2π."
+      },
+      {
+        "id": "geometry-3",
+        "title": "四边形与多边形面积",
+        "titleEn": "Quadrilateral and polygon areas",
+        "explain": "规则图形用底高关系，任意简单多边形可用坐标计算。",
+        "explainEn": "Regular figures use base-height relations; coordinates handle general simple polygons.",
+        "formula": "trapezoid S=(a+b)h/2; polygon S=abs(Σ(xᵢyᵢ₊₁−xᵢ₊₁yᵢ))/2",
+        "condition": "多边形顶点按边界顺序排列并首尾闭合；自交图形需另行解释。",
+        "conditionEn": "Vertices follow boundary order and close the polygon; self-intersections require care.",
+        "application": "CAD地块和房间面积计算；不依赖图形朝向。",
+        "applicationEn": "CAD parcel and room areas independent of orientation."
+      },
+      {
+        "id": "geometry-4",
+        "title": "常见立体体积与表面积",
+        "titleEn": "Volumes and surface areas",
+        "explain": "立体计算用于容量、混凝土用量及表面处理面积。",
+        "explainEn": "Solid geometry determines capacity, concrete quantities and surface treatment area.",
+        "formula": "cuboid V=abc; cylinder V=πr²h, A=2πr(r+h); sphere V=4πr³/3, A=4πr²; cone V=πr²h/3",
+        "condition": "使用一致长度单位；圆柱和圆锥为直圆柱、直圆锥。",
+        "conditionEn": "Use consistent length units; formulas assume right circular cylinders and cones.",
+        "application": "水箱容积、柱体混凝土、球罐涂装面积。",
+        "applicationEn": "Tank capacity, column concrete and spherical tank coatings."
+      },
+      {
+        "id": "geometry-5",
+        "title": "勾股定理与距离",
+        "titleEn": "Pythagorean theorem and distance",
+        "explain": "欧氏空间中距离由各正交方向分量平方和确定。",
+        "explainEn": "Euclidean distance is the square root of the sum of squared orthogonal components.",
+        "formula": "c²=a²+b²; d(P,Q)=√Σ(pᵢ−qᵢ)²",
+        "condition": "勾股定理要求直角；坐标须为正交笛卡尔坐标。",
+        "conditionEn": "The triangle must be right-angled; coordinates must be orthogonal Cartesian coordinates.",
+        "application": "斜撑长度、空间测距；水平3、竖向4得到斜长5。",
+        "applicationEn": "Brace lengths and spatial measurement; horizontal 3 and vertical 4 give length 5."
+      },
+      {
+        "id": "geometry-6",
+        "title": "相似与尺度变换",
+        "titleEn": "Similarity and scaling",
+        "explain": "相似保持形状与角度，线长、面积、体积按不同幂次缩放。",
+        "explainEn": "Similarity preserves shape and angles while lengths, areas and volumes scale with different powers.",
+        "formula": "L₂/L₁=k; S₂/S₁=k²; V₂/V₁=k³",
+        "condition": "几何相似且k>0；材料性质不因此自动相似。",
+        "conditionEn": "Geometric similarity with k>0; material behavior does not automatically scale.",
+        "application": "模型试验、图纸比例；尺寸放大2倍，体积放大8倍。",
+        "applicationEn": "Scale models and drawings; doubling dimensions multiplies volume by 8."
+      },
+      {
+        "id": "geometry-7",
+        "title": "三角函数恒等式",
+        "titleEn": "Trigonometric identities",
+        "explain": "正弦、余弦表示单位圆坐标，正切表示斜率。",
+        "explainEn": "Sine and cosine are unit-circle coordinates; tangent represents slope.",
+        "formula": "sin²θ+cos²θ=1; tanθ=sinθ/cosθ; sin(α+β)=sinα cosβ+cosα sinβ",
+        "condition": "正切要求cosθ≠0；求导及弧长公式采用弧度。",
+        "conditionEn": "Tangent requires cosθ≠0; derivatives and arc formulas use radians.",
+        "application": "坡度、振动合成；45°坡度的高差与水平距离相等。",
+        "applicationEn": "Slopes and combined oscillations; a 45° slope has equal rise and run."
+      },
+      {
+        "id": "geometry-8",
+        "title": "正弦与余弦定理",
+        "titleEn": "Sine and cosine rules",
+        "explain": "不局限于直角三角形的边角关系。",
+        "explainEn": "Side-angle relations valid beyond right triangles.",
+        "formula": "a/sin A=b/sin B=c/sin C=2R; c²=a²+b²−2ab cos C",
+        "condition": "非退化三角形；R为外接圆半径。",
+        "conditionEn": "A nondegenerate triangle; R is its circumradius.",
+        "application": "测量不可直达距离、三角定位。",
+        "applicationEn": "Survey inaccessible distances and triangulate positions."
+      },
+      {
+        "id": "geometry-9",
+        "title": "解析几何与圆锥曲线",
+        "titleEn": "Analytic geometry and conics",
+        "explain": "用坐标方程描述直线、圆、椭圆、双曲线和抛物线。",
+        "explainEn": "Coordinates describe lines, circles, ellipses, hyperbolas and parabolas.",
+        "formula": "line ax+by+c=0; circle (x−h)²+(y−k)²=r²; ellipse x²/a²+y²/b²=1; parabola y²=4px",
+        "condition": "椭圆a,b>0；抛物线p≠0；标准式假设中心、轴已选定。",
+        "conditionEn": "Ellipse axes are positive; p≠0; standard forms assume aligned axes and origin.",
+        "application": "道路曲线、拱形断面、定位轨迹。",
+        "applicationEn": "Road curves, arch sections and position loci."
+      },
+      {
+        "id": "geometry-10",
+        "title": "向量、点积与叉积",
+        "titleEn": "Vectors, dot and cross products",
+        "explain": "点积度量投影与夹角，三维叉积给出法向及面积。",
+        "explainEn": "Dot products measure projections and angles; a 3D cross product gives normals and area.",
+        "formula": "a·b=Σaᵢbᵢ=‖a‖‖b‖cosθ; ‖a×b‖=‖a‖‖b‖sinθ",
+        "condition": "夹角计算要求两向量非零；此叉积在三维定向欧氏空间使用。",
+        "conditionEn": "Angle formulas require nonzero vectors; this cross product is for oriented 3D Euclidean space.",
+        "application": "力分解、力矩、平面法线及三角面片面积。",
+        "applicationEn": "Force components, torque, plane normals and triangle mesh areas."
+      },
+      {
+        "id": "geometry-11",
+        "title": "空间直线、平面与投影",
+        "titleEn": "Spatial lines, planes and projection",
+        "explain": "参数式描述空间直线，法向量描述平面。",
+        "explainEn": "Parametric equations describe lines; normal vectors describe planes.",
+        "formula": "line r=p+tv; plane n·(r−p)=0; distance=abs(n·(q−p))/‖n‖",
+        "condition": "v、n非零；距离公式为点到平面的垂距。",
+        "conditionEn": "v and n are nonzero; distance is perpendicular point-to-plane distance.",
+        "application": "BIM碰撞距离、构件定位与点云拟合。",
+        "applicationEn": "BIM clearance, component placement and point-cloud fitting."
+      },
+      {
+        "id": "geometry-12",
+        "title": "微分几何与曲率",
+        "titleEn": "Differential geometry and curvature",
+        "explain": "曲率刻画曲线弯曲程度，曲面由局部度量和曲率描述。",
+        "explainEn": "Curvature measures bending of curves; local metrics and curvature describe surfaces.",
+        "formula": "κ=‖r′×r″‖/‖r′‖³; plane y=f(x): κ=abs(f″)/(1+f′²)^(3/2)",
+        "condition": "曲线至少二次可微且r′≠0；曲面结论需相应光滑性。",
+        "conditionEn": "A twice differentiable regular curve; surfaces require suitable smoothness.",
+        "application": "道路曲率、轨道舒适性和壳体几何；圆的曲率为1/r。",
+        "applicationEn": "Road curvature, rail comfort and shell geometry; a circle has curvature 1/r."
+      },
+      {
+        "id": "geometry-bezier",
+        "title": "贝塞尔曲线",
+        "titleEn": "Bézier curves",
+        "explain": "控制点决定曲线的形状；中间控制点通常不在曲线上。二次曲线可以通过两次线性插值构造。",
+        "explainEn": "Control points shape the curve; interior points generally do not lie on it. A quadratic curve is built by two stages of linear interpolation.",
+        "formula": "B(t)=(1−t)²P₀+2t(1−t)P₁+t²P₂, 0≤t≤1",
+        "condition": "此式为二次贝塞尔曲线；高阶曲线使用伯恩斯坦基。控制多边形不是实际曲线。",
+        "conditionEn": "This is the quadratic case; higher degrees use Bernstein polynomials. The control polygon is not the curve.",
+        "application": "CAD放样、路径平滑。取P₀=(0,0)、P₁=(1,2)、P₂=(2,0)，曲线中点为(1,1)。",
+        "applicationEn": "CAD and smooth paths. With P₀=(0,0), P₁=(1,2), P₂=(2,0), the midpoint is (1,1).",
+        "source": "https://mathworld.wolfram.com/BezierCurve.html",
+        "diagram": "bezier",
+        "steps": [
+          "令t=1/2，三个权重为1/4、1/2、1/4。",
+          "加权相加，B(1/2)=(1,1)。"
+        ],
+        "stepsEn": [
+          "At t=1/2 the weights are 1/4, 1/2 and 1/4.",
+          "The weighted sum gives B(1/2)=(1,1)."
+        ],
+        "related": [
+          "numerical-3",
+          "geometry-12"
+        ]
+      },
+      {
+        "id": "geometry-voronoi",
+        "title": "Voronoi最近点分区",
+        "titleEn": "Voronoi nearest-site regions",
+        "explain": "把平面按最近的站点划分，相邻区域边界是到两个站点等距离的位置。",
+        "explainEn": "Partition the plane by its nearest site. Boundaries consist of points equally distant from neighbouring sites.",
+        "formula": "Vᵢ={x : ‖x−pᵢ‖≤‖x−pⱼ‖ for all j}",
+        "condition": "使用欧氏距离且站点不同。边界可能同时属于多个闭区域；实际道路距离会改变分区。",
+        "conditionEn": "Distinct sites and Euclidean distance are assumed. Closed cells share boundaries; road distance changes the partition.",
+        "application": "仓库覆盖或传感器布点的初步分析，不能替代实际交通和容量约束。",
+        "applicationEn": "Preliminary warehouse coverage or sensor planning, without replacing travel-network or capacity constraints.",
+        "source": "https://mathworld.wolfram.com/VoronoiDiagram.html",
+        "diagram": "voronoi",
+        "steps": [
+          "两站点(−1,0)与(1,0)的距离平方相等。",
+          "化简得到x=0，即垂直平分线。"
+        ],
+        "stepsEn": [
+          "Equate squared distances to (−1,0) and (1,0).",
+          "Simplification gives x=0, the perpendicular bisector."
+        ],
+        "related": [
+          "geometry-delaunay",
+          "geometry-5"
+        ]
+      },
+      {
+        "id": "geometry-delaunay",
+        "title": "Delaunay三角剖分",
+        "titleEn": "Delaunay triangulation",
+        "explain": "用站点构成三角形，使每个三角形外接圆内部没有其他站点。它与Voronoi分区相联系。",
+        "explainEn": "Connect sites into triangles whose circumcircle interiors contain no other sites. This construction is related to Voronoi regions.",
+        "formula": "int(circumcircle(T)) ∩ {other sites} = ∅",
+        "condition": "共圆时可能有多个合法剖分；三点共线不能形成三角形。",
+        "conditionEn": "Cocircular points may yield multiple valid triangulations; collinear triples do not form triangles.",
+        "application": "测量地形三角网、网格生成。图示为单位正方形四个点的合法剖分。",
+        "applicationEn": "Terrain meshes and mesh generation. The figure shows a valid triangulation of four unit-square vertices.",
+        "source": "https://mathworld.wolfram.com/DelaunayTriangulation.html",
+        "diagram": "triangulation",
+        "steps": [
+          "正方形四点共圆。",
+          "两条对角线任选一条，均满足空圆内部条件。"
+        ],
+        "stepsEn": [
+          "The four square vertices are cocircular.",
+          "Either diagonal satisfies the empty-circle-interior condition."
+        ],
+        "related": [
+          "geometry-voronoi",
+          "numerical-7"
+        ]
+      },
+      {
+        "id": "geometry-catenary",
+        "title": "悬链线",
+        "titleEn": "Catenary",
+        "explain": "理想均匀柔索仅受自身重力，在两端悬挂后形成双曲余弦曲线，并非一般抛物线。",
+        "explainEn": "A uniform flexible cable hanging under its own weight forms a hyperbolic-cosine curve, generally not a parabola.",
+        "formula": "y=a cosh(x/a); cosh u=(eᵘ+e⁻ᵘ)/2; a>0",
+        "condition": "静力、柔索、单位弧长重量均匀；桥面荷载等其他载荷会改变形状。",
+        "conditionEn": "Static, flexible cable with uniform weight per arc length; other loads such as a deck change the shape.",
+        "application": "初步理解悬索形状。图中平移到最低点y=0，不用于结构验算。",
+        "applicationEn": "Understand hanging-cable geometry. The figure shifts the lowest point to y=0 and is not a structural design calculation.",
+        "source": "https://mathworld.wolfram.com/Catenary.html",
+        "diagram": "catenary",
+        "steps": [
+          "a=2、x=2，y=2cosh(1)≈3.086。",
+          "相对最低点的高度为y−a≈1.086。"
+        ],
+        "stepsEn": [
+          "For a=2 and x=2, y=2cosh(1)≈3.086.",
+          "The height above the lowest point is y−a≈1.086."
+        ],
+        "related": [
+          "geometry-9",
+          "differential-1"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "analysis",
+    "title": "高等数学与实分析",
+    "titleEn": "Advanced mathematics and real analysis",
+    "topics": [
+      {
+        "id": "analysis-1",
+        "title": "集合、映射与逻辑",
+        "titleEn": "Sets, mappings and logic",
+        "explain": "集合描述对象范围，映射描述输入输出，量词把直觉写成可证明陈述。",
+        "explainEn": "Sets specify objects, mappings specify input-output rules, and quantifiers formalize claims.",
+        "formula": "f:A→B; injective: f(x)=f(y)⇒x=y; surjective: f(A)=B",
+        "condition": "单射、满射都依赖指定的定义域和值域。",
+        "conditionEn": "Injectivity and surjectivity depend on the chosen domain and codomain.",
+        "application": "数据库映射、函数反演和证明前提检查。",
+        "applicationEn": "Database mappings, function inversion and checking proof assumptions."
+      },
+      {
+        "id": "analysis-2",
+        "title": "实数完备性",
+        "titleEn": "Completeness of real numbers",
+        "explain": "实数轴没有有界递增序列所趋向的空缺，完备性支撑极限理论。",
+        "explainEn": "The real line has no gaps for bounded monotone sequences; completeness supports limit theory.",
+        "formula": "nonempty A⊂R bounded above ⇒ sup A∈R",
+        "condition": "上确界公理针对非空且有上界的集合。",
+        "conditionEn": "The supremum property requires a nonempty set bounded above.",
+        "application": "证明极限和最优解存在；有理数内√2的逼近可能无有理极限。",
+        "applicationEn": "Prove limits and optima exist; rational approximations to √2 have no rational limit."
+      },
+      {
+        "id": "analysis-3",
+        "title": "数列极限与柯西准则",
+        "titleEn": "Sequence limits and Cauchy criterion",
+        "explain": "极限控制尾部接近目标；柯西条件控制尾部各项彼此接近。",
+        "explainEn": "Limits control closeness to a target; the Cauchy condition controls mutual tail closeness.",
+        "formula": "∀ε>0 ∃N ∀n≥N: abs(aₙ−L)<ε",
+        "condition": "实数或复数空间中柯西序列必收敛；不完备空间未必。",
+        "conditionEn": "Cauchy sequences converge in real or complex complete spaces, not every space.",
+        "application": "迭代算法收敛、误差界；1/n→0。",
+        "applicationEn": "Iterative convergence and error bounds; 1/n tends to 0."
+      },
+      {
+        "id": "analysis-4",
+        "title": "函数极限与连续",
+        "titleEn": "Function limits and continuity",
+        "explain": "连续表示输入的小变化使输出保持接近，不保证可微。",
+        "explainEn": "Continuity makes small input changes produce small output changes, without implying differentiability.",
+        "formula": "limₓ→ₐ f(x)=f(a); ε–δ: abs(x−a)<δ ⇒ abs(f(x)−f(a))<ε",
+        "condition": "函数在a处有定义；极限定义通常排除x=a。",
+        "conditionEn": "The function is defined at a; the limit definition usually excludes x=a.",
+        "application": "检查模型是否存在跳变；绝对值函数连续但在0不可微。",
+        "applicationEn": "Check models for jumps; absolute value is continuous but not differentiable at 0."
+      },
+      {
+        "id": "analysis-5",
+        "title": "介值与极值定理",
+        "titleEn": "Intermediate and extreme value theorems",
+        "explain": "连续函数不跳过中间值，紧区间上的连续实函数达到最大最小值。",
+        "explainEn": "Continuous functions attain intermediate values and reach extrema on compact intervals.",
+        "formula": "f(a)f(b)<0 ⇒ ∃c∈(a,b): f(c)=0",
+        "condition": "介值定理要求闭区间连续；极值定理要求非空紧集。",
+        "conditionEn": "Continuity on the closed interval; extrema require a nonempty compact domain.",
+        "application": "二分求根和可行范围验证；x³−2在[1,2]有根。",
+        "applicationEn": "Bisection and feasible-range checks; x³−2 has a root in [1,2]."
+      },
+      {
+        "id": "analysis-6",
+        "title": "单调、有界与一致连续",
+        "titleEn": "Monotonicity, bounds and uniform continuity",
+        "explain": "一致连续的输入容差可同时用于整个定义域，比逐点连续更强。",
+        "explainEn": "Uniform continuity uses a single input tolerance over the whole domain, stronger than pointwise continuity.",
+        "formula": "∀ε>0 ∃δ>0 ∀x,y: abs(x−y)<δ ⇒ abs(f(x)−f(y))<ε",
+        "condition": "紧集上的连续函数一致连续；无界域不一定。",
+        "conditionEn": "Continuous functions on compact sets are uniformly continuous; unbounded domains need not be.",
+        "application": "为全域插值设置统一误差；x²在R上不一致连续。",
+        "applicationEn": "Uniform interpolation error controls; x² is not uniformly continuous on R."
+      },
+      {
+        "id": "analysis-7",
+        "title": "数项级数与收敛判别",
+        "titleEn": "Series and convergence tests",
+        "explain": "无穷和由部分和极限定义；通项趋零必要但不充分。",
+        "explainEn": "An infinite sum is a limit of partial sums; terms tending to zero are necessary but insufficient.",
+        "formula": "Σ1/n diverges; Σ1/nᵖ converges iff p>1; ratio limit L<1 ⇒ absolute convergence",
+        "condition": "比值判别L=1不作结论；绝对收敛推出收敛。",
+        "conditionEn": "A ratio limit of 1 is inconclusive; absolute convergence implies convergence.",
+        "application": "累计误差、级数近似；调和级数展示通项趋零仍可发散。",
+        "applicationEn": "Accumulated errors and series approximations; the harmonic series shows why vanishing terms are insufficient."
+      },
+      {
+        "id": "analysis-8",
+        "title": "幂级数与收敛半径",
+        "titleEn": "Power series and convergence radius",
+        "explain": "幂级数在中心附近将函数写成多项式的无穷极限。",
+        "explainEn": "A power series represents a function as a limit of polynomials near a center.",
+        "formula": "Σaₙ(x−c)ⁿ; R=1/limsup(abs(aₙ)^(1/n))",
+        "condition": "abs(x−c)<R绝对收敛，>R发散，端点分别检查。",
+        "conditionEn": "Absolute convergence inside the radius, divergence outside; check endpoints individually.",
+        "application": "指数、对数近似及数值算法；eˣ=Σxⁿ/n!。",
+        "applicationEn": "Exponential and logarithm approximations; eˣ=Σxⁿ/n!."
+      },
+      {
+        "id": "analysis-9",
+        "title": "逐点收敛与一致收敛",
+        "titleEn": "Pointwise and uniform convergence",
+        "explain": "一致收敛要求所有输入位置的最大误差同时趋零。",
+        "explainEn": "Uniform convergence drives the maximum error over all inputs to zero simultaneously.",
+        "formula": "supₓ abs(fₙ(x)−f(x))→0",
+        "condition": "一致极限保连续；换序求导通常还需导数一致收敛等额外条件。",
+        "conditionEn": "Uniform limits preserve continuity; differentiating limits needs additional derivative conditions.",
+        "application": "函数逼近误差控制；xⁿ在[0,1]逐点收敛但不一致。",
+        "applicationEn": "Control approximation error; xⁿ converges pointwise but not uniformly on [0,1]."
+      },
+      {
+        "id": "analysis-10",
+        "title": "度量空间与巴拿赫不动点",
+        "titleEn": "Metric spaces and Banach fixed point theorem",
+        "explain": "距离使抽象空间也能谈收敛；压缩映射通过反复迭代逼近唯一不动点。",
+        "explainEn": "A metric enables convergence in abstract spaces; contractions iteratively approach a unique fixed point.",
+        "formula": "d(Tx,Ty)≤q d(x,y), 0≤q<1; xₙ₊₁=T(xₙ)",
+        "condition": "非空完备度量空间且T将空间映入自身。",
+        "conditionEn": "A nonempty complete metric space and a self-map contraction.",
+        "application": "证明迭代法可靠；T(x)=cos x在[0,1]上有唯一不动点。",
+        "applicationEn": "Justify iterative methods; cos x has a unique fixed point on [0,1]."
+      },
+      {
+        "id": "analysis-11",
+        "title": "测度与勒贝格积分",
+        "titleEn": "Measure and Lebesgue integration",
+        "explain": "测度推广长度和面积，勒贝格积分按函数取值组织加权面积。",
+        "explainEn": "Measure generalizes length and area; Lebesgue integration organizes weighted area by function values.",
+        "formula": "∫1_A dμ=μ(A); μ(∪Aₙ)=Σμ(Aₙ) for disjoint Aₙ",
+        "condition": "集合和函数须可测；一般函数还需检查可积性。",
+        "conditionEn": "Sets and functions must be measurable; integrability needs checking.",
+        "application": "概率期望、极限交换和不连续函数积分。",
+        "applicationEn": "Probability expectations, exchanging limits and integrating discontinuous functions."
+      },
+      {
+        "id": "analysis-12",
+        "title": "控制收敛与单调收敛",
+        "titleEn": "Dominated and monotone convergence",
+        "explain": "给出积分与极限交换的充分条件，避免错误换序。",
+        "explainEn": "Provides sufficient conditions for exchanging integration and limits.",
+        "formula": "fₙ→f a.e., abs(fₙ)≤g, ∫g<∞ ⇒ ∫fₙ→∫f; 0≤fₙ↑f ⇒ ∫fₙ↑∫f",
+        "condition": "控制收敛需要同一个可积控制函数；单调收敛要求非负。",
+        "conditionEn": "Dominated convergence needs one integrable bound; monotone convergence needs nonnegative functions.",
+        "application": "概率极限、参数积分和近似模型的可靠性分析。",
+        "applicationEn": "Probability limits, parameter integrals and reliable model approximations."
+      },
+      {
+        "id": "analysis-convolution",
+        "title": "卷积与系统响应",
+        "titleEn": "Convolution and system response",
+        "explain": "把一个函数平移、翻转后与另一函数逐点相乘并积分，得到随位移变化的重叠量。",
+        "explainEn": "Shift and reverse one function, multiply it by another, and integrate to measure overlap as the shift changes.",
+        "formula": "(f∗g)(t)=∫ f(τ)g(t−τ)dτ; integral over ℝ",
+        "condition": "需保证积分存在；离散信号使用求和。卷积不是一般的逐点乘法。",
+        "conditionEn": "The integral must exist; discrete signals use a sum. Convolution is not ordinary pointwise multiplication.",
+        "application": "信号平滑与线性时不变系统响应。两个[0,1]上的单位矩形卷积得到三角形。",
+        "applicationEn": "Smoothing and linear time-invariant response. Two unit rectangles on [0,1] convolve to a triangle.",
+        "source": "https://mathworld.wolfram.com/Convolution.html",
+        "diagram": "convolution",
+        "steps": [
+          "t=0.5时重叠长度0.5。",
+          "t=1时重叠长度1；t=1.5时又降为0.5。"
+        ],
+        "stepsEn": [
+          "At t=0.5 the overlap has length 0.5.",
+          "At t=1 it is 1; at t=1.5 it falls to 0.5."
+        ],
+        "related": [
+          "numerical-8",
+          "differential-6"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "linear",
+    "title": "线性代数",
+    "titleEn": "Linear algebra",
+    "topics": [
+      {
+        "id": "linear-1",
+        "title": "矩阵运算与线性方程组",
+        "titleEn": "Matrices and linear systems",
+        "explain": "矩阵把多个线性关系组织为统一运算，消元把方程化为阶梯形。",
+        "explainEn": "Matrices organize linear relations; elimination transforms systems into echelon form.",
+        "formula": "Ax=b; (AB)ᵢⱼ=ΣₖAᵢₖBₖⱼ",
+        "condition": "乘法要求内维相同；AB通常不等于BA。",
+        "conditionEn": "Inner dimensions must match; matrix multiplication is generally noncommutative.",
+        "application": "节点平衡、工程量分配、多变量模型。",
+        "applicationEn": "Nodal balance, quantity allocation and multivariable models."
+      },
+      {
+        "id": "linear-2",
+        "title": "秩与解的结构",
+        "titleEn": "Rank and solution structure",
+        "explain": "秩为独立约束数量，决定方程组相容性和自由变量。",
+        "explainEn": "Rank counts independent constraints and determines consistency and free variables.",
+        "formula": "Ax=b solvable ⇔ rank A=rank[A b]; dim ker A=n−rank A",
+        "condition": "A为m×n矩阵，系数在同一域上。",
+        "conditionEn": "A is m×n over one field.",
+        "application": "识别冗余约束和欠定模型；满列秩相容系统解唯一。",
+        "applicationEn": "Identify redundant constraints and underdetermined models; a consistent full-column-rank system is unique."
+      },
+      {
+        "id": "linear-3",
+        "title": "行列式与逆矩阵",
+        "titleEn": "Determinants and inverse matrices",
+        "explain": "行列式度量有向体积缩放，非零意味着方阵可逆。",
+        "explainEn": "A determinant measures signed volume scaling; a nonzero value means a square matrix is invertible.",
+        "formula": "det(AB)=det A det B; det A≠0 ⇔ A⁻¹ exists",
+        "condition": "只对方阵定义普通行列式和双侧逆。",
+        "conditionEn": "Ordinary determinants and two-sided inverses require square matrices.",
+        "application": "坐标变换、判断奇异；实际求解通常用分解而非显式求逆。",
+        "applicationEn": "Coordinate changes and singularity detection; solve with factorizations rather than explicit inversion."
+      },
+      {
+        "id": "linear-4",
+        "title": "向量空间、基与维数",
+        "titleEn": "Vector spaces, bases and dimension",
+        "explain": "基是能唯一表示每个向量的一组线性无关向量。",
+        "explainEn": "A basis is a linearly independent set giving a unique representation of every vector.",
+        "formula": "v=Σᵢcᵢbᵢ; dim V=number of basis vectors (finite-dimensional)",
+        "condition": "子空间须包含零向量并对加法及数乘封闭。",
+        "conditionEn": "A subspace contains zero and is closed under addition and scalar multiplication.",
+        "application": "选择独立状态变量，表达结构振型和多项式空间。",
+        "applicationEn": "Choose independent state variables; represent structural modes and polynomial spaces."
+      },
+      {
+        "id": "linear-5",
+        "title": "线性映射与换基",
+        "titleEn": "Linear maps and basis changes",
+        "explain": "线性映射保持线性组合，矩阵随基改变但映射不变。",
+        "explainEn": "Linear maps preserve combinations; matrix representations change with the basis.",
+        "formula": "T(αu+βv)=αT(u)+βT(v); A_new=P⁻¹AP",
+        "condition": "相似变换用于同一线性算子；P可逆。",
+        "conditionEn": "Similarity represents the same operator; P must be invertible.",
+        "application": "坐标旋转、系统简化和解耦。",
+        "applicationEn": "Coordinate rotations, system simplification and decoupling."
+      },
+      {
+        "id": "linear-6",
+        "title": "特征值与特征向量",
+        "titleEn": "Eigenvalues and eigenvectors",
+        "explain": "特征向量经算子作用只发生尺度改变，用于识别固有模式。",
+        "explainEn": "Eigenvectors change only by a scalar and identify intrinsic modes.",
+        "formula": "Av=λv, v≠0; det(A−λI)=0",
+        "condition": "A为方阵；实矩阵可能只有复特征值。",
+        "conditionEn": "A is square; real matrices can have complex eigenvalues.",
+        "application": "结构振动、稳定性；对角矩阵的特征值就是对角元素。",
+        "applicationEn": "Structural vibration and stability; diagonal entries are eigenvalues of a diagonal matrix."
+      },
+      {
+        "id": "linear-7",
+        "title": "对角化与若尔当形式",
+        "titleEn": "Diagonalization and Jordan form",
+        "explain": "足够多独立特征向量可对角化，否则用若尔当块描述耦合。",
+        "explainEn": "Enough independent eigenvectors permit diagonalization; otherwise Jordan blocks describe coupling.",
+        "formula": "A=PDP⁻¹; Jordan block J=λI+N with N nilpotent",
+        "condition": "n×n矩阵可对角化当且仅当有n个独立特征向量；复域总有若尔当形式。",
+        "conditionEn": "Diagonalization needs n independent eigenvectors; Jordan form exists over complex numbers.",
+        "application": "计算矩阵幂和动力系统；重特征值不自动意味着不可对角化。",
+        "applicationEn": "Matrix powers and dynamics; repeated eigenvalues do not by themselves prevent diagonalization."
+      },
+      {
+        "id": "linear-8",
+        "title": "内积、正交与格拉姆施密特",
+        "titleEn": "Inner products, orthogonality and Gram–Schmidt",
+        "explain": "内积提供长度和夹角，正交化把独立向量转为正交基。",
+        "explainEn": "Inner products define length and angle; orthogonalization constructs an orthonormal basis.",
+        "formula": "uₖ=vₖ−Σⱼ<ₖ⟨vₖ,qⱼ⟩qⱼ; qₖ=uₖ/‖uₖ‖",
+        "condition": "输入向量线性无关；复内积须使用共轭。",
+        "conditionEn": "Input vectors are independent; complex inner products use conjugation.",
+        "application": "消除变量相关性、QR分解及最小二乘计算。",
+        "applicationEn": "Reduce dependent directions, compute QR and solve least squares."
+      },
+      {
+        "id": "linear-9",
+        "title": "最小二乘与投影",
+        "titleEn": "Least squares and projection",
+        "explain": "无精确解时选择残差平方和最小的近似解。",
+        "explainEn": "When no exact solution exists, minimize the squared residual.",
+        "formula": "minₓ‖Ax−b‖²; AᵀAx=Aᵀb; x=(AᵀA)⁻¹Aᵀb",
+        "condition": "显式逆公式要求满列秩；数值计算宜用QR或SVD。",
+        "conditionEn": "The inverse formula requires full column rank; prefer QR or SVD numerically.",
+        "application": "数据拟合、测量平差；残差与A的列空间正交。",
+        "applicationEn": "Data fitting and survey adjustment; residuals are orthogonal to the column space."
+      },
+      {
+        "id": "linear-10",
+        "title": "谱定理与正定矩阵",
+        "titleEn": "Spectral theorem and positive definiteness",
+        "explain": "实对称矩阵可用正交特征向量分解，正定意味着所有非零方向二次型为正。",
+        "explainEn": "Real symmetric matrices admit an orthonormal eigenbasis; positive definiteness makes the quadratic form positive.",
+        "formula": "A=QΛQᵀ; xᵀAx>0 (x≠0) ⇔ all λᵢ>0",
+        "condition": "此等价在实对称矩阵下成立；复数用厄米矩阵。",
+        "conditionEn": "This equivalence assumes real symmetry; complex matrices use Hermitian symmetry.",
+        "application": "刚度矩阵、凸二次优化和能量最小化。",
+        "applicationEn": "Stiffness matrices, convex quadratic optimization and energy minimization."
+      },
+      {
+        "id": "linear-11",
+        "title": "奇异值分解",
+        "titleEn": "Singular value decomposition",
+        "explain": "任意实矩阵可分解成正交变换和非负伸缩，不要求方阵或可逆。",
+        "explainEn": "Any real matrix decomposes into orthogonal transformations and nonnegative scaling, without being square or invertible.",
+        "formula": "A=UΣVᵀ; σᵢ=√λᵢ(AᵀA)",
+        "condition": "奇异值非负；复矩阵用共轭转置。",
+        "conditionEn": "Singular values are nonnegative; complex matrices use conjugate transposes.",
+        "application": "降噪、低秩逼近、病态诊断；截断小奇异值抑制噪声。",
+        "applicationEn": "Denoising, low-rank approximation and conditioning diagnostics; truncate small singular values."
+      },
+      {
+        "id": "linear-12",
+        "title": "广义逆与条件数",
+        "titleEn": "Pseudoinverse and condition number",
+        "explain": "广义逆处理非满秩系统，条件数度量输入扰动被放大的程度。",
+        "explainEn": "The pseudoinverse handles rank deficiency; conditioning measures amplification of input perturbations.",
+        "formula": "A⁺=VΣ⁺Uᵀ; κ₂(A)=σ_max/σ_min (invertible A)",
+        "condition": "Σ⁺仅对非零奇异值取倒数；奇异方阵条件数为无穷。",
+        "conditionEn": "Only nonzero singular values are reciprocated; singular square matrices have infinite condition number.",
+        "application": "欠定系统最小范数解，检测测量拟合的不可靠性。",
+        "applicationEn": "Minimum-norm underdetermined solutions and unreliable fits."
+      },
+      {
+        "id": "linear-13",
+        "title": "二次型与主成分分析",
+        "titleEn": "Quadratic forms and principal components",
+        "explain": "二次型描述方向相关的能量或离散程度；PCA寻找最大方差正交方向。",
+        "explainEn": "Quadratic forms describe directional energy or variability; PCA finds orthogonal maximum-variance directions.",
+        "formula": "q(x)=xᵀAx; covariance C=XᵀX/(n−1); C vᵢ=λᵢvᵢ",
+        "condition": "PCA数据按列中心化；不同量纲通常先标准化。",
+        "conditionEn": "Center data columns for PCA; differing units often need standardization.",
+        "application": "传感器降维、相关指标合并；主成分不自动具有因果含义。",
+        "applicationEn": "Sensor dimensionality reduction and correlated indicators; components do not establish causation."
+      },
+      {
+        "id": "linear-14",
+        "title": "矩阵指数与线性系统",
+        "titleEn": "Matrix exponentials and linear systems",
+        "explain": "矩阵指数把标量指数推广到线性微分方程。",
+        "explainEn": "The matrix exponential generalizes scalar exponentials to linear differential equations.",
+        "formula": "e^(At)=Σₖ₌₀∞(At)ᵏ/k!; x′=Ax ⇒ x(t)=e^(At)x(0)",
+        "condition": "A为常矩阵；时变矩阵需另外处理，不可任意交换乘法。",
+        "conditionEn": "A is constant; time-varying matrices require additional treatment and ordering.",
+        "application": "状态空间仿真、控制系统响应和振动分析。",
+        "applicationEn": "State-space simulation, control responses and vibration analysis."
+      }
+    ]
+  },
+  {
+    "id": "calculus",
+    "title": "微积分",
+    "titleEn": "Calculus",
+    "topics": [
+      {
+        "id": "calculus-1",
+        "title": "导数与微分",
+        "titleEn": "Derivatives and differentials",
+        "explain": "导数是局部变化率，微分给出一阶线性近似。",
+        "explainEn": "A derivative is a local rate; a differential gives a first-order linear approximation.",
+        "formula": "f′(x)=limₕ→₀[f(x+h)−f(x)]/h; dy=f′(x)dx",
+        "condition": "极限存在才可导；可导必连续，反之不成立。",
+        "conditionEn": "The limit must exist; differentiability implies continuity, not conversely.",
+        "application": "速度、边际成本；f(x)=x²在x=3的变化率为6。",
+        "applicationEn": "Velocity and marginal cost; x² has rate 6 at x=3."
+      },
+      {
+        "id": "calculus-2",
+        "title": "基本求导与链式法则",
+        "titleEn": "Derivative rules and chain rule",
+        "explain": "乘积、商与复合函数分别按结构求导。",
+        "explainEn": "Products, quotients and compositions have structural derivative rules.",
+        "formula": "(uv)′=u′v+uv′; (u/v)′=(u′v−uv′)/v²; (f∘g)′=f′(g)g′",
+        "condition": "商的分母非零；复合内外函数在相应位置可导。",
+        "conditionEn": "A quotient denominator is nonzero; both functions are differentiable at relevant points.",
+        "application": "复杂模型灵敏度；sin(x²)的导数为2x cos(x²)。",
+        "applicationEn": "Model sensitivity; the derivative of sin(x²) is 2x cos(x²)."
+      },
+      {
+        "id": "calculus-3",
+        "title": "常用导数表",
+        "titleEn": "Common derivatives",
+        "explain": "幂、指数、对数和三角函数构成常用求导基础。",
+        "explainEn": "Powers, exponentials, logarithms and trigonometric functions form a derivative toolkit.",
+        "formula": "(xⁿ)′=nxⁿ⁻¹; (eˣ)′=eˣ; (ln x)′=1/x; (sin x)′=cos x; (cos x)′=−sin x",
+        "condition": "ln x实值要求x>0；一般实幂使用其可微定义域；角度为弧度。",
+        "conditionEn": "Real ln requires x>0; real powers use their differentiable domains; angles are radians.",
+        "application": "增长、衰减和周期变化的速率计算。",
+        "applicationEn": "Rates of growth, decay and periodic change."
+      },
+      {
+        "id": "calculus-4",
+        "title": "中值定理与洛必达法则",
+        "titleEn": "Mean value theorem and L’Hôpital rule",
+        "explain": "中值定理联系平均和瞬时变化；洛必达在规定条件下求不定式极限。",
+        "explainEn": "The mean value theorem connects average and instantaneous rates; L’Hôpital evaluates certain indeterminate limits.",
+        "formula": "f′(c)=[f(b)−f(a)]/(b−a); lim f/g=lim f′/g′ (under hypotheses)",
+        "condition": "中值定理需闭区间连续、开区间可导；洛必达需0/0或∞/∞、g′≠0及导数比极限存在。",
+        "conditionEn": "Continuity on [a,b], differentiability inside; L’Hôpital needs 0/0 or ∞/∞, nonzero g′ and an appropriate derivative-ratio limit.",
+        "application": "限速估计；limₓ→₀ sin x/x=1。",
+        "applicationEn": "Rate bounds; sin x/x tends to 1 at 0."
+      },
+      {
+        "id": "calculus-5",
+        "title": "泰勒展开与余项",
+        "titleEn": "Taylor expansion and remainder",
+        "explain": "在一点附近用导数构造多项式近似，并用余项控制误差。",
+        "explainEn": "Derivatives construct a local polynomial approximation; a remainder controls its error.",
+        "formula": "f(x)=Σₖ₌₀ⁿ f⁽ᵏ⁾(a)(x−a)ᵏ/k! + f⁽ⁿ⁺¹⁾(ξ)(x−a)ⁿ⁺¹/(n+1)!",
+        "condition": "拉格朗日余项要求相应区间上足够阶可微；光滑不保证等于无穷泰勒级数。",
+        "conditionEn": "The Lagrange remainder needs sufficient differentiability; smoothness does not guarantee equality to an infinite Taylor series.",
+        "application": "近似sin x≈x−x³/6，估算小位移误差。",
+        "applicationEn": "Approximate sin x by x−x³/6 and estimate small-displacement errors."
+      },
+      {
+        "id": "calculus-6",
+        "title": "极值、凸凹与拐点",
+        "titleEn": "Extrema, convexity and inflection",
+        "explain": "一阶导数定位驻点，二阶导数描述弯曲与局部极值。",
+        "explainEn": "First derivatives identify stationary points; second derivatives describe curvature and local extrema.",
+        "formula": "f′(a)=0; f″(a)>0 ⇒ strict local minimum; f″≥0 ⇒ convex on an interval",
+        "condition": "极值也可能出现在不可导点或边界；f″=0不能单独判定拐点。",
+        "conditionEn": "Extrema may occur at nondifferentiable points or boundaries; f″=0 alone does not establish inflection.",
+        "application": "最小材料用量、经济订货；x²在0取得最小值。",
+        "applicationEn": "Minimize material or inventory costs; x² is minimized at 0."
+      },
+      {
+        "id": "calculus-7",
+        "title": "不定积分与基本积分表",
+        "titleEn": "Antiderivatives and common integrals",
+        "explain": "不定积分寻找导数等于给定函数的函数族。",
+        "explainEn": "An indefinite integral finds the family of functions with a specified derivative.",
+        "formula": "∫xⁿdx=xⁿ⁺¹/(n+1)+C (n≠−1); ∫dx/x=ln abs(x)+C; ∫eˣdx=eˣ+C",
+        "condition": "各式在定义域的连通区间内使用；积分常数不能省略。",
+        "conditionEn": "Use connected intervals within the domain; retain the integration constant.",
+        "application": "从加速度恢复速度、累计量反推。",
+        "applicationEn": "Recover velocity from acceleration and reconstruct accumulated quantities."
+      },
+      {
+        "id": "calculus-8",
+        "title": "定积分与微积分基本定理",
+        "titleEn": "Definite integrals and fundamental theorem",
+        "explain": "定积分累计带符号的变化量；原函数把累计计算转为端点差。",
+        "explainEn": "A definite integral accumulates signed change; an antiderivative turns it into endpoint subtraction.",
+        "formula": "F(x)=∫ₐˣf(t)dt ⇒ F′=f; ∫ₐᵇf(x)dx=G(b)−G(a), G′=f",
+        "condition": "连续函数满足此基本形式；更一般版本有额外条件。",
+        "conditionEn": "This basic form assumes continuity; broader versions need other hypotheses.",
+        "application": "流量积分得体积；恒定2m³/h流3小时得到6m³。",
+        "applicationEn": "Integrate flow to obtain volume; 2 m³/h for 3 hours gives 6 m³."
+      },
+      {
+        "id": "calculus-9",
+        "title": "换元与分部积分",
+        "titleEn": "Substitution and integration by parts",
+        "explain": "换元利用复合结构，分部积分利用乘积求导的逆过程。",
+        "explainEn": "Substitution exploits composition; integration by parts reverses the product rule.",
+        "formula": "∫f(g(x))g′(x)dx=∫f(u)du; ∫u dv=uv−∫v du",
+        "condition": "定积分换元同时更改积分限；分部所用函数须足够光滑。",
+        "conditionEn": "Change definite-integral bounds on substitution; integration by parts needs suitable regularity.",
+        "application": "∫xeˣdx=eˣ(x−1)+C；用于力矩、能量积分。",
+        "applicationEn": "∫xeˣdx=eˣ(x−1)+C; useful in moment and energy integrals."
+      },
+      {
+        "id": "calculus-10",
+        "title": "反常积分",
+        "titleEn": "Improper integrals",
+        "explain": "对无穷区间或无界被积函数，通过极限定义积分。",
+        "explainEn": "Limits define integrals over infinite intervals or unbounded integrands.",
+        "formula": "∫₁∞ x⁻ᵖdx converges iff p>1; ∫₀¹ x⁻ᵖdx converges iff p<1",
+        "condition": "必须分别检查每个奇点或无穷端；柯西主值不等于普通收敛。",
+        "conditionEn": "Check each singularity and infinite endpoint separately; principal value is not ordinary convergence.",
+        "application": "无限时间衰减总量、概率密度归一化。",
+        "applicationEn": "Total long-term decay and probability-density normalization."
+      },
+      {
+        "id": "calculus-11",
+        "title": "偏导数、梯度与全微分",
+        "titleEn": "Partial derivatives, gradient and total differential",
+        "explain": "偏导一次只改变一个变量，梯度给出最陡上升方向。",
+        "explainEn": "A partial derivative changes one variable; the gradient gives steepest ascent.",
+        "formula": "∇f=(∂f/∂xᵢ); df=Σᵢ(∂f/∂xᵢ)dxᵢ; Dᵤf=∇f·u",
+        "condition": "全微分需可微；偏导存在本身不保证可微；u为单位向量。",
+        "conditionEn": "A total differential requires differentiability, not merely existence of partials; u is a unit vector.",
+        "application": "多因素敏感性、温度场和误差传播。",
+        "applicationEn": "Multifactor sensitivity, temperature fields and error propagation."
+      },
+      {
+        "id": "calculus-12",
+        "title": "多元极值与拉格朗日乘子",
+        "titleEn": "Multivariable extrema and Lagrange multipliers",
+        "explain": "约束极值处目标梯度与约束梯度满足平衡关系。",
+        "explainEn": "At constrained stationary points, objective and constraint gradients balance.",
+        "formula": "∇f=λ∇g; g(x)=0; Hessian H=[∂²f/∂xᵢ∂xⱼ]",
+        "condition": "单约束此式要求∇g≠0；必要条件不是全局最优保证。",
+        "conditionEn": "This single-constraint form needs a nonzero constraint gradient; stationarity does not guarantee global optimality.",
+        "application": "限定材料下最大容积、固定预算最优分配。",
+        "applicationEn": "Maximize volume under material limits and allocate a fixed budget."
+      },
+      {
+        "id": "calculus-13",
+        "title": "重积分与变量替换",
+        "titleEn": "Multiple integrals and change of variables",
+        "explain": "多重积分在区域上累计，雅可比因子校正坐标变换面积或体积。",
+        "explainEn": "Multiple integrals accumulate over regions; a Jacobian adjusts area or volume under coordinate changes.",
+        "formula": "∫∫_D f(x,y)dxdy=∫∫ f(x(u,v),y(u,v)) abs(det J) du dv; polar dxdy=r dr dθ",
+        "condition": "变换在区域内部适当光滑且一一对应，除可忽略集合外雅可比非零。",
+        "conditionEn": "A suitably smooth, one-to-one transformation with nonzero Jacobian except on negligible sets.",
+        "application": "计算不规则体积、质量、质心及极惯性矩。",
+        "applicationEn": "Compute irregular volumes, mass, centroids and polar moments."
+      },
+      {
+        "id": "calculus-14",
+        "title": "曲线积分与保守场",
+        "titleEn": "Line integrals and conservative fields",
+        "explain": "沿路径累计标量或向量场作用，保守场积分只依赖端点。",
+        "explainEn": "Accumulate a field along a path; conservative integrals depend only on endpoints.",
+        "formula": "∫_C F·dr; F=∇φ ⇒ ∫_C F·dr=φ(B)−φ(A)",
+        "condition": "无旋推出保守还需区域拓扑等条件，常用充分条件为单连通域且场C¹。",
+        "conditionEn": "Curl-free implies conservative only with domain conditions, such as a simply connected domain and a C¹ field.",
+        "application": "力做功、电势差；绕孔区域不能只凭旋度为零判断。",
+        "applicationEn": "Mechanical work and potential differences; holes in the domain matter."
+      },
+      {
+        "id": "calculus-15",
+        "title": "格林、斯托克斯与散度定理",
+        "titleEn": "Green, Stokes and divergence theorems",
+        "explain": "把区域内部的微分量转为边界积分，是守恒定律的重要表达。",
+        "explainEn": "Converts interior differential quantities to boundary integrals and expresses conservation.",
+        "formula": "∮_∂D Pdx+Qdy=∫∫_D(Qₓ−Pᵧ)dA; ∮_∂S F·dr=∫_S curl F·n dS; ∫_∂V F·n dS=∫_V div F dV",
+        "condition": "区域与边界分片光滑、方向匹配且场足够光滑；散度边界取外法向。",
+        "conditionEn": "Piecewise smooth oriented boundaries and sufficiently smooth fields; divergence uses outward normals.",
+        "application": "流体通量、电磁场、守恒方程及面积计算。",
+        "applicationEn": "Fluid flux, electromagnetic fields, conservation laws and area calculation."
+      },
+      {
+        "id": "calculus-16",
+        "title": "傅里叶级数",
+        "titleEn": "Fourier series",
+        "explain": "把周期函数分解为正弦和余弦的不同频率成分。",
+        "explainEn": "Decomposes periodic functions into sine and cosine frequencies.",
+        "formula": "f(x)~a₀/2+Σₙ≥₁[aₙcos(nx)+bₙsin(nx)]; aₙ=(1/π)∫₋π^π f(x)cos(nx)dx",
+        "condition": "此式为2π周期；分片光滑时在跳点趋于左右极限平均值，非总是原值。",
+        "conditionEn": "This form is 2π-periodic; at jumps, piecewise smooth series converge to the average of one-sided limits.",
+        "application": "振动频谱、周期荷载和信号滤波。",
+        "applicationEn": "Vibration spectra, periodic loads and signal filtering."
+      }
+    ]
+  },
+  {
+    "id": "probability",
+    "title": "概率论",
+    "titleEn": "Probability",
+    "topics": [
+      {
+        "id": "probability-1",
+        "title": "概率公理与事件运算",
+        "titleEn": "Probability axioms and events",
+        "explain": "概率是事件集合上的非负、归一且可列可加的度量。",
+        "explainEn": "Probability is a nonnegative normalized countably additive measure on events.",
+        "formula": "P(Ω)=1; P(Aᶜ)=1−P(A); P(A∪B)=P(A)+P(B)−P(A∩B)",
+        "condition": "可列可加要求事件两两不交；概率不是样本频率的简单同义词。",
+        "conditionEn": "Countable additivity is for disjoint events; probability and observed frequency are distinct concepts.",
+        "application": "可靠性风险组合、事件树和事故概率估计。",
+        "applicationEn": "Reliability risks, event trees and accident probabilities."
+      },
+      {
+        "id": "probability-2",
+        "title": "条件概率与独立性",
+        "titleEn": "Conditional probability and independence",
+        "explain": "条件概率反映已有信息下的概率；独立性意味着信息不改变概率。",
+        "explainEn": "Conditional probability accounts for known information; independence means it leaves probabilities unchanged.",
+        "formula": "P(A∣B)=P(A∩B)/P(B); independent ⇔ P(A∩B)=P(A)P(B)",
+        "condition": "条件事件P(B)>0；互斥通常不等于独立。",
+        "conditionEn": "The conditioning event has positive probability; disjoint events are generally not independent.",
+        "application": "多设备故障建模；不可未经检验假定各故障独立。",
+        "applicationEn": "Model equipment failures without assuming independence uncritically."
+      },
+      {
+        "id": "probability-3",
+        "title": "全概率与贝叶斯定理",
+        "titleEn": "Total probability and Bayes theorem",
+        "explain": "全概率按来源分解，贝叶斯公式根据证据更新来源概率。",
+        "explainEn": "Total probability partitions by sources; Bayes updates source probabilities using evidence.",
+        "formula": "P(B)=ΣᵢP(B∣Aᵢ)P(Aᵢ); P(Aᵢ∣B)=P(B∣Aᵢ)P(Aᵢ)/P(B)",
+        "condition": "Aᵢ构成事件划分，相关分母为正。",
+        "conditionEn": "The Aᵢ partition the sample space and required denominators are positive.",
+        "application": "检测阳性后的缺陷概率；必须考虑原始缺陷率。",
+        "applicationEn": "Defect probability after a positive test; account for base defect rates."
+      },
+      {
+        "id": "probability-4",
+        "title": "随机变量与分布函数",
+        "titleEn": "Random variables and distribution functions",
+        "explain": "随机变量把结果映射到数值，分布函数统一描述离散与连续分布。",
+        "explainEn": "A random variable maps outcomes to numbers; a distribution function covers discrete and continuous laws.",
+        "formula": "F(x)=P(X≤x); discrete P(X=xᵢ)=pᵢ; continuous P(a<X≤b)=∫ₐᵇf(x)dx",
+        "condition": "F单调、右连续，极限为0和1；密度存在时f≥0且积分为1。",
+        "conditionEn": "F is nondecreasing and right-continuous, with limits 0 and 1; densities are nonnegative and normalized.",
+        "application": "建立工期、成本和测量误差的不确定性模型。",
+        "applicationEn": "Model uncertain durations, costs and measurement errors."
+      },
+      {
+        "id": "probability-5",
+        "title": "期望、方差与协方差",
+        "titleEn": "Expectation, variance and covariance",
+        "explain": "期望表示平均水平，方差量化波动，协方差描述共同变化。",
+        "explainEn": "Expectation gives a mean level; variance measures spread and covariance joint variation.",
+        "formula": "E(X)=Σxᵢpᵢ or ∫xf(x)dx; Var(X)=E(X²)−E(X)²; Cov(X,Y)=E[(X−EX)(Y−EY)]",
+        "condition": "均值需相应可积性；方差和协方差需有限二阶矩。",
+        "conditionEn": "Means require integrability; variance and covariance require finite second moments.",
+        "application": "总成本均值可相加，方差相加还需处理协方差。",
+        "applicationEn": "Add mean costs directly; variances also require covariance terms."
+      },
+      {
+        "id": "probability-6",
+        "title": "伯努利与二项分布",
+        "titleEn": "Bernoulli and binomial distributions",
+        "explain": "二项分布统计固定次数独立同成功率试验的成功数。",
+        "explainEn": "The binomial law counts successes in a fixed number of independent equal-probability trials.",
+        "formula": "P(X=k)=C(n,k)pᵏ(1−p)ⁿ⁻ᵏ; EX=np; Var X=np(1−p)",
+        "condition": "n为非负整数，0≤p≤1，试验独立且p不变。",
+        "conditionEn": "A nonnegative integer n, fixed p in [0,1], independent trials.",
+        "application": "抽检缺陷数；批次相关或概率变化时不能直接套用。",
+        "applicationEn": "Count inspection defects; dependence or changing probabilities invalidate the simple model."
+      },
+      {
+        "id": "probability-7",
+        "title": "泊松分布与过程",
+        "titleEn": "Poisson distribution and processes",
+        "explain": "泊松分布用于给定区间中的计数；泊松过程增加独立增量和恒定发生率假设。",
+        "explainEn": "Poisson distributions model counts; Poisson processes add independent increments and a constant rate.",
+        "formula": "P(X=k)=e⁻λ λᵏ/k!; EX=Var X=λ",
+        "condition": "λ≥0；过程模型需检验独立增量和稳定发生率。",
+        "conditionEn": "λ≥0; process assumptions need checking for independent increments and stable rate.",
+        "application": "单位时间故障、到达数量；不能自动解释集中爆发事件。",
+        "applicationEn": "Failures or arrivals per interval; clustered events need other models.",
+        "source": "https://mathworld.wolfram.com/PoissonDistribution.html",
+        "diagram": "poisson",
+        "steps": [
+          "λ=2，恰好零次的概率为e⁻²≈0.1353。",
+          "恰好两次的概率为e⁻²2²/2!≈0.2707。"
+        ],
+        "stepsEn": [
+          "For λ=2, P(X=0)=e⁻²≈0.1353.",
+          "P(X=2)=e⁻²2²/2!≈0.2707."
+        ],
+        "related": []
+      },
+      {
+        "id": "probability-8",
+        "title": "正态分布与标准化",
+        "titleEn": "Normal distribution and standardization",
+        "explain": "正态模型用均值与方差描述对称波动，标准化转换到标准正态。",
+        "explainEn": "A normal law models symmetric variation; standardization gives a standard normal variable.",
+        "formula": "f(x)=exp[−(x−μ)²/(2σ²)]/(σ√(2π)); Z=(X−μ)/σ",
+        "condition": "σ>0；数据并非天然正态，需检查分布。",
+        "conditionEn": "σ>0; normality is a model assumption to examine.",
+        "application": "尺寸公差、测量误差；正态下约95.45%落在μ±2σ。",
+        "applicationEn": "Dimensional tolerances and measurement error; about 95.45% lies within μ±2σ under normality.",
+        "source": "https://mathworld.wolfram.com/NormalDistribution.html",
+        "diagram": "normal",
+        "steps": [
+          "标准化z=(x−μ)/σ。",
+          "μ=0、σ=1时约68.27%的概率落在[−1,1]。"
+        ],
+        "stepsEn": [
+          "Standardize with z=(x−μ)/σ.",
+          "For μ=0 and σ=1, about 68.27% lies in [−1,1]."
+        ],
+        "related": []
+      },
+      {
+        "id": "probability-9",
+        "title": "指数分布与无记忆性",
+        "titleEn": "Exponential distribution and memorylessness",
+        "explain": "常发生率模型的等待时间服从指数分布，无记忆性表示已等待时间不改变剩余分布。",
+        "explainEn": "A constant-rate waiting time is exponential; elapsed waiting does not change its residual law.",
+        "formula": "f(t)=λe⁻λt; P(T>t)=e⁻λt; ET=1/λ",
+        "condition": "t≥0，λ>0；老化设备往往不符合恒定失效率。",
+        "conditionEn": "t≥0 and λ>0; aging equipment often violates constant hazard.",
+        "application": "简单可靠性寿命和到达等待时间。",
+        "applicationEn": "Simple reliability lifetimes and interarrival waiting times."
+      },
+      {
+        "id": "probability-10",
+        "title": "大数定律与中心极限定理",
+        "titleEn": "Law of large numbers and central limit theorem",
+        "explain": "大数定律使样本平均稳定，中心极限定理描述平均值的近似正态波动。",
+        "explainEn": "The law of large numbers stabilizes averages; the CLT describes approximately normal mean fluctuations.",
+        "formula": "X̄ₙ→μ in probability; √n(X̄ₙ−μ)/σ ⇒ N(0,1)",
+        "condition": "常用版本要求独立同分布；CLT需有限非零方差，极端重尾需另论。",
+        "conditionEn": "The standard version assumes IID samples; the CLT needs finite positive variance, with heavy tails requiring care.",
+        "application": "抽样误差和大量小扰动；不能保证单次观测正态。",
+        "applicationEn": "Sampling error and many small disturbances; individual observations need not be normal."
+      },
+      {
+        "id": "probability-11",
+        "title": "马尔可夫与切比雪夫不等式",
+        "titleEn": "Markov and Chebyshev inequalities",
+        "explain": "仅凭低阶矩给出尾部概率上界，不要求已知完整分布。",
+        "explainEn": "Bounds tail probabilities from moments without a full distribution.",
+        "formula": "X≥0: P(X≥a)≤EX/a; P(abs(X−μ)≥kσ)≤1/k²",
+        "condition": "a>0；切比雪夫要求有限方差且k>0。",
+        "conditionEn": "a>0; Chebyshev needs finite variance and k>0.",
+        "application": "缺乏分布数据时提供保守风险上界。",
+        "applicationEn": "Conservative risk bounds when distributional information is limited."
+      },
+      {
+        "id": "probability-12",
+        "title": "联合分布与变量变换",
+        "titleEn": "Joint distributions and transformations",
+        "explain": "联合分布描述多个变量的依赖，变换公式把密度换到新的坐标。",
+        "explainEn": "Joint laws describe dependence; transformation formulas move densities to new variables.",
+        "formula": "f_Y(y)=f_X(g⁻¹(y)) abs(det Dg⁻¹(y)); f_X(x)=∫f_XY(x,y)dy",
+        "condition": "变换公式此形式要求一一、可微且雅可比非零；多分支须求和。",
+        "conditionEn": "This form requires an invertible differentiable map with nonzero Jacobian; sum over branches otherwise.",
+        "application": "总成本、比值及几何测量误差传播。",
+        "applicationEn": "Total costs, ratios and geometric error propagation."
+      },
+      {
+        "id": "probability-13",
+        "title": "马尔可夫链",
+        "titleEn": "Markov chains",
+        "explain": "下一状态的条件分布只依赖当前状态，用转移矩阵推进状态概率。",
+        "explainEn": "The next-state conditional law depends on the current state; a transition matrix propagates probabilities.",
+        "formula": "πₙ₊₁=πₙP; stationary π=πP; ΣⱼPᵢⱼ=1",
+        "condition": "概率向量此处按行表示；有限不可约链有唯一平稳分布，收敛还需非周期。",
+        "conditionEn": "Row-vector convention; a finite irreducible chain has one stationary law, while convergence also needs aperiodicity.",
+        "application": "设备健康状态、库存状态和流程转移。",
+        "applicationEn": "Equipment health, inventory states and workflow transitions."
+      },
+      {
+        "id": "probability-14",
+        "title": "蒙特卡洛与随机模拟",
+        "titleEn": "Monte Carlo simulation",
+        "explain": "用随机样本近似期望或积分，并报告抽样不确定性。",
+        "explainEn": "Random samples approximate expectations or integrals with sampling uncertainty.",
+        "formula": "I≈(1/N)Σg(Xᵢ); SE≈s_g/√N",
+        "condition": "标准误此式要求独立样本且方差有限；模拟不修复错误输入模型。",
+        "conditionEn": "This standard error assumes independent finite-variance samples; simulation does not fix a bad model.",
+        "application": "工期风险、成本超支概率；样本数增4倍约使标准误减半。",
+        "applicationEn": "Schedule risk and overrun probability; quadrupling samples roughly halves standard error.",
+        "source": "https://mathworld.wolfram.com/MonteCarloMethod.html",
+        "diagram": "monte",
+        "steps": [
+          "在单位正方形内均匀独立抽样，统计落在四分之一单位圆内的比例。",
+          "用4×命中数/总数估计π；图示固定样本用于教学，不表示保证误差。"
+        ],
+        "stepsEn": [
+          "Sample independently and uniformly in a unit square and count points inside a quarter unit circle.",
+          "Estimate π by 4×hits/total; fixed teaching samples do not guarantee accuracy."
+        ],
+        "related": []
+      },
+      {
+        "id": "probability-entropy",
+        "title": "信息熵",
+        "titleEn": "Information entropy",
+        "explain": "概率分布越难预测，平均信息量通常越大。确定结果没有不确定性。",
+        "explainEn": "A less predictable distribution generally carries more average information. A certain outcome has no uncertainty.",
+        "formula": "H(X)=−Σ pᵢ log₂pᵢ; 0 log₂0 := 0",
+        "condition": "pᵢ≥0且和为1；此处是离散Shannon熵，单位bit，不与热力学熵混用。",
+        "conditionEn": "Probabilities are nonnegative and sum to one. This is discrete Shannon entropy in bits, not thermodynamic entropy.",
+        "application": "编码和不确定性比较；公平二元结果的信息熵为1 bit。",
+        "applicationEn": "Coding and comparison of uncertainty; an unbiased binary outcome has entropy 1 bit.",
+        "source": "https://mathworld.wolfram.com/ShannonEntropy.html",
+        "diagram": "entropy",
+        "steps": [
+          "p=1/2时H=−2×(1/2)log₂(1/2)=1。",
+          "p=0或1时H=0。"
+        ],
+        "stepsEn": [
+          "For p=1/2, H=−2×(1/2)log₂(1/2)=1.",
+          "At p=0 or 1, H=0."
+        ],
+        "related": [
+          "probability-4",
+          "statistics-10"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "statistics",
+    "title": "统计学",
+    "titleEn": "Statistics",
+    "topics": [
+      {
+        "id": "statistics-1",
+        "title": "描述统计与分位数",
+        "titleEn": "Descriptive statistics and quantiles",
+        "explain": "描述中心、离散和尾部，不直接推断因果。",
+        "explainEn": "Summarizes center, spread and tails without directly inferring causation.",
+        "formula": "x̄=Σxᵢ/n; s²=Σ(xᵢ−x̄)²/(n−1); IQR=Q₃−Q₁",
+        "condition": "样本方差n>1；分位数软件算法可能不同，需统一口径。",
+        "conditionEn": "Sample variance requires n>1; quantile conventions differ between software.",
+        "application": "日报指标、工时和缺陷分布；中位数对极端值较稳健。",
+        "applicationEn": "Daily metrics, labor hours and defect distributions; medians resist outliers."
+      },
+      {
+        "id": "statistics-2",
+        "title": "抽样、偏差与实验设计",
+        "titleEn": "Sampling, bias and experiment design",
+        "explain": "代表性、随机化和控制混杂决定统计推断是否可信。",
+        "explainEn": "Representativeness, randomization and control of confounders determine inference quality.",
+        "formula": "SE(X̄)=σ/√n for IID; stratified mean=ΣₕWₕx̄ₕ",
+        "condition": "抽样框遗漏、选择偏差和非响应不能靠增加样本量自动消除。",
+        "conditionEn": "Coverage, selection and nonresponse biases do not vanish merely by enlarging a sample.",
+        "application": "分层抽检不同专业与楼层，避免只检查易到达位置。",
+        "applicationEn": "Stratify inspections by discipline and floor instead of sampling only accessible locations."
+      },
+      {
+        "id": "statistics-3",
+        "title": "点估计与最大似然",
+        "titleEn": "Point estimation and maximum likelihood",
+        "explain": "从样本选择参数；最大似然让已观测数据在模型下最可能。",
+        "explainEn": "Estimates parameters from samples; maximum likelihood maximizes the modeled probability of observed data.",
+        "formula": "θ̂=argmaxθ L(θ); IID L=∏ᵢf(xᵢ;θ)",
+        "condition": "估计性质依赖模型与正则条件；小样本不保证无偏。",
+        "conditionEn": "Properties depend on the model and regularity; small-sample unbiasedness is not guaranteed.",
+        "application": "正态均值MLE为样本均值；拟合寿命分布。",
+        "applicationEn": "The normal-mean MLE is the sample mean; fit lifetime distributions."
+      },
+      {
+        "id": "statistics-4",
+        "title": "置信区间",
+        "titleEn": "Confidence intervals",
+        "explain": "重复抽样中按同一规则生成的区间，以约定比例覆盖固定真参数。",
+        "explainEn": "Over repeated sampling, intervals built by a rule cover a fixed parameter at the stated rate.",
+        "formula": "μ interval: x̄ ± t_(1−α/2,n−1) s/√n",
+        "condition": "精确t区间要求独立正态样本；大样本近似另需条件。",
+        "conditionEn": "An exact t interval assumes independent normal observations; large-sample approximations need other conditions.",
+        "application": "报告平均强度及不确定性；95%不是固定参数在本区间的频率概率。",
+        "applicationEn": "Report mean strength and uncertainty; frequentist 95% is a property of the procedure."
+      },
+      {
+        "id": "statistics-5",
+        "title": "假设检验与p值",
+        "titleEn": "Hypothesis testing and p-values",
+        "explain": "检验衡量观测结果与原假设的相容程度，p值不是原假设为真的概率。",
+        "explainEn": "Tests assess compatibility with a null; a p-value is not the probability the null is true.",
+        "formula": "p=P_H₀(test statistic at least as extreme); reject if p≤α",
+        "condition": "需预先指定检验、方向和显著性；不显著不证明无差异。",
+        "conditionEn": "Prespecify test, direction and significance; nonsignificance does not prove equality.",
+        "application": "比较施工工艺，同时报告效应大小与置信区间。",
+        "applicationEn": "Compare construction methods while reporting effect sizes and confidence intervals."
+      },
+      {
+        "id": "statistics-6",
+        "title": "线性回归与相关",
+        "titleEn": "Linear regression and correlation",
+        "explain": "回归描述条件均值关系，相关度量线性关联但不证明因果。",
+        "explainEn": "Regression models conditional means; correlation measures linear association rather than causation.",
+        "formula": "y=Xβ+ε; β̂=(XᵀX)⁻¹Xᵀy; r=Cov(X,Y)/(σ_Xσ_Y)",
+        "condition": "逆公式需满列秩；经典区间需误差假设，异方差宜用稳健方法。",
+        "conditionEn": "The inverse needs full rank; classical intervals need error assumptions, with robust methods for heteroskedasticity.",
+        "application": "工程量与工时拟合；避免超出样本范围盲目外推。",
+        "applicationEn": "Fit quantity-hour relationships; avoid unsupported extrapolation."
+      },
+      {
+        "id": "statistics-7",
+        "title": "方差分析",
+        "titleEn": "Analysis of variance",
+        "explain": "比较多组均值，通过组间与组内变异的比值构造统计量。",
+        "explainEn": "Compares multiple group means through between-group and within-group variation.",
+        "formula": "F=MS_between/MS_within; SST=SS_between+SS_within",
+        "condition": "经典单因素ADEMO要求独立、正态组内误差及同方差。",
+        "conditionEn": "Classical one-way ADEMO assumes independent normal within-group errors and equal variances.",
+        "application": "比较多个供应商强度；显著后还需处理多重比较。",
+        "applicationEn": "Compare several suppliers; significant results still need multiplicity-aware follow-up."
+      },
+      {
+        "id": "statistics-8",
+        "title": "卡方检验与分类数据",
+        "titleEn": "Chi-square tests and categorical data",
+        "explain": "比较实际与假设下期望频数，用于拟合优度或列联表独立性。",
+        "explainEn": "Compares observed and expected counts for goodness-of-fit or contingency-table independence.",
+        "formula": "χ²=Σ(Oᵢ−Eᵢ)²/Eᵢ; independence df=(r−1)(c−1)",
+        "condition": "样本独立且期望频数不能过小；稀疏表考虑精确检验。",
+        "conditionEn": "Independent observations and adequate expected counts; sparse tables may need exact tests.",
+        "application": "缺陷类别与班组关系、质量类型比例是否变化。",
+        "applicationEn": "Relate defect categories to teams or detect changes in category proportions."
+      },
+      {
+        "id": "statistics-9",
+        "title": "非参数检验与自助法",
+        "titleEn": "Nonparametric tests and bootstrap",
+        "explain": "非参数方法弱化分布形式假设；自助法从样本反复重采样评估统计量波动。",
+        "explainEn": "Nonparametric methods reduce distributional assumptions; bootstrap resamples observations to estimate variability.",
+        "formula": "bootstrap: sample n values with replacement, recompute θ̂, repeat B times",
+        "condition": "秩检验仍有独立性等假设；时序和聚类数据不能直接按单点独立重采样。",
+        "conditionEn": "Rank tests still have assumptions; time-series or clustered samples need appropriate resampling.",
+        "application": "偏态工时数据、复杂统计量区间估计。",
+        "applicationEn": "Skewed labor-hour data and intervals for complicated statistics."
+      },
+      {
+        "id": "statistics-10",
+        "title": "贝叶斯估计与可信区间",
+        "titleEn": "Bayesian estimation and credible intervals",
+        "explain": "先验与似然合成为后验，可信区间按后验概率解释。",
+        "explainEn": "A prior and likelihood form a posterior; credible intervals have posterior probability meaning.",
+        "formula": "p(θ∣x)∝p(x∣θ)p(θ); Bernoulli: Beta(a,b)→Beta(a+s,b+f)",
+        "condition": "结果依赖先验与模型；稀疏数据时先验影响可能较大。",
+        "conditionEn": "Results depend on prior and model; sparse data can be strongly prior-sensitive.",
+        "application": "逐批更新缺陷率，并明确展示先验与证据。",
+        "applicationEn": "Update defect rates by batch and document prior and evidence."
+      },
+      {
+        "id": "statistics-11",
+        "title": "时间序列与平稳性",
+        "titleEn": "Time series and stationarity",
+        "explain": "时间顺序形成自相关，趋势和季节项需区别于随机波动。",
+        "explainEn": "Time ordering creates autocorrelation; trends and seasonality differ from random variation.",
+        "formula": "AR(1): Xₜ=c+φXₜ₋₁+εₜ; stationary mean=c/(1−φ)",
+        "condition": "AR(1)常用平稳条件abs(φ)<1，误差为适当白噪声。",
+        "conditionEn": "A standard stationarity condition is abs(φ)<1 with suitable white-noise innovations.",
+        "application": "物资需求、进度偏差预测；不能把相关日数据当独立样本。",
+        "applicationEn": "Forecast demand and progress deviations; correlated daily data are not independent observations."
+      },
+      {
+        "id": "statistics-12",
+        "title": "统计过程控制与多重检验",
+        "titleEn": "Process control and multiple testing",
+        "explain": "控制图识别过程漂移；多次检验会增加偶然显著，需要调整。",
+        "explainEn": "Control charts detect process shifts; multiple tests increase false positives and need adjustment.",
+        "formula": "individual normal limits μ±3σ; Bonferroni threshold α/m",
+        "condition": "控制界限不同于规格界限；控制图需稳定基线及适当分组假设。",
+        "conditionEn": "Control limits differ from specification limits; charts need a stable baseline and appropriate subgrouping.",
+        "application": "持续监测质量；对多项指标同时报警时控制误报率。",
+        "applicationEn": "Monitor quality while controlling false alarms across many indicators."
+      }
+    ]
+  },
+  {
+    "id": "topology",
+    "title": "拓扑学",
+    "titleEn": "Topology",
+    "topics": [
+      {
+        "id": "topology-1",
+        "title": "拓扑空间与开集",
+        "titleEn": "Topological spaces and open sets",
+        "explain": "拓扑以开集定义邻近与连续，不必先指定距离。",
+        "explainEn": "A topology defines nearness and continuity through open sets without first choosing a metric.",
+        "formula": "τ contains ∅,X; arbitrary unions and finite intersections of members lie in τ",
+        "condition": "闭集是开集的补集；无限交集不必为开集。",
+        "conditionEn": "Closed sets are complements of open sets; infinite intersections need not be open.",
+        "application": "建立抽象收敛框架；实数上的开区间生成通常拓扑。",
+        "applicationEn": "Frameworks for abstract convergence; open intervals generate the usual real topology."
+      },
+      {
+        "id": "topology-2",
+        "title": "邻域、内部、闭包与边界",
+        "titleEn": "Neighborhoods, interior, closure and boundary",
+        "explain": "内部是完全落在集合内的局部，闭包加入所有无法与之分离的极限位置。",
+        "explainEn": "Interior captures locally contained points; closure adds points inseparable from the set by neighborhoods.",
+        "formula": "int A=union of open subsets of A; cl A=intersection of closed supersets; ∂A=cl A\\int A",
+        "condition": "边界依赖所处空间及其拓扑。",
+        "conditionEn": "Boundary depends on the ambient space and topology.",
+        "application": "几何边界、可行域；[0,1]在R中的边界为{0,1}。",
+        "applicationEn": "Geometric boundaries and feasible regions; [0,1] has boundary {0,1} in R."
+      },
+      {
+        "id": "topology-3",
+        "title": "连续映射与同胚",
+        "titleEn": "Continuous maps and homeomorphisms",
+        "explain": "连续映射拉回开集仍开；同胚是双向连续的双射，代表相同拓扑形状。",
+        "explainEn": "Continuous maps pull open sets back to open sets; a homeomorphism is a continuous bijection with continuous inverse.",
+        "formula": "f continuous ⇔ f⁻¹(U) open for every open U; X≅Y via a homeomorphism",
+        "condition": "连续双射不自动是同胚；紧空间到豪斯多夫空间的连续双射是同胚。",
+        "conditionEn": "A continuous bijection need not be a homeomorphism; compact-to-Hausdorff bijections are.",
+        "application": "识别可连续变形的形状；开区间与R同胚。",
+        "applicationEn": "Identify equivalent shapes; an open interval is homeomorphic to R."
+      },
+      {
+        "id": "topology-4",
+        "title": "子空间、积空间与商空间",
+        "titleEn": "Subspace, product and quotient spaces",
+        "explain": "把已有空间限制、组合或按等价关系粘合，构造新空间。",
+        "explainEn": "Construct spaces by restriction, products or gluing equivalence classes.",
+        "formula": "subspace open: A∩U; product basis: ∏Uᵢ with finitely many Uᵢ≠Xᵢ; quotient: U open ⇔ q⁻¹(U) open",
+        "condition": "积拓扑不同于无限维盒拓扑；商空间可能失去豪斯多夫性质。",
+        "conditionEn": "Product topology differs from infinite box topology; quotients may fail to be Hausdorff.",
+        "application": "端点粘合得圆，矩形两组对边粘合得环面。",
+        "applicationEn": "Glue interval endpoints to make a circle and rectangle edges to make a torus."
+      },
+      {
+        "id": "topology-5",
+        "title": "紧致性与海涅博雷尔",
+        "titleEn": "Compactness and Heine–Borel theorem",
+        "explain": "紧致性要求任何开覆盖都有有限子覆盖，是有限性的重要替代。",
+        "explainEn": "Compactness requires every open cover to admit a finite subcover, replacing many uses of finiteness.",
+        "formula": "K⊂Rⁿ compact ⇔ K closed and bounded; continuous image of compact is compact",
+        "condition": "闭且有界等价只在有限维欧氏空间等特定环境成立，不可推广到所有度量空间。",
+        "conditionEn": "Closed-and-bounded equivalence holds in finite-dimensional Euclidean space, not all metric spaces.",
+        "application": "保证连续目标达到最优；证明算法搜索范围完备。",
+        "applicationEn": "Ensure continuous objectives attain optima and justify bounded searches."
+      },
+      {
+        "id": "topology-6",
+        "title": "连通与道路连通",
+        "titleEn": "Connectedness and path connectedness",
+        "explain": "连通表示不能分成两个分离开部分；道路连通进一步要求点之间可用连续路径连接。",
+        "explainEn": "Connected spaces do not split into separated open parts; path connected spaces join points by continuous paths.",
+        "formula": "path connected ⇒ connected; connected subsets of R are intervals",
+        "condition": "反向一般不成立；拓扑学正弦曲线提供典型反例。",
+        "conditionEn": "The converse fails in general; the topologist’s sine curve is a standard counterexample.",
+        "application": "判断可行域是否分裂、机器人是否有连续可达路径。",
+        "applicationEn": "Determine whether feasible regions split and whether a robot has a continuous route."
+      },
+      {
+        "id": "topology-7",
+        "title": "分离公理与豪斯多夫空间",
+        "titleEn": "Separation axioms and Hausdorff spaces",
+        "explain": "分离公理规定点或集合能否用开集区别，豪斯多夫空间中极限具有唯一性。",
+        "explainEn": "Separation axioms distinguish points or sets using neighborhoods; Hausdorff limits are unique.",
+        "formula": "T₂: x≠y ⇒ ∃ disjoint open U∋x,V∋y; compact subsets of Hausdorff spaces are closed",
+        "condition": "不同教材对正则、正规公理是否包含T₁的约定可能不同。",
+        "conditionEn": "Conventions for regular and normal spaces may or may not include T₁.",
+        "application": "避免商空间中点无法分离导致的几何歧义。",
+        "applicationEn": "Avoid ambiguous geometric points in badly behaved quotient spaces."
+      },
+      {
+        "id": "topology-8",
+        "title": "可数性、基与可度量化",
+        "titleEn": "Countability, bases and metrization",
+        "explain": "基用少量开集生成拓扑，可数性帮助连接抽象拓扑与序列方法。",
+        "explainEn": "A basis generates open sets; countability links abstract topology to sequence methods.",
+        "formula": "second countable ⇒ first countable; regular T₁ + second countable ⇒ metrizable",
+        "condition": "可度量化结论为乌雷松可度量化定理；一般拓扑中序列不能刻画所有闭包。",
+        "conditionEn": "The metrization statement is Urysohn’s theorem; sequences need not characterize all closures in general spaces.",
+        "application": "判断能否用距离实现抽象数据空间与收敛判定。",
+        "applicationEn": "Determine when abstract data spaces admit useful distance-based implementations."
+      },
+      {
+        "id": "topology-9",
+        "title": "同伦与形变收缩",
+        "titleEn": "Homotopy and deformation retracts",
+        "explain": "同伦是映射之间的连续变化，形变收缩保留许多孔洞结构。",
+        "explainEn": "A homotopy continuously changes one map into another; deformation retractions preserve many hole invariants.",
+        "formula": "H:X×[0,1]→Y; H(x,0)=f(x), H(x,1)=g(x)",
+        "condition": "同伦等价比同胚弱；收缩还需在目标子空间上保持相应固定条件。",
+        "conditionEn": "Homotopy equivalence is weaker than homeomorphism; retractions impose fixed-subspace conditions.",
+        "application": "环带可形变收缩到圆；简化空间以计算拓扑不变量。",
+        "applicationEn": "An annulus retracts onto a circle; simplify spaces to compute invariants."
+      },
+      {
+        "id": "topology-10",
+        "title": "基本群与单连通",
+        "titleEn": "Fundamental groups and simple connectivity",
+        "explain": "基本群记录以基点为端点的闭路如何在连续变形下组合。",
+        "explainEn": "The fundamental group records based loops modulo continuous deformation and their concatenation.",
+        "formula": "π₁(S¹)≅Z; π₁(Rⁿ)={e}; simply connected = path connected with trivial π₁",
+        "condition": "同伦固定基点；π₁依赖基点但道路连通空间中各基点群同构。",
+        "conditionEn": "Homotopies fix the basepoint; groups at different points are isomorphic in path-connected spaces.",
+        "application": "识别障碍绕行类别，解释无旋场为何在有孔区域可能非保守。",
+        "applicationEn": "Classify routes around obstacles and explain nonconservative curl-free fields on domains with holes."
+      },
+      {
+        "id": "topology-11",
+        "title": "覆盖空间与提升",
+        "titleEn": "Covering spaces and lifts",
+        "explain": "覆盖空间在每个小邻域看起来像互不相交的多层副本。",
+        "explainEn": "A covering space locally looks like disjoint copies of each small neighborhood.",
+        "formula": "p:R→S¹, p(t)=e^(2πit); π₁(S¹)=Z",
+        "condition": "路径提升指定起点后唯一；用子群分类覆盖需适当连通及局部条件。",
+        "conditionEn": "A path lift is unique with a specified starting point; subgroup classifications need local hypotheses.",
+        "application": "处理角度绕圈次数、周期变量与多值函数。",
+        "applicationEn": "Track winding, periodic variables and multivalued functions."
+      },
+      {
+        "id": "topology-12",
+        "title": "同调、贝蒂数与欧拉示性数",
+        "titleEn": "Homology, Betti numbers and Euler characteristic",
+        "explain": "同调通过链、边界与循环代数化孔洞；贝蒂数记录各维独立洞数。",
+        "explainEn": "Homology algebraizes holes using chains and boundaries; Betti numbers count independent holes by dimension.",
+        "formula": "Hₖ=ker ∂ₖ / im ∂ₖ₊₁; ∂²=0; χ=Σ(−1)ᵏbₖ",
+        "condition": "贝蒂数通常在域系数下取维数；欧拉交错和要求有限型等条件。",
+        "conditionEn": "Betti numbers are dimensions over a coefficient field; finite-type conditions justify the Euler sum.",
+        "application": "网格拓扑检测；连通闭合可定向亏格g曲面χ=2−2g。",
+        "applicationEn": "Mesh topology checks; a connected closed orientable genus-g surface has χ=2−2g."
+      },
+      {
+        "id": "topology-13",
+        "title": "流形与局部坐标",
+        "titleEn": "Manifolds and local coordinates",
+        "explain": "流形局部像欧氏空间，但整体可弯曲或有复杂拓扑。",
+        "explainEn": "Manifolds locally resemble Euclidean space while permitting curved or complicated global structure.",
+        "formula": "chart φ:U→V⊂Rⁿ is a homeomorphism; smooth charts have smooth transition maps",
+        "condition": "常规定义要求豪斯多夫且第二可数；有边界流形局部使用半空间。",
+        "conditionEn": "Standard definitions require Hausdorff and second-countable spaces; boundaries use half-space charts.",
+        "application": "曲面建模、姿态空间；球面为二维流形，不是单张平面坐标可全覆盖。",
+        "applicationEn": "Surface models and pose spaces; a sphere is a 2-manifold without one global planar chart."
+      },
+      {
+        "id": "topology-14",
+        "title": "不动点与拓扑不变量",
+        "titleEn": "Fixed points and topological invariants",
+        "explain": "不变量在指定等价下保持不变，用于证明空间不同；不动点定理保证某些映射有固定点。",
+        "explainEn": "Invariants survive chosen equivalences and distinguish spaces; fixed-point theorems ensure fixed points under hypotheses.",
+        "formula": "Brouwer: continuous f:Bⁿ→Bⁿ ⇒ ∃x with f(x)=x",
+        "condition": "Bⁿ为闭单位球；非紧区域或不映入自身时不保证。",
+        "conditionEn": "Bⁿ is the closed unit ball; noncompact domains or non-self-maps need not qualify.",
+        "application": "均衡存在性、证明非线性系统有解；存在不等于迭代一定收敛。",
+        "applicationEn": "Equilibrium and nonlinear existence; existence does not guarantee an iteration converges."
+      },
+      {
+        "id": "topology-15",
+        "title": "曲面分类与可定向性",
+        "titleEn": "Surface classification and orientability",
+        "explain": "紧致连通曲面由可定向性、把手或交叉帽等结构分类。",
+        "explainEn": "Compact connected surfaces are classified using orientability, handles or crosscaps.",
+        "formula": "closed orientable: χ=2−2g; closed nonorientable: χ=2−k",
+        "condition": "此公式针对无边界紧致连通曲面；边界分量b额外减去b。",
+        "conditionEn": "These formulas assume closed compact connected surfaces; each boundary component subtracts one.",
+        "application": "检查模型是否可统一设定法向；莫比乌斯带不可定向。",
+        "applicationEn": "Check whether a model admits consistent normals; the Möbius band is nonorientable."
+      },
+      {
+        "id": "topology-16",
+        "title": "持久同调与拓扑数据分析",
+        "titleEn": "Persistent homology and topological data analysis",
+        "explain": "在尺度逐渐变化的复形上追踪洞的出生与消失，区分持续结构与短暂噪声。",
+        "explainEn": "Tracks births and deaths of holes as a filtration changes scale, separating persistent structure from transient features.",
+        "formula": "K₀⊂K₁⊂…; Hₖ(Kᵢ)→Hₖ(Kⱼ), i≤j; interval [birth,death)",
+        "condition": "结果依赖距离、过滤规则、系数域和采样；持续时间长不自动证明物理意义。",
+        "conditionEn": "Results depend on metric, filtration, coefficients and sampling; persistence alone does not prove physical significance.",
+        "application": "点云形态、传感器数据结构和孔洞识别。",
+        "applicationEn": "Point-cloud shape, sensor-data structure and hole detection."
+      },
+      {
+        "id": "topology-mobius",
+        "title": "莫比乌斯带",
+        "titleEn": "Möbius strip",
+        "explain": "把长方形纸带的一端转半圈再与另一端连接，得到不可定向的带边界曲面。",
+        "explainEn": "Join the ends of a rectangular strip after a half twist to obtain a nonorientable surface with boundary.",
+        "formula": "(0,v) ∼ (2π,−v); χ=0",
+        "condition": "具有一条边界分量。图为三维投影，遮挡和投影交叠不表示曲面真的自交。",
+        "conditionEn": "There is one boundary component. Occlusion or overlap in a 3D projection does not imply self-intersection.",
+        "application": "用纸带理解局部与整体性质，检验沿闭合路径移动的局部法向是否反向。",
+        "applicationEn": "Use a paper strip to explore local versus global properties and reversal of a local normal along a closed path.",
+        "source": "https://mathworld.wolfram.com/MoebiusStrip.html",
+        "diagram": "mobius",
+        "steps": [
+          "纸带一端旋转180°后连接。",
+          "沿中心线走一圈回到原点，局部横向方向反转。"
+        ],
+        "stepsEn": [
+          "Twist one end by 180° before joining.",
+          "After one circuit of the centreline, the local transverse direction is reversed."
+        ],
+        "related": [
+          "topology-15",
+          "topology-4"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "differential",
+    "title": "微分方程与数学物理",
+    "titleEn": "Differential equations and mathematical physics",
+    "topics": [
+      {
+        "id": "differential-1",
+        "title": "可分离变量方程",
+        "titleEn": "Separable equations",
+        "explain": "把变量分到等式两侧积分，求得隐式或显式解。",
+        "explainEn": "Separate the variables and integrate to find an implicit or explicit solution.",
+        "formula": "y′=g(x)h(y) ⇒ ∫dy/h(y)=∫g(x)dx+C",
+        "condition": "除以h(y)前先保留h(y)=0的常值解；检查初值与定义域。",
+        "conditionEn": "Retain constant solutions with h(y)=0 before division; check initial conditions and domain.",
+        "application": "指数增长y′=ky得到y=y₀eᵏˣ，用于衰减和简单增长。",
+        "applicationEn": "Exponential growth y′=ky gives y=y₀eᵏˣ for decay and growth models."
+      },
+      {
+        "id": "differential-2",
+        "title": "一阶线性方程",
+        "titleEn": "First-order linear equations",
+        "explain": "积分因子把方程左侧变为乘积导数。",
+        "explainEn": "An integrating factor turns the left side into a product derivative.",
+        "formula": "y′+p(x)y=q(x); μ=e^(∫p dx); y=μ⁻¹(∫μq dx+C)",
+        "condition": "p、q在所考虑区间连续；积分常数结合初值确定。",
+        "conditionEn": "p and q are continuous on the interval; use initial conditions to determine constants.",
+        "application": "冷却过程、线性蓄水和电路暂态。",
+        "applicationEn": "Cooling, linear storage and circuit transients."
+      },
+      {
+        "id": "differential-3",
+        "title": "常系数二阶方程",
+        "titleEn": "Second-order constant-coefficient equations",
+        "explain": "特征方程的实根或复根决定指数、振荡及阻尼形式。",
+        "explainEn": "Characteristic roots determine exponential, oscillatory and damped behavior.",
+        "formula": "ay″+by′+cy=0; ar²+br+c=0; distinct roots: y=C₁eʳ¹ˣ+C₂eʳ²ˣ",
+        "condition": "a≠0；重根需乘x，复根以指数乘正弦余弦表示。",
+        "conditionEn": "a≠0; repeated roots need an x factor, and complex roots give exponential-sinusoidal forms.",
+        "application": "弹簧质量阻尼系统和结构振动。",
+        "applicationEn": "Mass-spring-damper systems and structural vibration."
+      },
+      {
+        "id": "differential-4",
+        "title": "存在唯一性与初值问题",
+        "titleEn": "Existence, uniqueness and initial values",
+        "explain": "连续性支持局部存在，对状态的局部利普希茨条件常保证唯一性。",
+        "explainEn": "Continuity supports local existence; local Lipschitz dependence on state commonly guarantees uniqueness.",
+        "formula": "y′=f(t,y), y(t₀)=y₀; local Lipschitz in y ⇒ local uniqueness",
+        "condition": "在初始点附近的矩形域要求相应条件；局部解可能有限时间爆破。",
+        "conditionEn": "Conditions hold near the initial point; a local solution may blow up in finite time.",
+        "application": "检查仿真解是否唯一；y′=y²可能有限时间趋于无穷。",
+        "applicationEn": "Check whether simulations are unique; y′=y² can blow up in finite time."
+      },
+      {
+        "id": "differential-5",
+        "title": "非线性系统稳定性",
+        "titleEn": "Nonlinear stability",
+        "explain": "在平衡点附近线性化，或用能量型函数判断扰动是否衰减。",
+        "explainEn": "Linearize near equilibria or use an energy-like function to assess disturbances.",
+        "formula": "x′=f(x); J=Df(x*); Re λ(J)<0 ⇒ local asymptotic stability",
+        "condition": "f足够光滑；存在实部为零的特征值时线性化通常不能判定。",
+        "conditionEn": "f is sufficiently smooth; zero-real-part eigenvalues usually make linearization inconclusive.",
+        "application": "控制系统、安全运行点；李雅普诺夫函数可给出更强判据。",
+        "applicationEn": "Control systems and safe operating points; Lyapunov functions provide additional criteria."
+      },
+      {
+        "id": "differential-6",
+        "title": "拉普拉斯变换",
+        "titleEn": "Laplace transforms",
+        "explain": "把时间微分转为代数运算，并把初值纳入方程。",
+        "explainEn": "Transforms time differentiation into algebra while incorporating initial values.",
+        "formula": "F(s)=∫₀∞e⁻ˢᵗf(t)dt; L{f′}=sF(s)−f(0)",
+        "condition": "需函数局部可积并满足适当增长条件；公式使用单边变换。",
+        "conditionEn": "Local integrability and suitable growth conditions; formulas use the one-sided transform.",
+        "application": "阶跃荷载、控制传递函数和电路响应。",
+        "applicationEn": "Step loads, transfer functions and circuit responses."
+      },
+      {
+        "id": "differential-7",
+        "title": "热方程、波动方程与拉普拉斯方程",
+        "titleEn": "Heat, wave and Laplace equations",
+        "explain": "分别描述扩散、传播及稳态平衡，必须结合边界与初始条件。",
+        "explainEn": "Describe diffusion, propagation and steady equilibrium with boundary and initial conditions.",
+        "formula": "uₜ=αΔu; uₜₜ=c²Δu; Δu=0",
+        "condition": "α>0、c>0；需选择适合物理问题的边界与初值，不能只给方程。",
+        "conditionEn": "α,c>0; choose physically appropriate boundary and initial conditions, not just an equation.",
+        "application": "温度场、声振传播、稳态电势。",
+        "applicationEn": "Temperature fields, acoustic waves and steady electric potential."
+      },
+      {
+        "id": "differential-8",
+        "title": "分离变量与特征函数",
+        "titleEn": "Separation of variables and eigenfunctions",
+        "explain": "寻找乘积形式，把偏微分方程变为一组常微分方程。",
+        "explainEn": "A product ansatz reduces a PDE to ordinary differential equations.",
+        "formula": "u(x,t)=X(x)T(t); heat: X″+λX=0, T′+αλT=0",
+        "condition": "只适用于可分结构；边界条件决定特征值，通常还需叠加模态。",
+        "conditionEn": "Requires separability; boundary conditions select eigenvalues and modes must usually be superposed.",
+        "application": "杆件传热、振型和矩形区域边值问题。",
+        "applicationEn": "Rod heat flow, vibration modes and rectangular boundary problems."
+      },
+      {
+        "id": "differential-logistic",
+        "title": "Logistic增长与S曲线",
+        "titleEn": "Logistic growth and S-curves",
+        "explain": "增长初期接近指数增长，随着接近容量上限，增长速度减小。",
+        "explainEn": "Growth is initially near exponential and slows as it approaches a limiting capacity.",
+        "formula": "dN/dt=rN(1−N/K); N(t)=K/[1+((K−N₀)/N₀)e^(−rt)]",
+        "condition": "r>0、K>0、0<N₀<K；不是任意项目的真实进度规律。",
+        "conditionEn": "r>0, K>0 and 0<N₀<K. This is not automatically a valid project-progress model.",
+        "application": "用于讨论受限增长和拟合S形趋势，拟合前要检查数据。",
+        "applicationEn": "Discuss bounded growth or fit S-shaped trends after checking the data.",
+        "source": "https://mathworld.wolfram.com/LogisticEquation.html",
+        "diagram": "logistic",
+        "steps": [
+          "K=100、N₀=10、r=1，N(0)=10。",
+          "当N=50时增长最快，此时t=ln9≈2.197。"
+        ],
+        "stepsEn": [
+          "For K=100, N₀=10, r=1, N(0)=10.",
+          "Growth is fastest at N=50, when t=ln9≈2.197."
+        ],
+        "related": [
+          "differential-1",
+          "algebra-4"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "discrete",
+    "title": "离散数学与数论",
+    "titleEn": "Discrete mathematics and number theory",
+    "topics": [
+      {
+        "id": "discrete-1",
+        "title": "命题逻辑与证明方法",
+        "titleEn": "Logic and proof methods",
+        "explain": "直接证明、逆否证明、反证和归纳各有适合结构，证明必须列明量词与前提。",
+        "explainEn": "Direct, contrapositive, contradiction and induction proofs suit different structures and require explicit assumptions.",
+        "formula": "P⇒Q ⇔ ¬Q⇒¬P; induction: P(1), P(n)⇒P(n+1)",
+        "condition": "反命题Q⇒P不与原命题自动等价；归纳必须包含起点。",
+        "conditionEn": "The converse is not automatically equivalent; induction needs a base case.",
+        "application": "算法正确性、递推关系和边界条件审查。",
+        "applicationEn": "Algorithm correctness, recurrences and boundary checks."
+      },
+      {
+        "id": "discrete-2",
+        "title": "计数、排列与组合",
+        "titleEn": "Counting, permutations and combinations",
+        "explain": "排列考虑顺序，组合不考虑顺序，乘法原理组合分步选择。",
+        "explainEn": "Permutations count ordered selections; combinations ignore order and multiplication combines stages.",
+        "formula": "P(n,k)=n!/(n−k)!; C(n,k)=n!/[k!(n−k)!]",
+        "condition": "0≤k≤n为整数；此形式假设不重复选择。",
+        "conditionEn": "Integer 0≤k≤n; these forms assume selection without repetition.",
+        "application": "排班方案数、抽检样本组合和概率计算。",
+        "applicationEn": "Count rosters, inspection samples and probability outcomes."
+      },
+      {
+        "id": "discrete-3",
+        "title": "容斥原理与鸽巢原理",
+        "titleEn": "Inclusion-exclusion and pigeonhole principle",
+        "explain": "容斥修正重复计数；鸽巢原理证明有限资源下必有冲突。",
+        "explainEn": "Inclusion-exclusion corrects overlap; pigeonhole reasoning proves unavoidable collisions.",
+        "formula": "abs(A∪B)=abs(A)+abs(B)−abs(A∩B); N objects in k boxes ⇒ one box has ≥ceil(N/k)",
+        "condition": "基本计数形式针对有限集合。",
+        "conditionEn": "The basic counting forms concern finite sets.",
+        "application": "重复人员去重、存储冲突和资源分配下界。",
+        "applicationEn": "Deduplicate staff and bound storage collisions or resource loads."
+      },
+      {
+        "id": "discrete-4",
+        "title": "图、路径与树",
+        "titleEn": "Graphs, paths and trees",
+        "explain": "图表示实体与关系，树为连通且无环的无向图。",
+        "explainEn": "Graphs model entities and relations; a tree is connected and acyclic.",
+        "formula": "tree with n vertices: edges=n−1; undirected Σdegree=2m",
+        "condition": "树的结论针对有限无向简单图；有向依赖需区别定义。",
+        "conditionEn": "These tree statements assume finite simple undirected graphs; directed dependencies need distinct definitions.",
+        "application": "网络布线、组织结构和施工依赖。",
+        "applicationEn": "Network wiring, organizational structure and construction dependencies."
+      },
+      {
+        "id": "discrete-5",
+        "title": "拓扑排序与关键路径",
+        "titleEn": "Topological ordering and critical paths",
+        "explain": "有向无环图可按依赖先后排序，前推后推计算项目工期及总浮时。",
+        "explainEn": "A DAG admits dependency order; forward and backward passes give duration and total float.",
+        "formula": "FS zero-lag: ESᵢ=max EF_pred; EFᵢ=ESᵢ+dᵢ; LFᵢ=min LS_succ; TFᵢ=LSᵢ−ESᵢ",
+        "condition": "此简式针对FS零间隔且无额外约束；SS/FF/SF、日历和约束需相应推广。",
+        "conditionEn": "This simplified form assumes zero-lag FS links; other relations, calendars and constraints need extensions.",
+        "application": "施工网络计划、关键路线识别；有环依赖须先纠正。",
+        "applicationEn": "Construction scheduling and critical paths; fix cyclic dependencies before calculation."
+      },
+      {
+        "id": "discrete-6",
+        "title": "最短路与最小生成树",
+        "titleEn": "Shortest paths and minimum spanning trees",
+        "explain": "最短路优化指定起终点，最小生成树优化所有点的无环连通成本。",
+        "explainEn": "Shortest paths optimize endpoints; an MST minimizes the cost of connecting all vertices without cycles.",
+        "formula": "Dijkstra relaxation: d(v)=min(d(v),d(u)+w(u,v)); MST uses n−1 edges",
+        "condition": "Dijkstra要求边权非负；MST用于连通无向加权图。",
+        "conditionEn": "Dijkstra requires nonnegative weights; an MST assumes a connected undirected weighted graph.",
+        "application": "运输路线、临时供电和通信线缆布置。",
+        "applicationEn": "Transport routes, temporary power and communication cabling."
+      },
+      {
+        "id": "discrete-7",
+        "title": "最大流最小割",
+        "titleEn": "Max-flow min-cut theorem",
+        "explain": "网络流在容量和守恒约束下达到的最大流等于最小割容量。",
+        "explainEn": "The maximum feasible network flow equals the minimum cut capacity.",
+        "formula": "max abs(f)=min cut capacity; 0≤fₑ≤cₑ; inflow=outflow at internal nodes",
+        "condition": "有限有向容量网络，源汇不同，容量非负。",
+        "conditionEn": "A finite directed network, distinct source and sink, nonnegative capacities.",
+        "application": "物流瓶颈、管网通量上界及人员配置。",
+        "applicationEn": "Logistics bottlenecks, pipe-network bounds and staffing."
+      },
+      {
+        "id": "discrete-8",
+        "title": "递推、生成函数与复杂度",
+        "titleEn": "Recurrences, generating functions and complexity",
+        "explain": "递推用小规模问题构造大问题，生成函数把序列转为代数对象，复杂度分析增长阶。",
+        "explainEn": "Recurrences build larger cases; generating functions encode sequences and complexity studies scaling.",
+        "formula": "Fₙ=Fₙ₋₁+Fₙ₋₂; G(x)=Σaₙxⁿ; T(n)=2T(n/2)+O(n) ⇒ O(n log n)",
+        "condition": "生成函数可作为形式幂级数；递推复杂度需满足适用定理的条件。",
+        "conditionEn": "Generating functions may be formal; complexity bounds need their theorem assumptions.",
+        "application": "动态规划、排程算法规模与性能估算。",
+        "applicationEn": "Dynamic programming, scheduling scale and performance estimation."
+      },
+      {
+        "id": "discrete-9",
+        "title": "素数、整除与欧几里得算法",
+        "titleEn": "Primes, divisibility and Euclidean algorithm",
+        "explain": "素因子分解给出整数结构，辗转相除高效求最大公约数。",
+        "explainEn": "Prime factorization describes integers; Euclid’s algorithm efficiently computes their greatest common divisor.",
+        "formula": "gcd(a,b)=gcd(b,a mod b); ax+by=gcd(a,b) for some integers x,y",
+        "condition": "a,b不同时为0；正整数>1有唯一素因子分解（忽略顺序）。",
+        "conditionEn": "a,b are not both zero; positive integers above 1 have unique prime factorization up to order.",
+        "application": "齿轮周期、批量分组与密码算法基础。",
+        "applicationEn": "Gear cycles, batch grouping and foundations of cryptographic algorithms."
+      },
+      {
+        "id": "discrete-laplacian",
+        "title": "图拉普拉斯矩阵",
+        "titleEn": "Graph Laplacian matrix",
+        "explain": "度数矩阵减去邻接矩阵，得到描述节点间差异和连接结构的矩阵。",
+        "explainEn": "Subtract the adjacency matrix from the degree matrix to describe differences and connectivity between vertices.",
+        "formula": "L=D−A; xᵀLx=Σ_{edges {i,j}}(xᵢ−xⱼ)²",
+        "condition": "这里为无向、无权、无自环图，每条边在求和中只计一次。",
+        "conditionEn": "Here the graph is undirected, unweighted and has no loops; each edge is counted once.",
+        "application": "网络连通性、扩散与谱聚类；零特征值重数等于连通分量数。",
+        "applicationEn": "Connectivity, diffusion and spectral clustering; the zero-eigenvalue multiplicity counts connected components.",
+        "source": "https://mathworld.wolfram.com/LaplacianMatrix.html",
+        "diagram": "graph",
+        "steps": [
+          "三点路径1—2—3，度数为1、2、1。",
+          "L=[[1,−1,0],[−1,2,−1],[0,−1,1]]，每行和为0。"
+        ],
+        "stepsEn": [
+          "For path 1—2—3, the degrees are 1, 2, 1.",
+          "L=[[1,−1,0],[−1,2,−1],[0,−1,1]], with zero row sums."
+        ],
+        "related": [
+          "linear-6",
+          "topology-6"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "complex",
+    "title": "复分析",
+    "titleEn": "Complex analysis",
+    "topics": [
+      {
+        "id": "complex-1",
+        "title": "解析函数与柯西黎曼方程",
+        "titleEn": "Holomorphic functions and Cauchy–Riemann equations",
+        "explain": "复可微比实可微更严格，解析函数具有强烈局部结构。",
+        "explainEn": "Complex differentiability is stronger than real differentiability and gives strong local structure.",
+        "formula": "f=u+iv; uₓ=vᵧ, uᵧ=−vₓ",
+        "condition": "偏导连续并满足方程是常用充分条件；孤立一点满足方程不保证邻域解析。",
+        "conditionEn": "Continuous partials satisfying these equations are a common sufficient condition; one-point equations do not establish neighborhood holomorphy.",
+        "application": "二维势流、电场和共形映射模型。",
+        "applicationEn": "Planar potential flow, fields and conformal models."
+      },
+      {
+        "id": "complex-2",
+        "title": "柯西积分定理与公式",
+        "titleEn": "Cauchy theorem and integral formula",
+        "explain": "解析性把区域内部函数值与边界积分联系起来。",
+        "explainEn": "Holomorphy relates interior values to boundary integrals.",
+        "formula": "f(z₀)=(1/2πi)∮_C f(z)/(z−z₀) dz",
+        "condition": "C为适当正向简单闭曲线，f在曲线及内部邻域解析，z₀在内部。",
+        "conditionEn": "A positively oriented simple closed curve, holomorphy on its interior and neighborhood, and z₀ inside.",
+        "application": "计算积分、证明解析函数无限可微及估计导数。",
+        "applicationEn": "Evaluate integrals and derive differentiability and derivative bounds."
+      },
+      {
+        "id": "complex-3",
+        "title": "洛朗级数与奇点",
+        "titleEn": "Laurent series and singularities",
+        "explain": "解析函数在环域内用正负整数幂展开，负幂部分决定孤立奇点类型。",
+        "explainEn": "On an annulus, a holomorphic function has positive and negative powers; negative terms classify isolated singularities.",
+        "formula": "f(z)=Σₙ∈Z aₙ(z−z₀)ⁿ",
+        "condition": "展开对应指定环域；可去奇点、极点、本性奇点须分别处理。",
+        "conditionEn": "The expansion belongs to a specified annulus; removable, pole and essential cases differ.",
+        "application": "分析传递函数极点、复积分和局部异常行为。",
+        "applicationEn": "Analyze transfer-function poles, contour integrals and local singular behavior."
+      },
+      {
+        "id": "complex-4",
+        "title": "留数定理",
+        "titleEn": "Residue theorem",
+        "explain": "闭合积分由内部孤立奇点处的留数总和决定。",
+        "explainEn": "A closed contour integral is determined by residues of enclosed isolated singularities.",
+        "formula": "∮_C f(z)dz=2πiΣRes(f,zₖ); simple pole: Res=lim_z→z₀(z−z₀)f(z)",
+        "condition": "曲线避开奇点，满足相应解析与围绕条件；无穷多个奇点需额外检查。",
+        "conditionEn": "The contour avoids singularities and satisfies analytic and winding conditions; infinitely many poles need care.",
+        "application": "实积分、反变换及振动响应计算。",
+        "applicationEn": "Real integrals, inverse transforms and vibration responses."
+      },
+      {
+        "id": "complex-5",
+        "title": "共形映射与调和函数",
+        "titleEn": "Conformal mappings and harmonic functions",
+        "explain": "非零导数的解析映射局部保角，解析函数实虚部满足拉普拉斯方程。",
+        "explainEn": "Holomorphic maps with nonzero derivative locally preserve angles; real and imaginary parts are harmonic.",
+        "formula": "f′(z)≠0 ⇒ locally conformal; Δu=0, Δv=0",
+        "condition": "保角是局部结论；全局一一性须另检验。",
+        "conditionEn": "Angle preservation is local; global injectivity needs checking.",
+        "application": "二维稳态传热、静电和流体边界变换。",
+        "applicationEn": "Planar steady heat, electrostatics and flow-boundary transformations."
+      },
+      {
+        "id": "complex-6",
+        "title": "辐角原理与鲁歇定理",
+        "titleEn": "Argument principle and Rouché theorem",
+        "explain": "通过边界绕转计数内部零点与极点，并比较小扰动前后零点数。",
+        "explainEn": "Boundary winding counts zeros minus poles and compares zeros under small perturbations.",
+        "formula": "(1/2πi)∮f′/f dz=N−P; abs(g)<abs(f) on C ⇒ f,f+g have equal zero counts",
+        "condition": "辐角原理要求边界无零极点；鲁歇要求内部及边界邻域解析。",
+        "conditionEn": "No boundary zeros or poles for the argument principle; Rouché needs holomorphy on the enclosed region and neighborhood.",
+        "application": "稳定性零点计数、多项式根位置估计。",
+        "applicationEn": "Count stability-related zeros and estimate polynomial root locations."
+      }
+    ]
+  },
+  {
+    "id": "numerical",
+    "title": "数值计算与计算数学",
+    "titleEn": "Numerical computation",
+    "topics": [
+      {
+        "id": "numerical-1",
+        "title": "误差、舍入与稳定性",
+        "titleEn": "Errors, rounding and stability",
+        "explain": "区分模型误差、截断误差和浮点舍入；稳定算法避免额外放大误差。",
+        "explainEn": "Distinguish model, truncation and rounding errors; stable algorithms avoid amplifying them unnecessarily.",
+        "formula": "absolute error=abs(x̂−x); relative error=abs(x̂−x)/abs(x)",
+        "condition": "相对误差要求真值x≠0；接近零时应同时查看绝对误差。",
+        "conditionEn": "Relative error needs x≠0; near zero, also inspect absolute error.",
+        "application": "数值结果验收；避免两个近等大数相减造成有效数字丢失。",
+        "applicationEn": "Validate numerical results and avoid cancellation of nearly equal large numbers."
+      },
+      {
+        "id": "numerical-2",
+        "title": "二分法与牛顿法",
+        "titleEn": "Bisection and Newton methods",
+        "explain": "二分保持根的包围区间，牛顿利用局部切线加速。",
+        "explainEn": "Bisection maintains a root bracket; Newton uses tangents to accelerate locally.",
+        "formula": "bisection width=(b−a)/2ⁿ; xₙ₊₁=xₙ−f(xₙ)/f′(xₙ)",
+        "condition": "二分需连续且端点异号；牛顿需非零导数和合适初值，可能发散。",
+        "conditionEn": "Bisection requires continuity and opposite signs; Newton needs nonzero derivatives and suitable starts and may diverge.",
+        "application": "非线性平衡、流量或经济临界点求解。",
+        "applicationEn": "Nonlinear equilibrium, flow and economic break-even roots.",
+        "source": "https://mathworld.wolfram.com/NewtonsMethod.html",
+        "diagram": "newton",
+        "steps": [
+          "解x²−2=0，x₀=1。",
+          "x₁=1.5，x₂≈1.416667；若导数为零应停止并更换方法。"
+        ],
+        "stepsEn": [
+          "For x²−2=0, start at x₀=1.",
+          "x₁=1.5 and x₂≈1.416667; stop or change method if the derivative is zero."
+        ],
+        "related": []
+      },
+      {
+        "id": "numerical-3",
+        "title": "插值与样条",
+        "titleEn": "Interpolation and splines",
+        "explain": "插值通过数据点，样条用分段低次多项式减少高次插值振荡。",
+        "explainEn": "Interpolation passes through data points; splines reduce high-degree oscillations with low-degree pieces.",
+        "formula": "linear: y=y₀+(y₁−y₀)(x−x₀)/(x₁−x₀); cubic spline: piecewise degree 3, usually C²",
+        "condition": "节点互异；外推误差可能很大，样条需边界条件。",
+        "conditionEn": "Distinct nodes; extrapolation can be unreliable and splines need boundary conditions.",
+        "application": "标定曲线、测量数据重采样和路径平滑。",
+        "applicationEn": "Calibration curves, resampling and path smoothing."
+      },
+      {
+        "id": "numerical-4",
+        "title": "数值积分",
+        "titleEn": "Numerical quadrature",
+        "explain": "用加权函数值近似定积分，精度取决于平滑性、步长与规则。",
+        "explainEn": "Weighted evaluations approximate integrals; accuracy depends on regularity, spacing and rule.",
+        "formula": "trapezoid: h[(f₀+fₙ)/2+Σᵢ₌₁ⁿ⁻¹fᵢ]; Simpson: (h/3)[f₀+fₙ+4Σodd fᵢ+2Σeven interior fᵢ]",
+        "condition": "复合辛普森要求等距、偶数子区间；误差阶还需高阶导数有界。",
+        "conditionEn": "Composite Simpson needs equally spaced nodes and an even interval count; error orders need derivative bounds.",
+        "application": "从离散流量计算总量、荷载积分。",
+        "applicationEn": "Integrate sampled flows and loads.",
+        "source": "https://mathworld.wolfram.com/SimpsonsRule.html",
+        "diagram": "simpson",
+        "steps": [
+          "对x²在[0,2]积分，取两子区间、步长h=1。",
+          "辛普森值=(1/3)(0+4×1+4)=8/3，二次多项式在此被精确积分。"
+        ],
+        "stepsEn": [
+          "Integrate x² on [0,2] with two subintervals and h=1.",
+          "Simpson gives (1/3)(0+4×1+4)=8/3, exact for this quadratic."
+        ],
+        "related": []
+      },
+      {
+        "id": "numerical-5",
+        "title": "数值微分方程",
+        "titleEn": "Numerical ODE methods",
+        "explain": "按时间步推进状态，精度与稳定性必须同时考虑。",
+        "explainEn": "Advance states by time steps while checking both accuracy and stability.",
+        "formula": "Euler: yₙ₊₁=yₙ+h f(tₙ,yₙ); RK4 uses four staged slopes",
+        "condition": "欧拉全局一阶、经典RK4全局四阶需适当光滑性；刚性问题常需隐式方法。",
+        "conditionEn": "Global orders one and four need smoothness; stiff problems often need implicit methods.",
+        "application": "瞬态温度、设备动态；步长减半用于误差核查。",
+        "applicationEn": "Transient temperature and equipment dynamics; halve step sizes to check error."
+      },
+      {
+        "id": "numerical-6",
+        "title": "线性系统分解与迭代",
+        "titleEn": "Linear-system factorizations and iteration",
+        "explain": "用LU、QR或迭代方法避免显式求逆，大型稀疏系统可利用结构。",
+        "explainEn": "LU, QR and iterative methods avoid explicit inversion and exploit sparse structure.",
+        "formula": "PA=LU; A=QR; residual r=b−Ax̂",
+        "condition": "LU通常需选主元；共轭梯度标准形式要求实对称正定矩阵。",
+        "conditionEn": "LU commonly needs pivoting; standard conjugate gradients require real symmetric positive definiteness.",
+        "application": "有限元求解、测量平差；残差小不一定代表病态问题误差小。",
+        "applicationEn": "Finite elements and survey adjustment; a small residual may hide large error in an ill-conditioned problem."
+      },
+      {
+        "id": "numerical-7",
+        "title": "有限差分与有限元",
+        "titleEn": "Finite differences and finite elements",
+        "explain": "差分离散导数，有限元以局部基函数逼近弱形式解。",
+        "explainEn": "Differences discretize derivatives; finite elements approximate weak solutions with local basis functions.",
+        "formula": "u″(xᵢ)≈(uᵢ₋₁−2uᵢ+uᵢ₊₁)/h²; FEM: Kd=f",
+        "condition": "误差依赖网格、正则性、边界条件和稳定性；有限元结果需网格收敛检查。",
+        "conditionEn": "Errors depend on mesh, regularity, boundaries and stability; check mesh convergence.",
+        "application": "结构刚度、传热和渗流数值分析。",
+        "applicationEn": "Structural stiffness, heat transfer and seepage analysis."
+      },
+      {
+        "id": "numerical-8",
+        "title": "傅里叶变换与FFT",
+        "titleEn": "Fourier transform and FFT",
+        "explain": "傅里叶变换描述频谱，FFT是快速计算离散变换的一类算法。",
+        "explainEn": "Fourier transforms describe spectra; FFT algorithms compute discrete transforms efficiently.",
+        "formula": "F(ω)=∫f(t)e⁻ⁱωᵗdt; Xₖ=Σₙ₌₀ᴺ⁻¹xₙe^(−2πikn/N)",
+        "condition": "频谱分析需注意采样率、混叠和窗函数；归一化约定需统一。",
+        "conditionEn": "Check sampling rate, aliasing, windows and normalization conventions.",
+        "application": "振动频率识别、设备状态监测；采样频率需高于信号带宽两倍以满足理想采样条件。",
+        "applicationEn": "Identify vibration frequencies; ideal bandlimited reconstruction needs sampling above twice the bandwidth."
+      }
+    ]
+  },
+  {
+    "id": "optimization",
+    "title": "优化与运筹学",
+    "titleEn": "Optimization and operations research",
+    "topics": [
+      {
+        "id": "optimization-1",
+        "title": "线性规划",
+        "titleEn": "Linear programming",
+        "explain": "在线性约束下优化线性目标，可用单纯形或内点法。",
+        "explainEn": "Optimizes a linear objective under linear constraints with simplex or interior-point methods.",
+        "formula": "min cᵀx subject to Ax≤b, x≥0",
+        "condition": "可行域可能空或目标无界；需核查可行性和单位。",
+        "conditionEn": "The feasible region may be empty or the objective unbounded; check feasibility and units.",
+        "application": "资源配给、材料采购和运输成本优化。",
+        "applicationEn": "Resource allocation, purchasing and transport costs."
+      },
+      {
+        "id": "optimization-2",
+        "title": "凸优化与全局最优",
+        "titleEn": "Convex optimization and global optima",
+        "explain": "凸目标与凸可行域使局部最优也是全局最优。",
+        "explainEn": "A convex objective over a convex feasible set makes every local optimum global.",
+        "formula": "f(θx+(1−θ)y)≤θf(x)+(1−θ)f(y), 0≤θ≤1",
+        "condition": "可行域须凸；严格凸函数在非空凸域上至多一个最小点，但不保证达到。",
+        "conditionEn": "The domain is convex; strict convexity gives at most one minimizer but not existence.",
+        "application": "凸成本分配、可靠的参数拟合和能量最小化。",
+        "applicationEn": "Convex cost allocation, reliable fitting and energy minimization."
+      },
+      {
+        "id": "optimization-3",
+        "title": "梯度下降与步长",
+        "titleEn": "Gradient descent and step size",
+        "explain": "沿负梯度方向迭代减小目标，步长影响收敛和稳定性。",
+        "explainEn": "Iterates against the gradient; step size controls convergence and stability.",
+        "formula": "xₖ₊₁=xₖ−αₖ∇f(xₖ)",
+        "condition": "固定步长常需L光滑等条件；非凸模型可能只到驻点。",
+        "conditionEn": "Fixed-step guarantees need conditions such as L-smoothness; nonconvex problems may reach only stationary points.",
+        "application": "模型参数拟合；采用线搜索或步长试验防止震荡。",
+        "applicationEn": "Fit model parameters; line search or step-size checks prevent oscillation.",
+        "source": "https://mathworld.wolfram.com/MethodofSteepestDescent.html",
+        "diagram": "gradient",
+        "steps": [
+          "令f(x)=x²，梯度2x，步长α=0.2。",
+          "由x₀=2开始，x₁=1.2、x₂=0.72；过大步长可能发散。"
+        ],
+        "stepsEn": [
+          "For f(x)=x², the gradient is 2x; take α=0.2.",
+          "Starting at x₀=2 gives x₁=1.2 and x₂=0.72; excessive steps can diverge."
+        ],
+        "related": []
+      },
+      {
+        "id": "optimization-4",
+        "title": "KKT条件与对偶",
+        "titleEn": "KKT conditions and duality",
+        "explain": "把目标、约束和乘子组合，互补松弛识别活跃约束。",
+        "explainEn": "Combines objectives, constraints and multipliers; complementary slackness identifies active constraints.",
+        "formula": "L=f+Σλᵢgᵢ+Σνⱼhⱼ; ∇ₓL=0; g≤0; h=0; λ≥0; λᵢgᵢ=0",
+        "condition": "必要性需约束资格条件；凸问题中可行KKT点为全局最优，强对偶常需Slater条件。",
+        "conditionEn": "Necessity needs a constraint qualification; feasible KKT points are globally optimal for convex problems, with strong duality often requiring Slater conditions.",
+        "application": "容量约束的影子价格、最优资源分配。",
+        "applicationEn": "Capacity shadow prices and optimal resource allocation."
+      },
+      {
+        "id": "optimization-5",
+        "title": "整数规划与分支定界",
+        "titleEn": "Integer programming and branch-and-bound",
+        "explain": "离散决策用整数变量表示，分支定界结合松弛界与搜索。",
+        "explainEn": "Integer variables model discrete choices; branch-and-bound combines relaxations and search.",
+        "formula": "min cᵀx subject to Ax≤b, x∈Zⁿ",
+        "condition": "把连续解四舍五入不保证可行或最优；大型实例可能计算昂贵。",
+        "conditionEn": "Rounding a continuous solution need not be feasible or optimal; large instances can be expensive.",
+        "application": "人员排班、设备选型、采购批次数量。",
+        "applicationEn": "Staff rostering, equipment selection and purchasing batches."
+      },
+      {
+        "id": "optimization-6",
+        "title": "动态规划与贝尔曼方程",
+        "titleEn": "Dynamic programming and Bellman equation",
+        "explain": "把决策分解为状态与阶段，用子问题最优值递推。",
+        "explainEn": "Splits decisions into states and stages and recursively uses optimal subproblem values.",
+        "formula": "Vₜ(s)=minₐ[cₜ(s,a)+Vₜ₊₁(T(s,a))]",
+        "condition": "状态须保留未来决策所需信息；随机版本对下一状态价值取期望。",
+        "conditionEn": "The state retains relevant future information; stochastic versions use expected next-state value.",
+        "application": "库存补货、多期预算及设备更新。",
+        "applicationEn": "Inventory replenishment, multistage budgets and equipment replacement."
+      },
+      {
+        "id": "optimization-7",
+        "title": "排队论与利特尔定律",
+        "titleEn": "Queueing and Little’s law",
+        "explain": "稳态系统中平均在制数量等于到达率乘平均停留时间。",
+        "explainEn": "In a stable system, average population equals arrival rate times mean sojourn time.",
+        "formula": "L=λW; M/M/1: ρ=λ/μ<1, W=1/(μ−λ)",
+        "condition": "利特尔定律需长期稳定且统计口径一致；M/M/1另需泊松到达、指数服务和单服务台。",
+        "conditionEn": "Little’s law needs stable consistent long-run measures; M/M/1 additionally needs Poisson arrivals, exponential service and one server.",
+        "application": "审批积压、卸料排队、工序等待；到达率逼近服务率时等待急增。",
+        "applicationEn": "Approval backlogs, unloading and process waits; delays surge near service capacity."
+      },
+      {
+        "id": "optimization-8",
+        "title": "多目标与帕累托最优",
+        "titleEn": "Multiobjective and Pareto optimization",
+        "explain": "多个目标冲突时，帕累托解不存在同时全面改善的可行替代。",
+        "explainEn": "When goals conflict, a Pareto solution has no feasible alternative improving all objectives without worsening any.",
+        "formula": "min (f₁(x),…,fₖ(x)); scalarization min Σwᵢfᵢ(x), wᵢ>0",
+        "condition": "加权和不能保证找到非凸前沿上的所有帕累托点；目标量纲需处理。",
+        "conditionEn": "Weighted sums can miss nonconvex frontier points; handle differing units.",
+        "application": "平衡工期、费用、安全与质量，展示取舍而非给出唯一绝对答案。",
+        "applicationEn": "Balance time, cost, safety and quality by showing trade-offs rather than one absolute answer."
+      }
+    ]
+  },
+  {
+    "id": "functional",
+    "title": "泛函分析与更高阶主题",
+    "titleEn": "Functional analysis and further topics",
+    "topics": [
+      {
+        "id": "functional-1",
+        "title": "赋范空间、巴拿赫与希尔伯特空间",
+        "titleEn": "Normed, Banach and Hilbert spaces",
+        "explain": "范数度量向量大小，巴拿赫空间在范数下完备，希尔伯特空间的范数来自内积。",
+        "explainEn": "Norms measure size; Banach spaces are complete and Hilbert norms arise from inner products.",
+        "formula": "‖x+y‖≤‖x‖+‖y‖; Hilbert: ‖x‖²=⟨x,x⟩",
+        "condition": "内积诱导范数，但不是每个范数都来自内积。",
+        "conditionEn": "An inner product induces a norm, but not every norm comes from an inner product.",
+        "application": "函数空间、偏微分方程弱解和信号处理。",
+        "applicationEn": "Function spaces, weak PDE solutions and signal processing."
+      },
+      {
+        "id": "functional-2",
+        "title": "有界算子与对偶空间",
+        "titleEn": "Bounded operators and dual spaces",
+        "explain": "有界线性算子是连续线性映射，对偶空间收集连续线性泛函。",
+        "explainEn": "Bounded linear operators are continuous; the dual consists of continuous linear functionals.",
+        "formula": "‖T‖=sup_(‖x‖≤1)‖Tx‖; X*={bounded linear f:X→F}",
+        "condition": "线性是有界等价连续的前提；无界算子需指定定义域。",
+        "conditionEn": "Linearity is essential to the bounded-continuous equivalence; unbounded operators need domains.",
+        "application": "测量作为泛函、积分算子及无穷维模型。",
+        "applicationEn": "Measurements as functionals, integral operators and infinite-dimensional models."
+      },
+      {
+        "id": "functional-3",
+        "title": "正交投影与里斯表示",
+        "titleEn": "Orthogonal projections and Riesz representation",
+        "explain": "希尔伯特空间中，闭凸集有唯一最近点；连续线性泛函可由内积表示。",
+        "explainEn": "In a Hilbert space, nonempty closed convex sets have unique nearest points; continuous linear functionals admit inner-product representations.",
+        "formula": "closed subspace M: x=P_Mx+(x−P_Mx), x−P_Mx⊥M; f(x)=⟨x,y⟩",
+        "condition": "表示公式依赖内积线性侧约定；投影唯一性要求非空闭凸。",
+        "conditionEn": "Representation follows the chosen inner-product convention; nearest-point uniqueness needs nonempty closed convex sets.",
+        "application": "无限维最小二乘、滤波与弱形式载荷表达。",
+        "applicationEn": "Infinite-dimensional least squares, filtering and weak-form loads."
+      },
+      {
+        "id": "functional-4",
+        "title": "弱收敛与紧算子",
+        "titleEn": "Weak convergence and compact operators",
+        "explain": "弱收敛仅要求所有连续线性测量收敛；紧算子使有界序列像具有收敛子列。",
+        "explainEn": "Weak convergence tests continuous linear measurements; compact operators give convergent subsequences from bounded input sequences.",
+        "formula": "xₙ⇀x ⇔ f(xₙ)→f(x) for all f∈X*",
+        "condition": "范数收敛推出弱收敛，反向一般不成立；紧算子定义在赋范空间之间。",
+        "conditionEn": "Norm convergence implies weak convergence, not conversely; compact operators act between normed spaces.",
+        "application": "偏微分方程存在性、积分方程与极限过程。",
+        "applicationEn": "PDE existence, integral equations and limiting arguments."
+      },
+      {
+        "id": "functional-5",
+        "title": "变分法与欧拉拉格朗日方程",
+        "titleEn": "Calculus of variations and Euler–Lagrange equations",
+        "explain": "优化对象是整条函数或路径，而非有限个参数。",
+        "explainEn": "Optimizes an entire function or path rather than finitely many parameters.",
+        "formula": "J[y]=∫L(x,y,y′)dx; ∂L/∂y−d/dx(∂L/∂y′)=0",
+        "condition": "此必要条件假设足够光滑并固定端点；自由端点和约束需额外条件。",
+        "conditionEn": "This necessary condition assumes smoothness and fixed endpoints; free endpoints and constraints need additions.",
+        "application": "最短路径、最小势能、弹性结构和最优控制。",
+        "applicationEn": "Shortest paths, minimum energy, elasticity and optimal control."
+      },
+      {
+        "id": "functional-6",
+        "title": "分布与弱导数",
+        "titleEn": "Distributions and weak derivatives",
+        "explain": "通过对测试函数的作用扩展导数，使不光滑函数及集中源也可处理。",
+        "explainEn": "Generalizes derivatives through test-function actions to nonsmooth functions and concentrated sources.",
+        "formula": "⟨D T,φ⟩=−⟨T,φ′⟩; ⟨δ,φ⟩=φ(0)",
+        "condition": "测试函数通常光滑且紧支撑；δ不是普通有限值函数。",
+        "conditionEn": "Test functions are typically smooth with compact support; δ is not an ordinary finite-valued function.",
+        "application": "点荷载、冲击、有限元弱解与守恒律。",
+        "applicationEn": "Point loads, impulses, weak finite-element solutions and conservation laws."
+      }
+    ]
+  }
+]

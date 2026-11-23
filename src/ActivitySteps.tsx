@@ -1,0 +1,17 @@
+import {useState} from 'react';import {api,useApi,useApp,useUnsavedChanges,ErrorBox,Loading} from './lib';
+import {planningProgress} from '../shared/p6-planning';import {translateUiValue as ui} from './i18n';
+export default function ActivitySteps(){
+ const {project,tick,canLeave}=useApp();const {data,error,refresh}=useApi(`/projects/${project.id}/plan?view=gantt`,tick);
+ const [selected,setSelected]=useState('');
+ if(error)return <ErrorBox message={error}/>;if(!data)return <Loading/>;
+ const choices=data.activities.filter((a:any)=>a.record_id);const activity=choices.find((a:any)=>a.id===selected)||choices[0];
+ return <><label>{ui('作业')}<select aria-label={ui('步骤所属作业')} value={activity?.id||''} onChange={async e=>{const value=e.target.value;if(await canLeave())setSelected(value)}}>{choices.map((a:any)=><option key={a.id} value={a.id}>{a.code} · {a.name}</option>)}</select></label>{activity?<StepsEditor key={activity.id+':'+activity.record_version} activity={activity} onSaved={refresh}/>:<p>{ui('暂无可读取的作业')}</p>}</>;
+}
+function StepsEditor({activity,onSaved}:{activity:any;onSaved:()=>Promise<unknown>}){
+ const {notify}=useApp();const [rows,setRows]=useState<any[]>(activity.custom_data?.activity_steps||[]),[drives,setDrives]=useState(activity.custom_data?.percent_complete_type==='步骤'),[busy,setBusy]=useState(false),[error,setError]=useState('');
+ const writable=activity.custom_editable;
+ useUnsavedChanges(busy||JSON.stringify(rows)!==JSON.stringify(activity.custom_data?.activity_steps||[])||drives!==(activity.custom_data?.percent_complete_type==='步骤'));
+ async function save(){setBusy(true);setError('');try{await api(`/records/${activity.record_id}`,'PUT',{version:activity.record_version,data:{activity_steps:rows,percent_complete_type:drives?'步骤':'实物'}});await onSaved();notify(ui('步骤已保存为草稿，请由主管确认生效'));}catch(e){setError((e as Error).message)}finally{setBusy(false)}}
+ function set(index:number,key:string,value:any){setRows(v=>v.map((r,i)=>i===index?{...r,[key]:value}:r));}
+ return <><p className="help">{ui('步骤按权重汇总完成率；可选择驱动作业完成率。沿用该作业数据表的编辑权限与主管确认规则。')}</p><label className="checkbox-label"><input type="checkbox" disabled={!writable||busy} checked={drives} onChange={e=>setDrives(e.target.checked)}/>{ui('用步骤驱动作业完成率')} · {planningProgress({percent_complete_type:'步骤',activity_steps:rows},0)}%</label><h4 className="section-heading plan-subtable-heading">{ui("步骤明细")}</h4><div className="grid-scroll"><table className="data-grid"><thead><tr>{['步骤名称','权重','完成率（%）','操作'].map(n=><th key={n}>{ui(n)}</th>)}</tr></thead><tbody>{rows.map((r,i)=><tr key={i}><td><input aria-label={ui('步骤名称')+' '+(i+1)} value={r.name} disabled={!writable||busy} onChange={e=>set(i,'name',e.target.value)}/></td><td><input aria-label={ui('权重')+' '+(i+1)} type="number" min="0.0001" max="1000000" step="any" value={r.weight} disabled={!writable||busy} onChange={e=>set(i,'weight',Number(e.target.value))}/></td><td><input aria-label={ui('步骤完成率')+' '+(i+1)} type="number" min="0" max="100" step="any" value={r.progress} disabled={!writable||busy} onChange={e=>set(i,'progress',Number(e.target.value))}/></td><td>{writable&&<button disabled={busy} onClick={()=>setRows(v=>v.filter((_,n)=>n!==i))}>{ui('删除')}</button>}</td></tr>)}</tbody></table></div>{writable&&<div className="row-actions"><button disabled={busy||rows.length>=500} onClick={()=>setRows(v=>[...v,{name:'',weight:1,progress:0}])}>{ui('新增步骤')}</button><button className="primary" disabled={busy} onClick={()=>void save()}>{ui('保存步骤')}</button></div>}{error&&<ErrorBox message={error}/>}</>;
+}

@@ -1,0 +1,6 @@
+export const BATCH_CREATE_LIMIT=5000;
+export const BATCH_UPDATE_LIMIT=1000;
+export const BATCH_DELETE_LIMIT=1000;
+export const AI_WRITE_BYTES=1024*1024;
+export const AI_TOOL_CALL_LIMIT=96;
+export const AI_ROUND_LIMIT=16;

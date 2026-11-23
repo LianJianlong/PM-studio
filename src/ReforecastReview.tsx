@@ -1,0 +1,17 @@
+import {useEffect,useState} from 'react';import {translateUiValue as ui} from './i18n';
+export default function ReforecastReview({data,preview=false}:{data:any;preview?:boolean}){
+ const [filter,setFilter]=useState('all'),[page,setPage]=useState(1),[impactPage,setImpactPage]=useState(1);
+ useEffect(()=>{setPage(1);setImpactPage(1)},[data,filter]);
+ const quality=data?.progress_quality;if(!quality)return <p className="help">{ui('请先试算，获取状态日期检查与重排变化')}</p>;
+ const rows=quality.items.filter((r:any)=>filter==='all'||r.severity===filter),changes=data?.reschedule_changes||[];
+ return <div className="reforecast-review">
+ <p role="status">{ui(preview?'正式数据试算，未保存':'当前计划进度检查')} · {ui('阻断项')}：{quality.blocking_count} · {ui('警告')}：{quality.warning_count} · {ui('状态日期')}：{quality.data_date||'—'} · {ui('剩余工作可用起点')}：{quality.effective_work_date||'—'}</p>
+ <p className="help">{ui('保留逻辑：未完成工作不早于状态日期及前置约束；已发生的实际开始、实际完成不移动。状态日期按日期处理，同日实际记录允许，实际钟点未采集。非工作日从后续可用工作时段开始。')}</p>
+ <p className="help">{ui('阻断项用于启用或改变状态日期重排，不阻止关闭重排。请在作业数据表修正并由主管确认有效后重新试算，系统不会自动补造实绩。')}</p>
+ {preview&&<p>{ui('项目完成日期')}：{data.before_finish} → {data.after_finish} · {ui('变化作业')}：{changes.length} · {ui('可见但未纳入正式试算')}：{data.excluded_visible_count||0}</p>}
+ <select aria-label={ui('进度完整性筛选')} value={filter} onChange={e=>setFilter(e.target.value)}>{[['all','全部'],['error','阻断项'],['warning','警告'],['info','提示']].map(([value,label])=><option key={value} value={value}>{ui(label)}</option>)}</select>
+ <h4 className="section-heading plan-subtable-heading">{ui('进度数据完整性')}</h4><div className="plan-inspection-scroll grid-scroll"><table className="data-grid" aria-label={ui('进度数据完整性')}><thead><tr>{['作业编码','作业名称','级别','检查结果'].map(t=><th key={t}>{ui(t)}</th>)}</tr></thead><tbody>{rows.slice((page-1)*100,page*100).map((r:any,i:number)=><tr key={`${r.id}:${i}`}><td>{r.code}</td><td>{ui(r.name)}</td><td>{ui(r.severity==='error'?'阻断项':r.severity==='warning'?'警告':'提示')}</td><td>{ui(r.message)}</td></tr>)}</tbody></table>{!rows.length&&<p>{ui('未发现检查项')}</p>}</div>
+ <div className="gantt-settings-fields"><span>{page} / {Math.max(1,Math.ceil(rows.length/100))}</span><button disabled={page<=1} onClick={()=>setPage(page-1)}>{ui('上一页')}</button><button disabled={page*100>=rows.length} onClick={()=>setPage(page+1)}>{ui('下一页')}</button></div>
+ {preview&&<><h4 className="section-heading plan-subtable-heading">{ui('保留逻辑重排变化')}</h4><div className="plan-inspection-scroll grid-scroll"><table className="data-grid" aria-label={ui('保留逻辑重排变化')}><thead><tr>{['作业编码','作业名称','原开始','试算开始','原完成','试算完成','原剩余工作起点','试算剩余工作起点','原总浮时（小时）','试算总浮时（小时）','完成变化（工作小时）'].map(t=><th key={t}>{ui(t)}</th>)}</tr></thead><tbody>{changes.slice((impactPage-1)*100,impactPage*100).map((r:any)=><tr key={r.id}>{[r.code,r.name,r.before_start,r.after_start,r.before_finish,r.after_finish,r.before_remaining_start||'—',r.after_remaining_start||'—',r.before_float_hours,r.after_float_hours,r.finish_change_hours??'—'].map((v:any,i:number)=><td key={i}>{v}</td>)}</tr>)}</tbody></table>{!changes.length&&<p>{ui('试算未改变作业日期或浮时')}</p>}</div><div className="gantt-settings-fields"><span>{impactPage} / {Math.max(1,Math.ceil(changes.length/100))}</span><button disabled={impactPage<=1} onClick={()=>setImpactPage(impactPage-1)}>{ui('上一页')}</button><button disabled={impactPage*100>=changes.length} onClick={()=>setImpactPage(impactPage+1)}>{ui('下一页')}</button></div></>}
+ </div>;
+}

@@ -1,0 +1,8 @@
+import ActualRemainingPanel from './ActualRemainingPanel';
+import {translateUiValue as t} from './i18n';
+import {ErrorBox,Loading} from './lib';
+export default function ActivityResources({data,error}:{data:any,error?:string|null}){
+ if(error)return <ErrorBox message={t(error)}/>;if(!data)return <Loading/>;
+ const columns=[['activity_code','作业编码'],['activity_name','作业名称'],['resource_name','资源名称'],['unit','单位'],['quantity','每日分配数量'],['total_units','计划累计工量（数量×工作日）'],['peak_daily_quantity','单日投入峰值'],['start_date','开始日期'],['finish_date','完成日期'],['working_days','排程跨度工作日'],['working_hours','排程跨度工作小时'],['original_work_hours','原计划工作小时'],['person_months','总工月'],['actual_elapsed_hours','已历工时（按日期）'],['actual_units','实际填报工量'],['actual_as_of_date','实绩更新截止日期'],['actual_cost','实际累计费用'],['actual_cost_as_of_date','费用填报截止日期'],['remaining_quantity','剩余每日投入率'],['remaining_units','剩余工作量'],['remaining_hours','剩余工作小时'],['remaining_forecast_cost','剩余资源预测费用'],['forecast_total_units','实际加剩余预测工量'],['forecast_total_cost','实际加剩余预测费用']];
+ return <section className="panel"><h3>{t('作业资源分配表')}</h3><details><summary>{t('资源实绩与剩余估算')}</summary><ActualRemainingPanel/></details><p className="help">{t('按作业工作日历分摊总分配数量；峰值为该作业资源的单日最大投入量，不是项目资源总峰值。人力工月按21.75工作日/月换算，仅支持人日、工日、人天、人时、工时、人月、工月等明确工时单位；其他单位显示—，请先在资源池规范单位。')}</p><div className="grid-scroll"><table className="data-grid"><thead><tr>{columns.map(([key,label])=><th key={key}>{t(label)}</th>)}</tr></thead><tbody>{data.assignments?.map((r:any)=><tr key={r.id}>{columns.map(([key])=><td key={key}>{r[key]===null||r[key]===undefined?'—':typeof r[key]==='number'?Number(r[key].toFixed(4)):r[key]}</td>)}</tr>)}</tbody></table></div>{!data.assignments?.length&&<p>{t('暂无资源分配，请在资源池分配资源到作业')}</p>}</section>;
+}

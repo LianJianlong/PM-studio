@@ -1,0 +1,15 @@
+node_modules
+dist
+.git
+.env*
+.long-task
+.releases
+backups
+logs
+outputs
+secrets
+uploads
+storage
+data
+*.log
+

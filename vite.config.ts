@@ -1,0 +1,2 @@
+import {defineConfig} from 'vite';import react from '@vitejs/plugin-react';import fs from 'node:fs/promises';import {frontendFingerprint} from './scripts/build-fingerprint.mjs';
+export default defineConfig({plugins:[react(),{name:'studio-build-identity',async generateBundle(){const {version}=JSON.parse(await fs.readFile('package.json','utf8'));this.emitFile({type:'asset',fileName:'studio-build.json',source:JSON.stringify({version,source_digest:await frontendFingerprint()})})}}],server:{proxy:{'/api':'http://127.0.0.1:9090'}},build:{chunkSizeWarningLimit:900}});

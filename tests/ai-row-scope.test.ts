@@ -1,0 +1,3 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {mergeAIRows} from '../shared/ai-row-scope.ts';
+test('page reads merge records without rebinding old aliases',()=>{const a=mergeAIRows(undefined,[{id:'a',version:1}],false),b=mergeAIRows(a,[{id:'b',version:1}],true),c=mergeAIRows(b,[{id:'a',version:2}],true);assert.deepEqual(c.rows.map(r=>r.id),['a','b']);assert.equal(c.rows[0].version,2);assert.deepEqual(c.row_aliases,{row_1:'a',row_2:'b'});});
+test('new search does not reuse alias identities and respects loaded row cap',()=>{const a=mergeAIRows(undefined,[{id:'a'}],false),b=mergeAIRows(a,[{id:'b'},{id:'c'}],false,1);assert.deepEqual(b.rows.map(r=>r.id),['b']);assert.equal(b.row_aliases.row_1,'a');assert.equal(b.row_aliases.row_2,'b');});

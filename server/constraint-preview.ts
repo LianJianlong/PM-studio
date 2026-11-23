@@ -1,0 +1,37 @@
+import {version} from './version.ts';
+import {Router} from 'express';import {z} from 'zod';import {createHash} from 'node:crypto';
+import {pool,tx,requestTransaction,audit} from './db.ts';import {id,date} from './validation.ts';
+import {access,tableAccess,rowAllowed,canRecordAction,operationAllowed,requireThat} from './auth.ts';
+import {requireFullPlanRead} from './planning-read-access.ts';import {readPlanActivities} from './plan-activities.ts';
+import {lockReferenceProject} from './references.ts';import {updateRecord} from './data.ts';import {editableRecord} from '../shared/record-policy.ts';
+import {constraintTypes} from '../shared/constraint-diagnostics.ts';import {schedule} from './schedule.ts';import {defaultProjectCalendar,calendarDate} from '../shared/project-calendar.ts';
+export const constraintPreview=Router();const path='/projects/:project/constraint-trial';
+const proposal=z.object({activity_id:id,constraint_type:z.enum(constraintTypes),constraint_date:date.optional(),source_hash:z.string().regex(/^[a-f0-9]{64}$/).optional(),issued_at:z.number().int().optional(),confirm:z.boolean().optional(),accept_conflicts:z.boolean().optional()}).strict();
+constraintPreview.get(path,async(req,res)=>{const a=await access(req.user.id,id.parse(req.params.project));const rows=await readPlanActivities(req.user.id,a,true);res.json({activities:rows.filter(x=>x.activity_type!=='LOE持续性作业').map(x=>({id:x.id,code:x.code,name:x.name,constraint_type:x.constraint_type||'尽早开始',constraint_date:x.constraint_date||''}))});});
+async function prepare(c:any,user:string,project:string,b:z.infer<typeof proposal>,issuedAt:number){
+ const initial=await access(user,project,c);await lockReferenceProject(c,project);await c.query('SELECT id FROM workspaces WHERE id=$1 FOR SHARE',[initial.workspace_id]);await c.query('SELECT id FROM projects WHERE id=$1 FOR SHARE',[project]);const a=await access(user,project,c);await requireFullPlanRead(a,c);
+ const record=(await c.query(`SELECT r.* FROM records r JOIN plan_activity_records l ON l.record_id=r.id JOIN activities x ON x.id=l.activity_id JOIN plan_data_tables p ON p.table_id=r.table_id AND p.project_id=x.project_id WHERE x.id=$1 AND x.project_id=$2 FOR UPDATE OF r`,[b.activity_id,project])).rows[0];requireThat(record,404,'作业不在当前可试算范围');
+ const {table,permission}=await tableAccess(user,record.table_id,c);requireThat(rowAllowed(permission,record,user),403,'没有此作业的数据权限');requireThat(record.lifecycle==='active'&&record.status!=='obsolete',409,'作业记录不可使用');
+ const rows=await readPlanActivities(user,a,true,c),target=rows.find(x=>x.id===b.activity_id);requireThat(target,404,'作业不在当前可试算范围');requireThat(target.activity_type!=='LOE持续性作业',400,'LOE不使用日期约束');
+ const clear=b.constraint_type==='尽早开始',constraintDate=clear?null:b.constraint_date;requireThat(clear||!!constraintDate,400,'请选择约束日期');
+ const policyRow=(await c.query('SELECT options,version FROM project_schedule_options WHERE project_id=$1 FOR SHARE',[project])).rows[0]||{options:{},version:0};
+ const calendar=a.calendar_config||defaultProjectCalendar;
+ const before=schedule(rows,calendar,a.start_date,a.progress_method,policyRow.options);
+ const after=schedule(rows.map(x=>x.id!==target.id?x:{...x,constraint_type:b.constraint_type,constraint_date:constraintDate||undefined}),calendar,a.start_date,a.progress_method,policyRow.options);
+ const old=new Map(before.activities.map(x=>[x.id,x]));
+ const changes=after.activities.filter(x=>x.id===target.id||(['es','ef','ls','lf','float','critical'] as const).some(k=>x[k]!==old.get(x.id)?.[k])).map(x=>{const prev=old.get(x.id)!;return {id:x.id,code:x.code,name:x.name,before_start:calendarDate(a.start_date,prev.es),after_start:calendarDate(a.start_date,x.es),before_finish:calendarDate(a.start_date,prev.ef),after_finish:calendarDate(a.start_date,x.ef),before_float_hours:Math.round(prev.float*calendar.hours_per_day),after_float_hours:Math.round(x.float*calendar.hours_per_day),critical_before:prev.critical,critical_after:x.critical};});
+ const diagnostic=after.constraint_diagnostics.find(x=>x.id===target.id),blocked=!!diagnostic?.blocking;
+ const can_apply=!blocked&&canRecordAction(permission,table,'update')&&operationAllowed(a,'$data','update')&&editableRecord(table,record.status)&&a.lifecycle==='active'&&a.workspace_lifecycle==='active'&&table.lifecycle==='active';
+ const source_hash=createHash('sha256').update(JSON.stringify({version,project,issuedAt,record,columns:table.columns,rows:[...rows].sort((x,y)=>x.id.localeCompare(y.id)),calendar,start:a.start_date,progress_method:a.progress_method,policyRow,input:{type:b.constraint_type,date:constraintDate},changes})).digest('hex');
+ const warnings=[...new Set([...(diagnostic?.messages||[]),...(after.activities.find(x=>x.id===target.id)?.constraint_messages||[])])];
+ if(after.logic_violations.length>before.logic_violations.length)warnings.push('试算新增逻辑冲突，强制日期可能破坏前后置关系');
+ if(after.deadline_missed)warnings.push('试算计划晚于项目要求完工日期');
+ return {a,record,target,before,after,diagnostic,changes,source_hash,can_apply,blocked,warnings,constraintDate,issuedAt,needs_ack:warnings.length>0};
+}
+constraintPreview.post(path+'/preview',async(req,res)=>{const project=id.parse(req.params.project),body=proposal.parse(req.body),issued=Date.now();const p=await tx(c=>requestTransaction.run(c,()=>prepare(c,req.user.id,project,body,issued)));res.json({source_hash:p.source_hash,issued_at:issued,can_apply:p.can_apply,blocked:p.blocked,needs_ack:p.needs_ack,warnings:p.warnings,diagnostic:p.diagnostic||null,changes:p.changes,before_diagnostics:p.before.constraint_diagnostics,after_diagnostics:p.after.constraint_diagnostics,before_finish:calendarDate(p.a.start_date,p.before.duration_summary.finish_offset),after_finish:calendarDate(p.a.start_date,p.after.duration_summary.finish_offset),scope:'authorized_preview',forecast_remaining:p.after.forecast_remaining,data_date:p.after.data_date});});
+constraintPreview.post(path+'/apply',async(req,res)=>{const project=id.parse(req.params.project),body=proposal.parse(req.body);requireThat(body.confirm===true&&!!body.source_hash&&!!body.issued_at,400,'请先试算并确认约束结果');requireThat(Date.now()-body.issued_at!<=600000&&body.issued_at!<=Date.now()+5000,409,'约束试算已过期，请重新试算');
+ const result=await tx(c=>requestTransaction.run(c,async()=>{const p=await prepare(c,req.user.id,project,body,body.issued_at!);requireThat(!p.blocked,409,'约束与实际历史或工作日历冲突，请调整后重新试算');requireThat(p.can_apply,403,'没有此作业的修改权限或记录不可编辑');requireThat(p.source_hash===body.source_hash,409,'计划、日历或约束输入已变化，请重新试算');requireThat(!p.needs_ack||body.accept_conflicts===true,400,'请确认已了解约束冲突');
+ await updateRecord(req.user.id,p.record.id,{version:p.record.version,data:{constraint_type:body.constraint_type,constraint_date:p.constraintDate}});
+ await audit(c,p.a.workspace_id,req.user.id,'确认日期约束试算',p.target.id,{code:p.target.code,name:p.target.name,before:{type:p.target.constraint_type,date:p.target.constraint_date},after:{type:body.constraint_type,date:p.constraintDate},warnings:p.warnings,affected:p.changes.length});return {ok:true,status:'draft'};
+ }));res.json(result);
+});

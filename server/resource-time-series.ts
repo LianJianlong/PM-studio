@@ -1,0 +1,14 @@
+import {Router} from 'express';import {z} from 'zod';import {resourceLoadData} from './resources.ts';
+import {resourceTimeSeries} from '../shared/resource-time-series.ts';import {id,date} from './validation.ts';import {access,requireThat} from './auth.ts';import {pool,tx,requestTransaction} from './db.ts';import {lockReferenceProject} from './references.ts';import {defaultProjectCalendar,calendarDate} from '../shared/project-calendar.ts';
+export const resourceTimeCurves=Router();
+resourceTimeCurves.get('/projects/:project/resource-curves',async(req,res)=>{
+ const project=id.parse(req.params.project),query=z.object({resource_id:id.optional(),interval:z.enum(['day','week','month']).default('week'),from:date.optional(),to:date.optional()}).strict().parse(req.query);
+ const result=await tx(c=>requestTransaction.run(c,async()=>{await lockReferenceProject(c,project);const initial=await access(req.user.id,project,c);await c.query('SELECT id FROM workspaces WHERE id=$1 FOR SHARE',[initial.workspace_id]);await c.query('SELECT id FROM projects WHERE id=$1 FOR SHARE',[project]);const a=await access(req.user.id,project,c),data=await resourceLoadData(req.user.id,project),resource=query.resource_id?data.resources.find(r=>r.id===query.resource_id):data.resources[0];
+ const catalog=data.resources.map(r=>({id:r.id,name:r.name,code:r.code,unit:r.unit,active:r.active}));if(query.resource_id)requireThat(resource,404,'资源不在当前可分析范围');if(!resource)return {resources:catalog,resource:null,points:[],read_only:true};
+ const observations=(await c.query('SELECT *,units::text FROM resource_unit_observations WHERE project_id=$1 AND resource_id=$2 AND allocation_id=ANY($3::uuid[]) ORDER BY allocation_id,source_version',[project,resource.id,resource.allocations.map((x:any)=>x.id)])).rows;
+ const dates=[...resource.curve.map((v:any)=>v.date),...resource.remaining_curve.map((v:any)=>v.date),...observations.map(v=>v.as_of_date),data.remaining_data_date].sort();const availableFrom=dates[0],availableTo=dates.at(-1)!,from=query.from||availableFrom,to=query.to||(availableTo>calendarDate(from,3659)?calendarDate(from,3659):availableTo);
+ requireThat((Date.parse(to)-Date.parse(availableFrom))/86400000<30000,400,'资源时间跨度过大，请核对计划起点');
+ requireThat(from<=to,400,'开始日期不能晚于结束日期');requireThat((Date.parse(to)-Date.parse(from))/86400000<3660,400,'显示区间最多3660自然日，请缩小日期范围');
+ return {...resourceTimeSeries(resource,observations,a.calendar_config||defaultProjectCalendar,data.remaining_data_date,query.interval,from,to),resources:catalog,resource:{id:resource.id,name:resource.name,code:resource.code,unit:resource.unit,active:resource.active},available_from:availableFrom,available_to:availableTo,range_limited:!query.to&&to<availableTo,read_only:true,analyzed_at:new Date().toISOString()};
+ }));res.json(result);
+});

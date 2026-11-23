@@ -1,0 +1,13 @@
+CREATE TABLE IF NOT EXISTS project_public_folders(project_id uuid PRIMARY KEY REFERENCES projects(id) ON DELETE CASCADE,name text NOT NULL DEFAULT 'public' CHECK(name='public'));
+CREATE TABLE IF NOT EXISTS project_public_mappings(id uuid PRIMARY KEY DEFAULT gen_random_uuid(),project_id uuid NOT NULL REFERENCES projects(id) ON DELETE CASCADE,source_table_id uuid NOT NULL UNIQUE REFERENCES data_tables(id) ON DELETE CASCADE,created_at timestamptz NOT NULL DEFAULT now());
+CREATE INDEX IF NOT EXISTS public_mapping_project ON project_public_mappings(project_id);
+CREATE TABLE IF NOT EXISTS project_dashboard_widgets(id uuid PRIMARY KEY DEFAULT gen_random_uuid(),project_id uuid NOT NULL REFERENCES projects(id) ON DELETE CASCADE,kind text NOT NULL CHECK(kind IN ('progress','safety','quality','design','procurement','earned','custom')),name text NOT NULL,config jsonb NOT NULL DEFAULT '{}',version integer NOT NULL DEFAULT 1,position integer NOT NULL DEFAULT 0,created_at timestamptz NOT NULL DEFAULT now());
+CREATE UNIQUE INDEX IF NOT EXISTS dashboard_builtin ON project_dashboard_widgets(project_id,kind) WHERE kind<>'custom';
+CREATE OR REPLACE FUNCTION ensure_public_folder() RETURNS trigger LANGUAGE plpgsql AS $$ BEGIN INSERT INTO project_public_folders(project_id) VALUES(NEW.id) ON CONFLICT DO NOTHING; RETURN NEW; END $$;
+DROP TRIGGER IF EXISTS project_public_folder ON projects;
+CREATE TRIGGER project_public_folder AFTER INSERT ON projects FOR EACH ROW EXECUTE FUNCTION ensure_public_folder();
+CREATE OR REPLACE FUNCTION ensure_public_mapping() RETURNS trigger LANGUAGE plpgsql AS $$ BEGIN INSERT INTO project_public_mappings(project_id,source_table_id) VALUES(NEW.project_id,NEW.id) ON CONFLICT(source_table_id) DO UPDATE SET project_id=EXCLUDED.project_id; RETURN NEW; END $$;
+DROP TRIGGER IF EXISTS table_public_mapping ON data_tables;
+CREATE TRIGGER table_public_mapping AFTER INSERT OR UPDATE OF project_id ON data_tables FOR EACH ROW EXECUTE FUNCTION ensure_public_mapping();
+INSERT INTO project_public_folders(project_id) SELECT id FROM projects ON CONFLICT DO NOTHING;
+INSERT INTO project_public_mappings(project_id,source_table_id) SELECT project_id,id FROM data_tables ON CONFLICT(source_table_id) DO UPDATE SET project_id=EXCLUDED.project_id;

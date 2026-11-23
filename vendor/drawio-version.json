@@ -1,0 +1,7 @@
+{
+  "product": "draw.io",
+  "version": "32.6.1",
+  "source": "https://github.com/jgraph/drawio/releases/tag/v32.6.1",
+  "archive_sha256": "44dd56958c8408963457dc98f04d2228408ac145c7aa1d8e6895d9c88d5e42aa",
+  "deployment": "Local static editor; CSP prevents outbound connections. Native browser print for PDF; cloud integrations require online services."
+}

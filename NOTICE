@@ -1,0 +1,11 @@
+PM studio
+Copyright 2026 PM studio contributors.
+
+This product includes third-party software and resources.
+Offline draw.io retains upstream licenses and copyright notices in
+vendor/drawio/LICENSE and the corresponding vendor subdirectories.
+Other dependency licenses are identified in package-lock.json and the
+installed packages. See docs/THIRD_PARTY_NOTICES.md.
+
+The Apache-2.0 license for PM studio does not replace licenses of
+third-party software, artwork or resources.

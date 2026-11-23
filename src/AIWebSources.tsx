@@ -1,0 +1,3 @@
+import './ai-web-sources.css';
+import {translateUiValue as ui} from './i18n';
+export default function AIWebSources({web}:{web:any}){if(!web)return null;return <div className="word-web-sources"><strong>{ui('\u8054\u7f51\u8d44\u6599\u6765\u6e90')}</strong><p>{web.query}</p><p>{web.retrieved_at}</p>{web.sources.map((source:any,index:number)=><a key={source.url+index} href={source.url} target="_blank" rel="noopener noreferrer">{index+1}. {source.title}</a>)}{web.suggestions&&<iframe title={ui('\u641c\u7d22\u5efa\u8bae')} sandbox="allow-popups allow-popups-to-escape-sandbox" srcDoc={'<meta http-equiv="Content-Security-Policy" content="default-src \'none\';style-src \'unsafe-inline\';img-src data:;base-uri \'none\';form-action \'none\'">'+web.suggestions}/>}</div>}

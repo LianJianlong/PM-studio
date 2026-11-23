@@ -1,0 +1,57 @@
+name: pm-studio
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: project_studio
+      POSTGRES_USER: studio
+      POSTGRES_PASSWORD: ${DB_PASSWORD:?Generate .env first}
+    volumes:
+      - studio-data:/var/lib/postgresql/data
+    healthcheck:
+      test: [CMD-SHELL, pg_isready -U studio -d project_studio]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+  migrate:
+    build: .
+    image: pm-studio-app
+    command: [node_modules/.bin/tsx, server/migrate.ts]
+    environment:
+      RUN_MIGRATIONS: "true"
+      DATABASE_URL: postgresql://studio:${DB_PASSWORD}@db:5432/project_studio
+      APP_DB_PASSWORD: ${APP_DB_PASSWORD:?Generate .env first}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:?Generate .env first}
+      SYSTEM_ADMIN_PASSWORD: ${SYSTEM_ADMIN_PASSWORD:?Generate .env first}
+      ENCRYPTION_KEY: ${ENCRYPTION_KEY:?Generate .env first}
+      SEED_DEMO: "false"
+    depends_on:
+      db:
+        condition: service_healthy
+  app:
+    image: pm-studio-app
+    restart: unless-stopped
+    init: true
+    ports: ["127.0.0.1:9090:9090"]
+    environment:
+      DATABASE_URL: postgresql://studio_app:${APP_DB_PASSWORD}@db:5432/project_studio
+      ENCRYPTION_KEY: ${ENCRYPTION_KEY}
+      HOST: 0.0.0.0
+      PORT: "9090"
+      COOKIE_SECURE: "false"
+      SEED_DEMO: "false"
+      AI_ALLOWED_HOSTS: ${AI_ALLOWED_HOSTS:-api.openai.com,api.anthropic.com,generativelanguage.googleapis.com,api.deepseek.com,open.bigmodel.cn,api.minimax.io,localhost,127.0.0.1,::1,host.docker.internal}
+      DB_ALLOWED_HOSTS: localhost,127.0.0.1,::1,host.docker.internal,db
+      OUTBOUND_PRIVATE_HOSTS: localhost,127.0.0.1,::1,host.docker.internal,db
+    volumes:
+      - studio-backups:/var/lib/project-studio/backups
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    security_opt: ["no-new-privileges:true"]
+    cap_drop: [ALL]
+volumes:
+  studio-data:
+  studio-backups:
+

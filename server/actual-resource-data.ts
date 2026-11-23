@@ -1,0 +1,2 @@
+import {pool} from './db.ts';
+export async function actualResourceRows(project:string,c:any=pool,ids?:string[]){return (await c.query('SELECT v.*,v.units::text actual_units FROM activity_resource_actuals v JOIN activity_resource_allocations x ON x.id=v.allocation_id JOIN activities a ON a.id=x.activity_id WHERE a.project_id=$1 AND ($2::uuid[] IS NULL OR a.id=ANY($2::uuid[])) ORDER BY v.allocation_id',[project,ids??null])).rows;}

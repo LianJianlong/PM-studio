@@ -1,0 +1,25 @@
+/* One worksheet row per activity; only relations relevant to the column are shown. */
+.spreadsheet-layout .data-grid td.plan-relation-cell{min-width:150px;max-width:280px;height:30px;padding:2px 6px;vertical-align:middle}
+.plan-relation-line{display:flex;align-items:center;gap:0;max-width:270px;height:25px;white-space:nowrap;overflow-x:auto;overflow-y:hidden;scrollbar-width:thin}
+.plan-relation-line>button{display:inline-flex;flex:0 0 auto;align-items:center;width:auto;min-height:23px;height:23px;text-align:left;border:0;border-radius:2px;background:transparent;white-space:nowrap;margin:0;padding:1px 3px;font-size:12px;color:inherit}
+.plan-relation-line>button+button:before{content:'；';color:var(--muted,#718398);padding-right:4px}
+.plan-relation-line>button:not(:disabled):hover{background:#e9f5f0;color:#20866f}
+.plan-relation-line>button:disabled{opacity:1;color:inherit;cursor:default}
+.plan-relation-cell:focus-visible{outline:2px solid #168049;outline-offset:-2px}
+.spreadsheet-layout .data-grid td.plan-critical-name{color:#dc2626;font-weight:600}
+text.plan-critical-name{fill:#dc2626;font-weight:600}
+.plan-float-cell{font-variant-numeric:tabular-nums;color:var(--text,#3e4d55)}
+html[data-theme="dark"] .spreadsheet-layout .data-grid td.plan-critical-name{color:#f87171}
+html[data-theme="dark"] text.plan-critical-name{fill:#f87171}
+.plan-resource-cell{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.plan-resource-trigger{border:0;background:transparent;padding:0;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font:inherit;min-height:22px;color:inherit;text-align:left}
+.plan-legend .legend-draft{border:1px dashed #607d8b;background:#e4f1ee;box-sizing:border-box}
+
+.gantt-display-settings{border:1px solid #dce5eb;border-radius:5px;padding:7px 10px;margin:8px 0}.gantt-display-settings summary{cursor:pointer;font-weight:600}.gantt-settings-fields{display:flex;align-items:center;gap:10px 18px;flex-wrap:wrap;padding-top:10px}.gantt-settings-fields label{display:flex;align-items:center;gap:6px}.gantt-settings-fields small{color:#60778a}.gantt-relation-inline{border:1px solid #87baac;background:#f5fbf8;border-radius:5px;padding:10px;margin:8px 0}.gantt-relation-inline form{display:flex;flex-wrap:wrap;align-items:end;gap:10px}.gantt-relation-inline .field{margin:0;min-width:160px}.gantt-relation-inline p{align-self:center}.gantt-bar-label{pointer-events:none}
+.gantt-scroll{flex-shrink:0;min-height:220px}.gantt-display-settings,.gantt-relation-inline{flex-shrink:0}
+.plan-controls{margin:6px 0;flex-shrink:0}.plan-control-body{border:1px solid var(--border,#dce5eb);padding:10px;margin:6px 0;border-radius:5px}.plan-control-body details{margin:8px 0}.plan-control-body summary{cursor:pointer;font-weight:600}.plan-inspection-scroll{max-height:300px;overflow:auto;margin-top:8px}.plan-inspection-scroll td{white-space:normal}.gantt-wbs-band{cursor:pointer}.plan-control-body .gantt-settings-fields input[type=number]{width:90px}
+.plan-inspection-scroll table{min-width:850px}.plan-inspection-scroll td{white-space:nowrap}.plan-inspection-scroll td:last-child{white-space:normal;min-width:180px}.plan-subtable-heading{font-size:12px;margin:8px 0 4px}.plan-controls details:not([open])>.plan-subtable-heading{display:none}
+.progress-control-panel{padding:10px 0}.performance-metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:8px;margin:12px 0}.performance-metrics>div{border:1px solid var(--border,#dae5ea);border-radius:5px;padding:10px;display:flex;flex-direction:column;gap:6px}.performance-metrics span{font-size:12px;color:var(--muted,#647c90)}.performance-metrics strong{font-size:17px;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}.performance-forecast{display:flex;flex-wrap:wrap;gap:12px;padding:10px;background:var(--surface-soft,#edf7f3);border-radius:5px}.period-capture-preview{padding:12px;margin:10px 0;border:1px solid #8abdad;background:var(--surface,#f4fbf8);border-radius:5px}.period-capture-preview>button{margin-top:10px}
+.delay-analysis-panel{padding:8px 0}.delay-analysis-panel .gantt-settings-fields input[type=number]{width:90px}
+.cpm-panel{min-width:0;max-width:100%}.cpm-panel p{white-space:normal;overflow-wrap:anywhere}.cpm-panel .plan-inspection-scroll{min-width:0;max-width:100%}.cpm-panel .plan-inspection-scroll td:last-child{min-width:80px}
+.spreadsheet-layout .data-grid td.plan-near-critical-name{color:#a65a00;font-weight:600}text.plan-near-critical-name{fill:#a65a00;font-weight:600}html[data-theme="dark"] .spreadsheet-layout .data-grid td.plan-near-critical-name{color:#f5b965}html[data-theme="dark"] text.plan-near-critical-name{fill:#f5b965}

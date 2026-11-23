@@ -1,0 +1,4 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {operationOutcome} from '../shared/ai-operation-outcome.ts';
+test('unknown and executing are never labelled as definitely failed or safe to duplicate',()=>{for(const status of ['unknown','executing']){const r=operationOutcome({status});assert.equal(r.state,'unknown');assert(r.recoverable);assert.equal(r.label,'结果待核实')}});
+test('durable receipt takes precedence over stale operation state',()=>{assert.equal(operationOutcome({status:'unknown'},{ok:true}).state,'written')});
+test('rollback, expired and cancellation are distinguished',()=>{assert.equal(operationOutcome({status:'failed',result:{rolled_back:true}}).state,'rolled_back');assert.equal(operationOutcome({status:'failed'}).state,'failed');assert.equal(operationOutcome({status:'pending',expires_at:'2000-01-01'}).state,'expired');assert.equal(operationOutcome({status:'cancelled'}).state,'cancelled')});

@@ -1,0 +1,6 @@
+import fs from 'node:fs/promises';import {pool,requestActor,tx} from '../server/db.ts';import {installReportTemplates} from '../server/report-template-suite.ts';
+const apply=process.argv.includes('--apply');const actor=(await pool.query('SELECT id FROM users WHERE system_admin AND active LIMIT 1')).rows[0]?.id;if(!actor)throw Error('No active system administrator');
+try{const projects=(await pool.query("SELECT * FROM projects WHERE lifecycle='active' ORDER BY created_at")).rows;
+ if(apply){await fs.mkdir('backups',{recursive:true});await fs.writeFile(`backups/report-suite-before-${Date.now()}.json`,JSON.stringify({reports:(await pool.query('SELECT * FROM report_documents')).rows,registry:(await pool.query("SELECT * FROM project_business_templates WHERE kind='report'")).rows}),{mode:0o600,flag:'wx'});}
+ await requestActor.run(actor,()=>tx(async c=>{const output=[];for(const p of projects){const r=await installReportTemplates(c,p,actor,process.argv.includes('--refresh-seeded'));output.push({project:p.name,...r});}if(!apply){console.log(JSON.stringify({dry_run:true,projects:output}));throw Error('DRY_RUN_ROLLBACK')}console.log(JSON.stringify({applied:true,projects:output}));}));
+}catch(e){if((e as Error).message!=='DRY_RUN_ROLLBACK')throw e}finally{await pool.end()}

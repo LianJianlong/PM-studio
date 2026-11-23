@@ -1,0 +1,2 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';import {ambiguousPlanningName,planningTableLabel} from '../shared/planning-table-identity.ts';
+test('planning identities distinguish module binding from similar ordinary names',()=>{assert.equal(ambiguousPlanningName('WBS'),'wbs');assert.equal(ambiguousPlanningName('项目WBS'),'wbs');assert.equal(ambiguousPlanningName('WBS编码备份'),null);assert.equal(planningTableLabel('wbs'),'计划管理 · WBS');assert.equal(planningTableLabel(null),'')});

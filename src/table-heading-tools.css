@@ -1,0 +1,48 @@
+.table-title-with-tools{display:flex;align-items:center;gap:8px;min-width:0}
+.table-heading-tools{display:inline-flex;align-items:center;justify-content:flex-end;gap:5px;flex:0 0 auto;margin-left:auto;min-height:28px}
+.table-heading-tools>.table-font-control,.table-heading-tools>.table-fullscreen-control{position:static;left:auto;bottom:auto;transform:none;width:auto;height:auto;z-index:auto;display:inline-flex}
+.table-heading-tools :is(.table-font-control,.table-fullscreen-control)>button{width:28px;height:28px;min-height:28px;padding:4px;border-radius:4px;box-shadow:none}
+.sheet-heading>.table-heading-tools{margin-left:0}
+.sheet-heading>.page-heading:last-of-type:not(:has(~.program-tabs)){flex:1}
+.table-grid-heading{display:flex;justify-content:flex-end;min-height:28px;margin-bottom:4px}
+.table-fullscreen-heading{position:sticky;top:0;left:0;z-index:12;display:flex;align-items:center;gap:10px;min-height:32px;padding:2px 8px;background:var(--surface,#fff);border-bottom:1px solid var(--border);width:100%;box-sizing:border-box}
+.table-fullscreen-heading>strong{font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.table-is-fullscreen:has(>.table-fullscreen-heading) thead{position:static}
+.table-is-fullscreen:has(>.table-fullscreen-heading) thead th{position:sticky;top:32px!important}
+body.table-fullscreen-open .modal-backdrop{z-index:1000}
+.data-workbench{display:flex;flex-direction:column;flex:1;min-height:0;padding:5px 10px!important;overflow:auto}
+.data-workbench>.sheet-heading{flex-shrink:0}
+.data-workbench>.data-toolbar{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:0 0 6px;flex-shrink:0}
+.data-workbench>.data-toolbar button,.data-workbench>.data-toolbar select{min-height:28px;padding:4px 8px;border-radius:4px;font-size:12px}
+.data-workbench>.sheet-heading .page-heading p{display:none}
+.data-workbench>.view-selection{margin:0 0 6px}
+.data-workbench>.view-selection label{flex-direction:row;align-items:center;gap:7px}
+.data-workbench>.help{margin:3px 0 7px;font-size:11px}
+.data-workbench>.table-scroll{flex:1;min-height:180px;max-height:none;overflow:auto;border:1px solid var(--border)}
+.data-workbench>.table-footer{margin-top:0;padding-top:5px;min-height:28px}
+.data-workbench .connection-selector{gap:5px;margin:0 0 7px;flex-shrink:0}
+.data-workbench .connection-selector button{padding:4px 8px;min-height:28px;font-size:12px}
+.data-workbench .sql-toolbar{gap:6px;margin:0 0 6px;flex-wrap:wrap}
+.data-workbench .sql-toolbar button{padding:4px 8px;min-height:28px;font-size:12px}
+.data-workbench .sql-editor{min-height:90px;height:110px;margin-bottom:6px;flex-shrink:0}
+.data-workbench .query-result{margin-top:6px}
+.data-workbench .query-result .section-heading{margin-bottom:5px}
+@media(max-width:760px){.table-heading-tools{gap:3px}.table-heading-tools :is(.table-font-control,.table-fullscreen-control)>button{width:26px;min-height:26px;height:26px}.data-workbench{padding:4px 6px!important}.sheet-heading>.table-heading-tools{margin-left:auto}.data-workbench .sheet-heading h1{max-width:37vw}}
+html[data-theme="dark"] .table-fullscreen-heading{background:#182635;color:#d8e5ef}
+@media print{.table-heading-tools,.table-grid-heading,.table-fullscreen-heading{display:none}}
+.table-is-fullscreen{position:fixed!important;inset:8px!important;width:auto!important;height:auto!important;max-height:none!important;min-height:0!important;margin:0!important;z-index:900;background:var(--surface,#fff);border:1px solid #aab8c2;box-shadow:0 0 0 12px #f3f6f8;overflow:auto!important}
+@media print{.table-is-fullscreen{position:static!important;box-shadow:none}}
+.table-heading-tools>.table-font-control{order:0}
+.table-heading-tools>.table-fullscreen-control{order:1}
+@media(max-width:760px){
+ .sheet-module .data-content .sheet-heading{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:3px 7px}
+ .sheet-module .data-content .sheet-heading>.page-heading{grid-column:1;grid-row:1;min-width:0}
+ .sheet-module .data-content .sheet-heading>.program-tabs{grid-column:1/-1;grid-row:2;margin-left:0;justify-content:flex-start}
+ .sheet-module .data-content .sheet-heading>.table-heading-tools{grid-column:2;grid-row:1;margin-left:0}
+ .sheet-module .data-content .sheet-heading h1{max-width:60vw}
+}
+@media(max-width:760px){
+ .sheet-module .data-layout{display:flex;flex-direction:column}
+ .sheet-module .data-layout>.catalog{flex:0 0 auto;max-height:180px}
+ .sheet-module .data-content{flex:1;overflow:hidden}
+}

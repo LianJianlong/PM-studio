@@ -1,0 +1,9 @@
+.column-resize-hover,.column-resize-hover *{cursor:col-resize!important}
+.column-resize-hover{box-shadow:inset -2px 0 #129776}
+body.column-resize-active,body.column-resize-active *{cursor:col-resize!important;user-select:none!important}
+table[data-resizable-table]{min-width:0!important;max-width:none!important}
+table[data-resizable-table] :is(th,td){min-width:0!important;max-width:none!important}
+table[data-resizable-table] td{overflow:hidden;text-overflow:ellipsis}
+table[data-resizable-table] th>button{overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+table[data-resizable-table] .inline-cell-label,table[data-resizable-table] .inline-cell-label :is(input,select,textarea,.reference-compact){min-width:0!important;max-width:100%}
+@media print{.column-resize-hover{box-shadow:none}}

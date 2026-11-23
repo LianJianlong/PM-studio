@@ -1,0 +1,55 @@
+.query-library {
+  margin-top: 24px;
+  border-top: 1px solid var(--border, #e5e9ee);
+  padding-top: 16px;
+}
+.query-library-list {
+  max-height: 360px;
+  overflow: auto;
+}
+.query-library-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 4px;
+  border-bottom: 1px solid #edf0f3;
+}
+.query-library-item > div:first-child {
+  min-width: 0;
+  flex: 1;
+}
+.query-library-item pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  max-height: 90px;
+  overflow: auto;
+  color: #526473;
+  font-size: 12px;
+  margin: 8px 0 0;
+}
+.query-library-item small {
+  color: #6c7b86;
+}
+.query-library-actions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.query-library .sql-toolbar {
+  flex-wrap: wrap;
+}
+.query-library .sql-toolbar input {
+  min-width: 150px;
+  flex: 1;
+}
+.query-library [aria-pressed="true"] {
+  background: #e9f5f0;
+  color: #00876b;
+}
+@media (max-width: 700px) {
+  .query-library-item {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}

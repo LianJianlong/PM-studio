@@ -1,0 +1,5 @@
+export async function prepareNoteImage(file:File,budget:number){
+ if(!['image/png','image/jpeg','image/webp'].includes(file.type)||file.size>=5*1024*1024)throw Error('\u8bf7\u9009\u62e9\u5c0f\u4e8e5MB\u7684PNG\u3001JPEG\u6216WebP\u56fe\u7247');
+ if(budget<20000)throw Error('\u7b14\u8bb0\u5269\u4f59\u7a7a\u95f4\u4e0d\u8db3\uff0c\u8bf7\u4f7f\u7528\u56fe\u7247\u94fe\u63a5');
+ const bitmap=await createImageBitmap(file);try{for(const [bound,quality]of [[1200,.82],[900,.75],[600,.65],[400,.6]]){const ratio=Math.min(1,bound/Math.max(bitmap.width,bitmap.height)),canvas=document.createElement('canvas');canvas.width=Math.max(1,Math.round(bitmap.width*ratio));canvas.height=Math.max(1,Math.round(bitmap.height*ratio));canvas.getContext('2d')!.drawImage(bitmap,0,0,canvas.width,canvas.height);const image=canvas.toDataURL('image/webp',quality);if(image.length<=Math.min(150000,budget))return image}throw Error('\u56fe\u7247\u538b\u7f29\u540e\u4ecd\u8fc7\u5927\uff0c\u8bf7\u4f7f\u7528\u56fe\u7247\u94fe\u63a5')}finally{bitmap.close()}
+}

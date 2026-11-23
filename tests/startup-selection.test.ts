@@ -1,0 +1,6 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {startupSelection} from '../shared/startup-selection.ts';
+const w=[{id:'w1',lifecycle:'active'},{id:'w2',lifecycle:'active'},{id:'gone',lifecycle:'archived'}],p=[{id:'p1',workspace_id:'w1',lifecycle:'active'},{id:'p2',workspace_id:'w2',lifecycle:'active'},{id:'old',workspace_id:'w2',lifecycle:'archived'}];
+test('startup uses configured workspace/project but retains valid manual navigation during reloads',()=>{assert.deepEqual(startupSelection(w,p,{workspace_id:'w2',project_id:'p2'}),{workspaceId:'w2',projectId:'p2'});assert.deepEqual(startupSelection(w,p,{workspace_id:'w2',project_id:'p2'},{workspaceId:'w1',projectId:'p1'}),{workspaceId:'w1',projectId:'p1'});});
+test('unavailable or archived defaults fall back only to accessible active objects with matching ownership',()=>{assert.deepEqual(startupSelection(w,p,{workspace_id:'w2',project_id:'old'}),{workspaceId:'w2',projectId:'p2'});assert.deepEqual(startupSelection(w.filter(x=>x.id==='w1'),p.filter(x=>x.workspace_id==='w1'),{workspace_id:'w2',project_id:'p2'}),{workspaceId:'w1',projectId:'p1'});assert.deepEqual(startupSelection([],[],{workspace_id:'w2',project_id:'p2'}),{workspaceId:'',projectId:''});assert.equal(startupSelection(w,p,{workspace_id:'w1',project_id:'p2'}).projectId,'p1');});

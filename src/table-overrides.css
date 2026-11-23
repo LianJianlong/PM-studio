@@ -1,0 +1,172 @@
+.column-menu-arrow{display:inline-block!important;margin-left:8px;width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-top:7px solid #111;vertical-align:middle;color:transparent;font-size:0}
+.column-menu{position:absolute;z-index:20}
+.grid-scroll:has(.column-menu){min-height:300px}
+.record-add-space td { height:100px; vertical-align:top; cursor:cell; background:#fbfdfc; }
+.record-add-space button { margin-top:10px; border:0; background:transparent; color:#81958e; font-size:11px; }
+.inline-new-record td { background:#edf8f3; vertical-align:top; }
+.inline-cell-label { display:block; min-width:140px; }
+.inline-cell-label input:not([type=checkbox]),.inline-cell-label select,.inline-cell-label textarea { width:100%; min-width:120px; padding:8px; }
+.inline-new-record .row-actions { flex-wrap:wrap; min-width:130px; }
+.inline-new-record td:last-child { position:sticky; right:0; z-index:2; background:#edf8f3; box-shadow:-5px 0 8px #1231; }
+.agenda-toolbar { display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin:18px 0; }
+.agenda-toolbar input { min-width:180px; padding:9px; }
+.agenda-toolbar select { padding:9px; }
+.agenda-column-picker { display:grid; grid-template-columns:repeat(2,minmax(130px,1fr)); gap:8px; padding:12px; }
+.agenda-grid th { position:relative; white-space:nowrap; }
+.agenda-grid th button { border:0; background:transparent; }
+.agenda-grid td { min-width:110px; max-width:320px; overflow-wrap:anywhere; }
+.agenda-workflow { margin-top:20px; }
+.inline-cell-label .sr-only { position:absolute; width:1px; height:1px; padding:0; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; }
+.data-grid th[draggable]{position:relative;cursor:grab}
+.data-grid th[draggable]:active{cursor:grabbing}
+.group-row td{background:#eef8f4;color:#007c65;font-weight:700}
+.public-views-workbench{min-width:0;width:100%}.view-selection{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:16px 0}.view-selection label,.view-designer label{display:flex;gap:8px;flex-direction:column}.view-designer{display:flex;flex-direction:column;gap:12px}.view-designer h3{margin:14px 0 0}.view-designer select,.view-designer input,.view-selection select{padding:9px;border:1px solid var(--border);border-radius:7px;max-width:100%;min-width:0}.view-source-row,.view-rule-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.view-source-row>*{flex:1;min-width:130px}.view-source-row>span{flex:0;min-width:auto}.view-rule-row>*{flex:1;min-width:110px}.view-rule-row>button{flex:0}.view-designer .table-scroll table{min-width:680px}.view-designer .form-actions{position:sticky;bottom:0;padding:12px;background:var(--surface,#fff);z-index:2}.public-views-workbench .table-scroll{max-width:100%;overflow:auto}.view-selection select{min-width:220px}@media(max-width:640px){.view-source-row,.view-rule-row{flex-direction:column;align-items:stretch}.view-source-row>*{width:100%;flex:auto}.view-selection select{min-width:0;width:100%}.public-views-workbench .page-heading{flex-wrap:wrap}}
+.table-view-chip{padding:7px 10px;border-radius:999px;background:#eef8f4;color:#007c65;font-size:12px}
+.sort-by-strip{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.sort-by-strip label{display:inline-flex;align-items:center;gap:5px;font-size:12px;color:var(--muted)}.sort-by-strip select{min-width:120px;padding:7px}.sort-by-strip button{padding:7px 10px}
+.reference-compact{min-height:32px;min-width:130px;max-width:260px;display:flex;flex-wrap:wrap;gap:4px;align-items:center}.reference-cell-values{display:contents}.reference-cell-trigger{border:0!important;background:transparent!important;color:#54728a;padding:3px 5px!important;text-align:left;font-size:12px}.reference-popover{background:white;border:1px solid #ccd9e4;border-radius:8px;box-shadow:0 8px 32px #18344a33;padding:10px;max-height:340px;display:flex;flex-direction:column;gap:8px}.reference-popover>input{width:100%;flex-shrink:0}.reference-cascade{display:flex;overflow:auto;min-height:180px;max-height:255px}.reference-cascade section{flex:1;min-width:165px;padding:0 6px;border-right:1px solid #e4ebf0;overflow-y:auto}.reference-cascade section:last-child{border:0}.reference-cascade strong{display:block;font-size:12px;color:#62788c;margin:4px}.reference-cascade section>button{display:flex;width:100%;justify-content:space-between;align-items:center;gap:6px;text-align:left;border:0;border-radius:4px;background:transparent;padding:8px;margin:2px 0;font-size:13px;white-space:normal}.reference-cascade button.active{background:#e4f5ef;color:#007a60}.reference-cascade button:hover{background:#f0f6fa}.reference-page{display:flex;justify-content:space-between;align-items:center;gap:3px}.reference-page button{padding:4px;font-size:11px}.inline-new-record td{height:48px!important;vertical-align:middle}.inline-new-record .reference-chip{max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.inline-new-record td:last-child{min-width:85px}
+
+.required-column-star{color:#dc2626;font-weight:700;margin-left:2px}
+/* Compact worksheet presentation, scoped to editable business tables. */
+.spreadsheet-layout .record-main{padding:12px 14px;gap:0}
+.spreadsheet-layout .record-main .page-heading{margin-bottom:10px;gap:9px}
+.spreadsheet-layout .record-main .page-heading h1{font-size:18px;font-weight:600;line-height:1.35}
+.spreadsheet-layout .record-main .page-heading p{display:none}
+.spreadsheet-layout .record-main .heading-icon{width:30px;height:30px;border-radius:4px}
+.spreadsheet-layout .record-main .heading-icon svg{width:19px;height:19px}
+.spreadsheet-layout .data-toolbar{gap:5px;margin-bottom:7px}
+.spreadsheet-layout .data-toolbar button,.spreadsheet-layout .data-toolbar select,.spreadsheet-layout .data-toolbar input{min-height:28px;padding:4px 8px;border-radius:3px;font-size:12px;box-shadow:none}
+.spreadsheet-layout .data-toolbar button:not(.primary){background:white;border-color:#d4dadd;color:#3e4d55}
+.spreadsheet-layout .data-toolbar button:disabled{color:#9aa4aa;background:#fafafa}
+.spreadsheet-layout .data-toolbar button svg{width:14px;height:14px}
+.spreadsheet-layout .table-view-chip{padding:3px 7px;background:#f3f5f4;border-radius:3px}
+.spreadsheet-layout .grid-scroll{border:1px solid #ced5d9;border-radius:0;max-height:calc(100dvh - 270px);min-height:240px;background:white}
+.spreadsheet-layout .data-grid{border-collapse:separate;border-spacing:0;font-size:12px;width:100%;background:white}
+.spreadsheet-layout .data-grid thead th{position:sticky;top:0;z-index:3;background:#f0f2f3;color:#3f4d55;height:30px;padding:4px 8px;border-right:1px solid #d5dade;border-bottom:1px solid #c7cfd4;font-weight:500}
+.spreadsheet-layout .data-grid th button{font-size:12px;font-weight:500;color:inherit;display:flex;align-items:center;gap:3px;width:100%;min-height:20px;text-align:left}
+.spreadsheet-layout .data-grid .column-menu-arrow{margin-left:auto;border-left-width:3px;border-right-width:3px;border-top:4px solid #69777e}
+.spreadsheet-layout .data-grid tbody td{height:30px;padding:4px 8px;min-width:110px;max-width:260px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;vertical-align:middle;border-right:1px solid #e0e4e7;border-bottom:1px solid #e0e4e7;background:white}
+.spreadsheet-layout .data-grid tbody tr:hover td{background:#f8fbf9}
+.spreadsheet-layout .data-grid tbody tr.selected td{background:#e9f4ed}
+.spreadsheet-layout .data-grid td:focus{outline:2px solid #168049;outline-offset:-2px;background:#fff!important}
+.spreadsheet-layout .data-grid .check-cell{min-width:42px;width:42px;padding:3px;text-align:center;background:#f2f4f5;color:#6b747a;position:sticky;left:0;z-index:2}
+.spreadsheet-layout .data-grid thead .check-cell{z-index:4}
+.spreadsheet-layout .sheet-row-header{font-variant-numeric:tabular-nums}
+.spreadsheet-layout .sheet-row-header input{position:absolute;inset:0;margin:auto;width:14px;height:14px;opacity:0}
+.spreadsheet-layout .sheet-row-header:hover input,.spreadsheet-layout .sheet-row-header:focus-within input,.spreadsheet-layout tr.selected .sheet-row-header input{opacity:1}
+.spreadsheet-layout .sheet-row-header:hover .sheet-row-number,.spreadsheet-layout .sheet-row-header:focus-within .sheet-row-number,.spreadsheet-layout tr.selected .sheet-row-header .sheet-row-number{opacity:0}
+.spreadsheet-layout .data-grid .group-row td{background:#f1f6f3;color:#21623e}
+.spreadsheet-layout .data-grid .wbs-group-row td{background:#f3f7fa;font-weight:650;overflow:visible}
+.wbs-name{display:inline-block;font-weight:650;white-space:nowrap}
+.wbs-add-activity{margin-left:16px;border:0;background:transparent;color:#087a64;font-size:12px;padding:2px 6px}
+.wbs-add-activity:hover{text-decoration:underline}
+.spreadsheet-layout .inline-new-record td{height:32px!important;background:white!important;padding:2px 4px;overflow:visible;box-shadow:none}
+.spreadsheet-layout .inline-cell-label{min-width:110px}
+.spreadsheet-layout .inline-cell-label input:not([type=checkbox]),.spreadsheet-layout .inline-cell-label select,.spreadsheet-layout .inline-cell-label textarea{min-width:100px;min-height:26px;height:26px;padding:3px 5px;border-radius:0;border:1px solid transparent;background:transparent;font-size:12px}
+.spreadsheet-layout .inline-cell-label input:focus,.spreadsheet-layout .inline-cell-label select:focus,.spreadsheet-layout .inline-cell-label textarea:focus{outline:2px solid #168049;outline-offset:-1px;background:white}
+.spreadsheet-layout .inline-cell-label input:disabled{color:#73818a;background:#f6f7f7}
+.spreadsheet-layout .reference-compact{min-height:26px;gap:2px}
+.spreadsheet-layout .reference-chip{padding:1px 4px;border-radius:2px;font-size:12px}
+.spreadsheet-layout .record-add-space td{height:32px;background:#fff;cursor:cell}
+.spreadsheet-layout .record-add-space button{margin:0;padding:3px 5px;color:#7b858c;font-size:11px}
+.spreadsheet-layout .inline-new-record .error-box{white-space:normal;min-width:220px}
+@media(max-width:680px){.spreadsheet-layout .record-main{padding:10px 8px}.spreadsheet-layout .grid-scroll{max-height:65dvh;min-height:220px}.spreadsheet-layout .data-toolbar{gap:4px}}
+.native-sheet{padding:12px;min-width:0}.native-sheet>.page-heading{margin-bottom:10px}.native-sheet>.page-heading h1,.native-sheet .section-heading h3{font-size:18px}.native-sheet>.page-heading p{display:none}.native-sheet .agenda-toolbar{gap:5px;margin:8px 0}.native-sheet .agenda-toolbar button,.native-sheet .agenda-toolbar select,.native-sheet .agenda-toolbar input{padding:4px 8px;min-height:28px;border-radius:3px;font-size:12px}.native-sheet .section-heading{margin-bottom:8px}.native-sheet .native-grid-row td{min-width:110px}.native-sheet .native-grid-row td:last-child{min-width:90px}.native-sheet .native-grid-row .error-box{white-space:normal}.planning-binding-hint{display:none}.native-sheet .grid-scroll{max-height:65vh}.native-sheet .native-grid-row input:disabled{background:#f7f8f8}@media(max-width:760px){.native-sheet .resource-table{display:table;min-width:1500px}.native-sheet .resource-table thead{display:table-header-group}.native-sheet .resource-table tbody{display:table-row-group}.native-sheet .resource-table tr{display:table-row}.native-sheet .resource-table th,.native-sheet .resource-table td{display:table-cell}.native-sheet .resource-table td:before{display:none}}
+/* Status confirmation is an inline action; selection stays visible for bulk changes. */
+.spreadsheet-layout.status-confirmable .data-grid .check-cell{min-width:62px;width:62px}
+.spreadsheet-layout.status-confirmable .sheet-row-header input{position:static;inset:auto;margin:0 0 0 7px;opacity:1;vertical-align:middle}
+.spreadsheet-layout.status-confirmable .sheet-row-header .sheet-row-number{opacity:1}
+.spreadsheet-layout .data-grid .record-status-select{min-width:88px;width:100%;height:27px;padding:3px 20px 3px 7px;border:1px solid #cbd5df;border-radius:3px;background-color:#fff;font-size:12px;cursor:pointer}
+.spreadsheet-layout .data-grid .record-status-select.approved{color:#008568;background-color:#e8f6ef}
+.spreadsheet-layout .data-grid .record-status-select:disabled{cursor:wait;opacity:.65}
+.status-edit-help{margin:4px 0 8px}
+
+.view-source-picker{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:7px;max-height:180px;overflow:auto}.view-source-picker button{display:flex;flex-direction:column;align-items:flex-start;gap:3px;text-align:left;min-width:0}.view-source-picker button.active{border-color:#008b72;background:#e8f6f1;color:#006e59}.view-source-picker small,.view-column-picker small{opacity:.7}.view-column-picker{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px;max-height:260px;overflow:auto}.view-column-picker section{border:1px solid var(--border,#dce5ee);border-radius:6px;padding:10px;min-width:0}.view-column-picker section>div{display:grid;gap:3px;margin-top:8px}.view-column-picker label{display:flex;flex-direction:row;align-items:center;gap:7px;padding:5px 3px}.view-column-picker label span{flex:1}.view-column-picker input[type=checkbox]{flex:0 0 auto}
+.view-column-picker .view-select-all{margin-top:7px;padding:4px 7px;font-size:12px;color:#007b65;background:#eef8f4;border:1px solid #c5e9dd}
+
+.modal.wide:has(.view-designer){width:min(960px,calc(100vw - 28px));max-height:min(92dvh,900px);overflow:auto}.view-designer{gap:10px}.view-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;position:sticky;top:-1px;z-index:4;background:#fff;padding:0 0 8px}.view-steps button{justify-content:center;text-align:center;background:#f4f7f9;border:1px solid #dce5ee;color:#526b7c}.view-steps button.active{background:#e1f5ed;border-color:#008b72;color:#00765e;font-weight:700}.view-steps button:disabled{opacity:.55}.view-design-summary{color:#61798a;font-size:12px}.view-design-step{display:flex;flex-direction:column;gap:10px;min-width:0}.view-design-step[hidden]{display:none}.view-design-step h3{margin:6px 0 0}.view-chosen-sources{display:flex;gap:6px;flex-wrap:wrap}.view-chosen-sources span{padding:5px 8px;border-radius:5px;background:#e5f4ef;color:#006d57;font-size:12px}.view-source-picker{max-height:300px;grid-template-columns:repeat(auto-fill,minmax(190px,1fr))}.view-column-picker{max-height:290px}.view-output-scroll{max-height:240px;overflow:auto}.view-advanced-options{border:1px solid #e1e9ee;border-radius:6px;padding:8px}.view-advanced-options summary{cursor:pointer;color:#386276;font-size:12px}.view-advanced-options label{margin:9px 0}.view-preview-step>.table-scroll{max-height:360px;overflow:auto}.view-design-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:0!important;border-top:1px solid #e5eaee}@media(max-width:640px){.view-steps button{font-size:11px;padding:6px 3px}.view-source-picker,.view-column-picker{grid-template-columns:1fr}.modal.wide:has(.view-designer){max-height:94dvh}.view-design-actions{flex-wrap:wrap}}
+.view-column-workspace{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px;align-items:start}.view-column-source,.view-column-output{display:flex;flex-direction:column;gap:8px;min-width:0}.view-column-workspace .view-column-picker{grid-template-columns:1fr;max-height:410px}.view-column-workspace .view-output-scroll{max-height:290px}.view-column-workspace .view-output-scroll table{min-width:600px}@media(max-width:760px){.view-column-workspace{grid-template-columns:1fr}.view-column-workspace .view-column-picker{max-height:240px}.view-column-workspace .view-output-scroll{max-height:220px}}
+.view-column-workspace .view-output-scroll table{min-width:0!important;width:100%;table-layout:fixed}.view-output-scroll th:nth-child(1){width:30%}.view-output-scroll th:nth-child(2){width:35%}.view-output-scroll th:nth-child(3){width:23%}.view-output-scroll th:nth-child(4){width:12%}.view-output-scroll td,.view-output-scroll th{padding:5px 3px;overflow:hidden}.view-output-scroll td input,.view-output-scroll td select{width:100%;min-width:0;padding:5px 3px;font-size:12px}.view-output-scroll td button{padding:4px 2px;font-size:11px}
+.wbs-level-badge{display:inline-block;margin-inline-end:6px;padding:1px 5px;border:1px solid currentColor;border-radius:3px;font-size:11px;font-weight:500}
+
+/* WBS bands share the same project accent in both planning grids. */
+.spreadsheet-layout .data-grid tr.wbs-band > td {
+  background:color-mix(in srgb,var(--wbs-accent) 20%,#fff);
+  border-block-end-color:color-mix(in srgb,var(--wbs-accent) 32%,#fff);
+}
+.spreadsheet-layout .data-grid tr.wbs-band:hover > td,
+.spreadsheet-layout .data-grid tr.wbs-band.selected > td {
+  background:color-mix(in srgb,var(--wbs-accent) 29%,#fff);
+}
+.spreadsheet-layout .data-grid tr.wbs-band > td:first-child {
+  box-shadow:inset 4px 0 var(--wbs-accent);
+}
+.wbs-band .wbs-name,.wbs-band .wbs-group-row,.wbs-band .wbs-level-badge{color:#172435}
+.spreadsheet-layout .data-grid .wbs-band .wbs-level-badge{border-color:var(--wbs-accent)}
+.spreadsheet-layout .data-grid .wbs-band .wbs-branch-toggle {
+  display:inline-grid;place-items:center;vertical-align:middle;
+  width:19px;min-width:19px;height:19px;min-height:19px;padding:0;
+  margin-inline-end:7px;border:1px solid var(--wbs-accent);border-radius:3px;
+  background:#fff;color:#172435;font-size:15px;line-height:1;font-weight:700;
+}
+.wbs-toggle-spacer{display:inline-block;width:26px;vertical-align:middle}
+.spreadsheet-layout .data-grid .wbs-level-column{min-width:72px;width:72px;text-align:center}
+.spreadsheet-layout .data-grid .wbs-level-action{min-height:22px;padding:1px 6px;background:#fff}
+
+.spreadsheet-layout .data-grid td:has(>.sheet-row-insert){overflow:visible}
+.spreadsheet-layout .data-grid .sheet-row-insert{
+  position:absolute;inset-inline-start:2px;top:0;transform:translateY(-50%);
+  z-index:3;width:19px;height:19px;min-height:0;padding:0;
+  display:grid;place-items:center;border:1px solid #087a64;border-radius:50%;
+  background:#087a64;color:#fff;font-size:16px;line-height:1;opacity:0;
+}
+.spreadsheet-layout .data-grid .sheet-row-insert:hover,
+.spreadsheet-layout .data-grid .sheet-row-insert:focus-visible{opacity:1}
+@media (hover:none){.spreadsheet-layout .data-grid .sheet-row-insert{opacity:1}}
+.spreadsheet-layout .data-grid .resource-insert-cell,.spreadsheet-layout .data-grid .resource-column-header{position:relative;overflow:visible}
+.catalog-favorites summary{cursor:pointer;font-weight:600;padding:6px 4px}.catalog-favorites summary svg{vertical-align:middle}
+.agenda-module .calendar-cell{min-width:0;overflow:hidden}
+.agenda-module .calendar-event,.agenda-module .agenda-more{display:block;width:100%;min-width:0;max-width:100%;text-align:left;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.agenda-module .agenda-more{margin-top:4px;font-size:10px;padding:3px 6px}
+.agenda-day-items{display:flex;flex-direction:column;gap:6px;max-height:55vh;overflow:auto}
+.agenda-day-items button{white-space:normal;overflow-wrap:anywhere;justify-content:flex-start}
+.planning-summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}.planning-summary>div{padding:12px;border:1px solid var(--border);min-width:0}.planning-summary dt{font-size:12px;color:#577084}.planning-summary dd{margin:5px 0 0;overflow-wrap:anywhere}
+.catalog-paste{display:block;max-width:100%;margin:4px 0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+
+/* Keep worksheet geometry independent of cell editors and values. */
+.spreadsheet-layout .grid-scroll:has([data-stable-grid]){overflow-anchor:none;scrollbar-gutter:stable}
+.spreadsheet-layout [data-stable-grid] tbody tr:not(.group-row)>td{height:34px;padding-block:0}
+.spreadsheet-layout [data-stable-grid] tbody .inline-new-record>td{height:34px!important;padding:0 8px;overflow:hidden;background:inherit!important;vertical-align:middle}
+.spreadsheet-layout [data-stable-grid] tbody .inline-new-record>.check-cell{padding:0 3px;background:#f2f4f5!important}
+.spreadsheet-layout [data-stable-grid] tbody .inline-new-record>td:not(.check-cell){position:relative}
+.spreadsheet-layout [data-stable-grid] .inline-new-record>td:last-child{right:auto;z-index:auto;box-shadow:none}
+.spreadsheet-layout [data-stable-grid] .inline-cell-label{position:absolute;inset:0 1px 1px 0;min-width:0;display:flex;align-items:center;padding-inline:8px;overflow:hidden}
+.spreadsheet-layout [data-stable-grid] .inline-cell-label input:not([type=checkbox]),
+.spreadsheet-layout [data-stable-grid] .inline-cell-label select,
+.spreadsheet-layout [data-stable-grid] .inline-cell-label textarea{box-sizing:border-box;min-width:0;min-height:0;height:30px;padding:0;font:inherit;color:inherit;border:0;outline:0;resize:none;box-shadow:none;text-align:inherit}
+.spreadsheet-layout [data-stable-grid] .inline-cell-label textarea{line-height:30px;white-space:nowrap;overflow:hidden}
+.spreadsheet-layout [data-stable-grid] .inline-cell-label:focus-within{outline:2px solid #168049;outline-offset:-2px;background:white}
+.spreadsheet-layout [data-stable-grid] .inline-cell-label :is(input,select,textarea):focus{outline:0;box-shadow:none}
+.spreadsheet-layout [data-stable-grid] .reference-compact{flex-wrap:nowrap;min-width:0;max-width:100%;overflow:hidden}
+.spreadsheet-layout [data-stable-grid] .reference-chip{min-width:0}
+.spreadsheet-layout [data-stable-grid] .sheet-save-cell small{font-size:11px;margin-right:4px}
+.spreadsheet-layout [data-stable-grid] .sheet-save-cell button,.spreadsheet-layout [data-stable-grid].resource-table td .row-actions button{min-height:24px;height:24px;padding:1px 5px;font-size:11px}
+.spreadsheet-layout [data-stable-grid] .sheet-save-cell form{display:flex;align-items:center;gap:4px}
+.sheet-save-error{position:fixed;left:50%;bottom:58px;transform:translateX(-50%);z-index:5000;max-width:min(80vw,640px);padding:9px 14px;background:#fff3f0;color:#9f241a;border:1px solid #f3b6ae;border-radius:4px;overflow-wrap:anywhere;pointer-events:none}
+.spreadsheet-layout [data-stable-grid] .inline-cell-label select:not(:focus){appearance:none;text-overflow:ellipsis}
+.spreadsheet-layout [data-stable-grid] .inline-cell-label input:not(:focus)::placeholder{color:transparent}
+.spreadsheet-layout [data-stable-grid] .inline-cell-label input[readonly]{background:transparent}
+.spreadsheet-layout [data-stable-grid] .sheet-multi-select{min-width:0;width:100%}
+.spreadsheet-layout [data-stable-grid] .sheet-multi-select>button{display:block;width:100%;text-align:left;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;background:none;border:0;min-height:24px;padding:0}
+.sheet-multi-options{margin:0;width:240px;max-height:218px;padding:8px;overflow:auto;white-space:normal;border:1px solid var(--border);border-radius:4px;background:var(--surface,#fff);color:inherit;box-shadow:0 8px 20px #192f4933}
+.sheet-multi-options label{display:flex;align-items:center;gap:6px;padding:5px}
+.spreadsheet-layout .data-grid .sheet-row-insert-after{top:auto;bottom:0;transform:translateY(50%)}
+.spreadsheet-layout .data-grid .sheet-row-header:hover>.sheet-row-insert-after{opacity:1}
+.spreadsheet-layout [data-stable-grid] .plan-date-preview{position:absolute;inset-inline-start:8px;pointer-events:none}
+.spreadsheet-layout [data-stable-grid] .inline-cell-label:has(.plan-date-preview):not(:focus-within)>input{opacity:0}
+.spreadsheet-layout [data-stable-grid] .inline-cell-label:focus-within>.plan-date-preview{display:none}
+.modal.wide:has(.activity-code-form){width:min(960px,calc(100vw - 28px))}.modal .activity-code-form{gap:10px}.activity-code-form .form-grid{gap:12px}.activity-code-form .plan-inspection-scroll table{min-width:580px}.activity-code-form .plan-inspection-scroll{max-height:280px}
+/* One-line reference cells keep row geometry identical before and during editing. */
+.spreadsheet-layout [data-stable-grid] td[data-sheet-field]:focus{outline:2px solid #168049;outline-offset:-2px}
+.spreadsheet-layout [data-stable-grid] .reference-summary{display:block;width:100%;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0!important;font:inherit;color:inherit;min-height:30px}
+.reference-picker-heading{display:flex;align-items:center;gap:8px;min-width:0}.reference-picker-heading strong{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.reference-picker-heading button{font-size:12px;min-height:26px;padding:3px 7px}.reference-options-list{overflow:auto;min-height:90px;max-height:220px}.reference-options-list>button{display:flex;width:100%;align-items:center;justify-content:space-between;text-align:left;gap:8px;padding:8px 10px;border:0;border-radius:4px;background:transparent}.reference-options-list>button.active{background:#e4f5ef;color:#007a60}.reference-options-list>button span:first-child{min-width:0;overflow-wrap:anywhere}.reference-options-list small{display:block;color:#667f91}.reference-selected-strip{display:flex;gap:5px;flex-wrap:wrap;max-height:65px;overflow:auto}.reference-selected-strip>span{display:inline-flex;align-items:center;gap:4px;padding:2px 5px;background:#edf4f8;border-radius:4px;font-size:12px}.reference-selected-strip button{border:0;background:transparent;padding:0 3px;min-height:20px}.reference-quick-picker .reference-page{flex-shrink:0}.reference-quick-picker .reference-page>small{flex:1}
+.column-filter-rows{display:flex;flex-direction:column;gap:10px;margin:16px 0;max-height:48vh;overflow:auto}.column-filter-row{display:grid;grid-template-columns:minmax(100px,1fr) minmax(110px,1fr) minmax(100px,1.4fr) 32px;gap:8px;align-items:center}.column-filter-row :is(input,select){min-width:0;width:100%}.column-filter-row:has(select:nth-child(2):last-of-type)>button{grid-column:4}.filter-active{color:#007d65;border-color:#00896f;background:#e5f5ef}@media(max-width:600px){.column-filter-row{grid-template-columns:1fr 1fr 32px}.column-filter-row input,.column-filter-row>select:nth-child(3){grid-row:2;grid-column:1/3}.column-filter-row>button{grid-column:3!important;grid-row:1}}

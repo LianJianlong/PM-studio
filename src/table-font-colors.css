@@ -1,0 +1,8 @@
+.table-font-control{position:sticky;left:calc(100% - 72px);bottom:4px;width:30px;height:0;z-index:15;transform:translateY(-32px)}
+.table-font-control>button{display:flex;align-items:center;justify-content:center;width:30px;height:28px;padding:4px;background:var(--surface,#fff);color:var(--text,#42566b);border:1px solid #cdd8df;border-radius:3px;box-shadow:0 1px 4px #0002}
+.font-color-swatches{display:flex;flex-wrap:wrap;gap:9px;margin:16px 0}
+.font-color-swatches>button{width:30px;height:30px;min-height:30px;border:2px solid white;border-radius:50%;padding:0;outline:1px solid #c7d2dc}
+.font-color-swatches>button[aria-pressed=true]{outline:3px solid var(--green)}
+input[type=color]{min-height:34px;width:72px;padding:3px}
+html[data-theme="dark"] .table-font-control>button{background:#182635;color:#d8e5ef}
+@media print{.table-font-control{display:none}}

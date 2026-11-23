@@ -1,0 +1,2 @@
+import {useMemo} from 'react';import {marked} from 'marked';import DOMPurify from 'dompurify';
+export default function AIAnswer({text}:{text:string}){const html=useMemo(()=>DOMPurify.sanitize(marked.parse(text,{async:false}) as string,{ALLOWED_TAGS:['h1','h2','h3','h4','p','strong','em','s','code','pre','blockquote','ol','ul','li','table','thead','tbody','tr','th','td','hr','br','a'],ALLOWED_ATTR:['href','title']}).replace(/<a /g,'<a target="_blank" rel="noopener noreferrer" '),[text]);return <div className="ai-answer" dangerouslySetInnerHTML={{__html:html}}/>}

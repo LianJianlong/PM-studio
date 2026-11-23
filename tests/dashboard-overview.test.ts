@@ -1,0 +1,8 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {earnedMetrics,latestSnapshots,planProgressPoints} from '../shared/dashboard-math.ts';
+import {schedule} from '../server/schedule.ts';
+import {naturalCalendar,calendarTemplate} from '../shared/project-calendar.ts';
+test('earned metrics use exact latest cumulative values and zero ratios stay null',()=>{const r=earnedMetrics('100','80','90');assert.equal(String(r.cv),'-10');assert.equal(String(r.sv),'-20');assert.equal(String(r.spi),'0.8');assert.equal(earnedMetrics('0','0','0').cpi,null);assert.equal(String(earnedMetrics('100','9007199254740993.1234','9007199254740993.1233').cv),'0.0001');});
+test('project snapshots do not sum reporting dates or accept duplicate approved versions',()=>{const data=[{id:'a',data:{date:'2026-10-01',pv:'100'}},{id:'b',data:{date:'2026-10-02',pv:'120'}},{id:'c',data:{date:'2027-01-01',pv:'900'}}];assert.equal(latestSnapshots(data,'date',['pv'],'2026-10-19').at(-1)?.pv,'120');assert.throws(()=>latestSnapshots([...data,data[0]],'date',['pv'],'2026-10-19'),/多条/);assert.throws(()=>latestSnapshots([{id:'x',data:{date:'2026-10-01'}}],'date',['pv'],'2026-10-19'),/缺少/);});
+test('calendar-weighted S curve excludes weekends and finishes at 100 percent',()=>{const c=calendarTemplate('five'),a=schedule([{id:'A',code:'A',name:'A',duration:2,progress:0,predecessors:[]}],c,'2026-10-16');const points=planProgressPoints(a.activities,'2026-10-16',c);assert.equal(points.find(p=>p.date==='2026-10-16')?.planned,50);assert.equal(points.find(p=>p.date==='2026-10-18')?.planned,50);assert.equal(points.at(-1)?.planned,100);assert.deepEqual(planProgressPoints([],'2026-10-01',naturalCalendar),[]);});

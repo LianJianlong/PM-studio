@@ -1,0 +1,105 @@
+.touch-catalog-label{display:none}
+/* Touch layouts: preserve every action while letting worksheets fill the viewport. */
+@media(max-width:1100px){
+ .sheet-module>.page>.page-heading{flex-wrap:nowrap;gap:6px;min-height:32px;margin-bottom:3px}
+ .sheet-module>.page>.page-heading h1{font-size:16px;white-space:nowrap}
+ .sheet-module>.page>.page-heading>.heading-actions{flex:1;min-width:0;width:auto;margin:0;flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;scrollbar-width:thin}
+ .sheet-module>.page>.page-heading>.heading-actions button{flex-shrink:0;min-height:32px;padding:4px 8px}
+ .sheet-module .plan-topline{min-height:34px;margin-bottom:3px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin}
+ .sheet-module .plan-topline .local-tabs{flex:1 0 auto;max-width:none;overflow:visible;white-space:nowrap;flex-wrap:nowrap}
+ .sheet-module .plan-topline .local-tabs button{min-height:32px;padding:4px 8px}
+ .sheet-module .record-main>.data-toolbar{flex-wrap:nowrap;overflow-x:auto;max-width:100%;padding-bottom:3px;scrollbar-width:thin;min-height:36px;gap:5px}
+ .sheet-module .record-main>.data-toolbar>*{flex-shrink:0}
+ .sheet-module .sheet-toolbar-filters{flex:0 0 auto!important;flex-wrap:nowrap!important;margin-left:4px;min-width:0}
+ .sheet-module .sheet-toolbar-filters .search{flex:0 0 170px!important;width:170px;min-width:120px}
+ .sheet-module .sheet-heading{flex-wrap:nowrap;min-height:30px;margin-bottom:3px}
+ .sheet-module .sheet-heading .program-tabs{min-width:0;overflow-x:auto}
+ .sheet-module .sheet-heading .program-tabs button{min-height:30px;flex-shrink:0}
+ .sheet-module .record-layout.inspector-removed{grid-template-rows:minmax(0,1fr)!important;min-height:0}
+ .sheet-module .grid-scroll:has([data-stable-grid]){min-height:100px;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+ .sheet-module [data-stable-grid] th{white-space:nowrap;height:32px;padding-top:4px;padding-bottom:4px;font-size:12px}
+ .sheet-module .table-footer{font-size:11px;min-height:25px;gap:5px;flex-wrap:nowrap;overflow-x:auto;white-space:nowrap}
+ .sheet-module .native-sheet>.section-heading{flex-wrap:nowrap;overflow-x:auto;min-height:32px}
+ .sheet-module .native-sheet>.data-toolbar{flex-wrap:nowrap;overflow-x:auto;min-height:36px;white-space:nowrap}
+ .sheet-module .native-sheet>.data-toolbar>*{flex-shrink:0}
+}
+@media(max-width:980px){
+ .sheet-module .data-layout,.sheet-module .data-layout.catalog-collapsed{display:flex;flex-direction:column;min-height:0}
+ .sheet-module .catalog{flex:0 0 auto;max-height:min(35dvh,260px);padding:3px 8px;border-right:0;border-bottom:1px solid var(--border);min-height:34px;overflow:auto}
+ .sheet-module .catalog-heading{justify-content:flex-start;min-height:28px;margin:0;gap:8px}
+ .sheet-module .catalog-collapsed .touch-catalog-label{display:block;font-size:12px}
+ .sheet-module .catalog-heading .panel-toggle{margin-left:auto;min-height:30px;min-width:32px}
+ .sheet-module .data-content{flex:1;min-height:0;width:100%}
+ .sheet-module>.breadcrumb{min-height:20px;padding:1px 7px;font-size:10px}
+ .sheet-module>.page{padding:3px 5px}
+ .sheet-module>.data-page{padding:0}
+ .sheet-module .record-main{padding:3px 5px}
+ .sheet-module .sheet-heading h1{max-width:42vw}
+}
+@media(max-width:1100px){.sheet-module .sheet-tools-panel{position:fixed!important;right:8px;top:100px;max-height:65dvh;overflow:auto}}
+@media(max-width:700px){
+ .app-shell{grid-template-rows:48px minmax(calc(100dvh - 70px),auto) 22px}
+ .topbar{min-height:48px;height:48px;gap:6px}
+ .sheet-module{height:calc(100dvh - 70px)}
+ .sidebar.open{top:48px}
+ .sheet-module>.page>.page-heading .heading-icon{display:none}
+ .sheet-module .sheet-heading .heading-icon{display:none}
+ .sheet-module .sheet-heading h1{font-size:14px;max-width:39vw}
+ .sheet-module .sheet-heading .program-tabs button{font-size:11px;padding:3px 5px;gap:3px}
+ .sheet-module .sheet-heading .program-tabs svg{width:13px}
+ .sheet-module .table-footer>span:first-child{display:none}
+ .statusbar{font-size:10px;min-height:22px}
+ .sheet-module :is(.sheet-tools>summary,button,select){scroll-margin-inline:6px}
+ .sheet-module .sheet-toolbar-filters .sheet-tools-panel{position:fixed;right:8px;top:100px;max-height:65dvh;overflow:auto}
+}
+.login-custom-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.login-visual.has-custom-image:after{content:'';position:absolute;inset:0;background:linear-gradient(120deg,#103a35b8,#103a3540);pointer-events:none}
+.login-visual>:not(.login-custom-image){z-index:1;position:relative}
+.login-visual>.login-brand{position:absolute}
+.login-visual.has-custom-image :is(h1,p,small,.login-brand){color:white}
+.login-visual.has-custom-image .login-network span{background:#fffffff0;color:#174b42}
+.login-network{flex-wrap:nowrap;gap:5px}.login-network span{padding:10px 12px;white-space:nowrap}.login-network i{flex:1;min-width:8px}
+.login-image-preview{display:block;width:100%;max-height:170px;object-fit:cover;border-radius:6px;margin:10px 0}
+@media(max-width:700px){
+ .login-layout{padding:0 0 20px;min-height:100dvh}
+ .login-visual{display:flex;min-height:128px;padding:14px 16px;gap:12px;justify-content:center}
+ .login-visual>.login-brand{position:relative;top:auto;left:auto;font-size:17px}
+ .login-brand .project-logo{width:27px;height:27px}
+ .login-visual>h1,.login-visual>p,.login-visual>small{display:none}
+ .login-network{width:100%;margin:0;gap:4px}
+ .login-network span{font-size:11px;padding:6px 8px}
+ .login-network i{min-width:5px}
+ .login-form{margin:16px auto 0;padding:20px;width:calc(100% - 28px)}
+ .login-form>.project-logo{display:none}
+ .login-language{margin-bottom:12px}
+ .login-form input{font-size:16px}
+}
+@media(max-width:1100px){
+ .sheet-module .plan-topline{height:36px;min-height:36px;max-height:36px;flex:0 0 36px;align-items:center}
+ .sheet-module .plan-topline>*{flex-shrink:0;white-space:nowrap}
+ .sheet-module .plan-topline .local-tabs{min-width:0;flex:0 0 auto}
+ .sheet-module .record-main{padding:4px 5px}
+}
+/* Fullscreen artwork retains its aspect ratio; the login card stays upper right. */
+.login-with-image{position:relative;isolation:isolate;display:block;min-height:100dvh;padding:0;background:#fff}
+.login-with-image .login-visual{position:static;background:transparent;min-height:0;padding:0;display:block}
+.login-with-image .login-custom-image{z-index:-1;object-fit:cover;object-position:center;position:absolute;inset:0;width:100%;height:100%;background:#fff}
+.login-with-image .login-visual.has-custom-image:after{display:none}
+.login-with-image .login-visual>.login-brand{position:absolute;top:24px;left:3vw;color:#00876b}
+.login-with-image .login-visual>h1,.login-with-image .login-visual>p,.login-with-image .login-visual>small{display:none}
+.login-with-image .login-network{position:absolute;top:86px;left:3vw;margin:0;width:min(440px,48vw)}
+.login-with-image .login-form{position:relative;margin:0 3vw 0 auto;top:24px;width:300px;max-width:calc(100% - 32px);padding:20px 22px;background:#fffffff2;border:1px solid #dce8e2;border-radius:12px;box-shadow:0 8px 32px #163c2c0e}
+.login-with-image .login-form>.project-logo,.login-with-image .login-form>p,.login-with-image .login-form>small{display:none}
+.login-with-image .login-form h2{font-size:23px;margin-bottom:18px}
+.login-with-image .login-language{margin-bottom:18px;font-size:12px}
+.login-with-image .login-form .form-field{margin-bottom:14px}
+.login-with-image .login-form .form-actions{margin-top:16px}
+.login-with-image .login-form input{min-height:40px;padding:9px 10px}
+@media(max-width:700px){
+ .login-with-image{min-height:max(100dvh,600px)}
+ .login-with-image .login-visual>.login-brand{top:16px;left:16px}
+ .login-with-image .login-network{top:64px;left:16px;width:calc(100% - 32px);max-width:440px}
+ .login-with-image .login-form{top:120px;margin-right:16px;width:320px;padding:20px 22px}
+ .login-with-image .login-custom-image{object-position:35% center}
+}
+.ai-answer{overflow-wrap:anywhere;line-height:1.8}.ai-answer table{border-collapse:collapse;width:100%;display:block;overflow:auto;margin:12px 0}.ai-answer th,.ai-answer td{padding:7px 10px;border:1px solid var(--border);text-align:left;min-width:85px}.ai-answer th{background:#eef7f3}.ai-answer pre{overflow:auto;padding:12px;background:#f4f7f6;border:1px solid var(--border);border-radius:6px}.ai-answer :is(h1,h2,h3,h4){font-size:16px;margin:14px 0 6px}.ai-answer ul,.ai-answer ol{padding-left:22px}.ai-answer p{margin:8px 0}

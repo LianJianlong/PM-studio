@@ -1,0 +1,5 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';import {evaluateReportFormula as calc,formulaSeries,parseReportFormula} from '../shared/report-formula.ts';
+const c={value:3,total:12,count:4,values:[1,2,3,6]};
+test('report formulas: precedence, aggregates, conditions and lazy IF',()=>{assert.equal(calc('2+3*4^2',c),50);assert.equal(calc('SUM(VALUES)',c),12);assert.equal(calc('AVG(VALUES)',c),3);assert.equal(calc('IF(TOTAL=0,0,ROUND(VALUE/TOTAL*100,2))',c),25);assert.equal(calc('IF(TRUE,2,1/0)',c),2);assert.equal(calc('IF(AND(VALUE>2,COUNT=4),ABS(-7),0)',c),7)});
+test('report formulas refuse unsafe syntax and invalid arithmetic',()=>{for(const f of ['globalThis.process','constructor(1)','VALUE/0','SUM(VALUES)+NaN','IF(1,2)','ROUND(2)'])assert.throws(()=>calc(f,c));assert.throws(()=>parseReportFormula('('.repeat(40)+'1'+')'.repeat(40)))});
+test('preview and export use identical series formula transformation',()=>{assert.deepEqual(formulaSeries({rows:[{label:'A',value:'3'},{label:'B',value:'9'}],overall:'12',groupCount:2},'ROUND(VALUE/TOTAL*100,2)').rows,[{label:'A',value:25},{label:'B',value:75}])});

@@ -1,0 +1,4 @@
+.spreadsheet-layout .grid-scroll:has(>table[data-stable-grid]){height:clamp(240px,calc(100dvh - 270px),900px)}
+.sheet-scroll-space{display:block;min-height:0;flex:none;pointer-events:none}
+@media print{.sheet-scroll-space{display:none!important}}
+.spreadsheet-layout .data-grid thead .resource-column-header{position:sticky}

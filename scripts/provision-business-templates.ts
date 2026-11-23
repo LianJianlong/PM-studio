@@ -1,0 +1,28 @@
+import {exportConstructionBlueprints} from './export-construction-template.ts';
+import {constructionSpecs,constructionWorkflows,constructionSharedKeys,constructionProfiles,constructionSystems,constructionSources,type ConstructionProfile} from '../shared/construction-catalog.ts';
+import {applyBusinessTemplate} from '../server/business-template.ts';
+import {pool,tx} from '../server/db.ts';
+import {tableSpecs as baseTableSpecs,workflowSpecs as baseWorkflowSpecs,sharedKeys as baseSharedKeys,baseFields,reportSpecs,publicViewSpecs} from './business-catalog.ts';
+import {planCore} from '../server/plan-table.ts';
+import {writeFile} from 'node:fs/promises';
+const deptCodes:Record<string,string>={'人资':'hr','经理':'management','设计管理':'design','技术':'technical','工程':'engineering','安全':'safety','质量':'quality','机械与船机':'equipment','商务':'commercial','物资':'procurement','财税':'finance'};
+const tableSpecs=constructionSpecs(baseTableSpecs,'generic'),workflowSpecs=constructionWorkflows(baseWorkflowSpecs),sharedKeys=[...baseSharedKeys,...constructionSharedKeys];
+const results:any[]=[];
+for(const project of (await pool.query("SELECT p.* FROM projects p JOIN workspaces w ON w.id=p.workspace_id WHERE p.lifecycle='active' AND w.lifecycle='active' ORDER BY p.created_at")).rows){
+ results.push(await tx(async c=>{
+  const actor=(await c.query('SELECT id FROM users WHERE system_admin AND active ORDER BY created_at LIMIT 1')).rows[0]?.id;if(!actor)throw Error('Active system administrator required');
+  return applyBusinessTemplate(c,project,actor);
+ }));
+}
+const manifest=process.env.BUSINESS_TEMPLATE_MANIFEST||'/tmp/business-template-manifest.json';await writeFile(manifest,JSON.stringify(results,null,2),{mode:0o600});
+let md='# 部门业务模板、报表与审批配置\n\n适用项目：'+results.map(r=>r.project).join('、')+'。各项目独立建立，原表、记录、原账号密码均保留。\n\n## 填报与统计口径\n\n- public 的进度、材料进场进度、采购动态、隐患台账、质量台账为对应业务表的只读视图，仅展示已审核有效记录，避免重复维护。\n- 库存余额按已审出入库（含期初）实时汇总，按材料代码、单位、库位、批次区分；库存台账用于周期盘点核对，不将快照再次累计。\n- 收支平衡表采用现金口径：期初+收入-支出；金额按项目本币填报，外币先换算。不同币种或计量单位不得直接相加。期初记录只登记一次。\n- 周期报表默认按 Europe/Helsinki：日报为今日、周报为周一至周日、双周报为近14个自然日、月报为本月；可在设计器中另选日期。\n- 新建表的单号、名称、业务日期为必填；已有表只补充缺少字段，新增字段可选，保留既有要求与用户定义。\n\n## 数据表和字段\n\n';
+for(const dept of Object.keys(deptCodes)){md+='### '+dept+'\n\n';for(const t of results[0].tables.filter((t:any)=>t.department===dept)){md+='- **'+t.name+'**：'+t.fields.map((f:any)=>f.name+'（'+f.id+'）').join('、')+'。\n';for(const f of t.fields.filter((f:any)=>f.target)){const target=Object.entries(results[0].ids).find(([,id])=>id===f.target)?.[0];md+='  - '+f.name+' → '+(tableSpecs.find(t=>t.key===target)?.name||({wbs:'项目WBS',activities:'计划作业数据',organization:'项目组织架构'} as any)[target!]||'同项目关联表')+'。\n';}}md+='\n';}
+md+='## 报表中心\n\n9份“标准模板”：日报、周报、双周报、月报、采购进度、项目收支平衡表、安全管理报告、质量管理报告、库存表。基于当前授权数据实时统计；有导出权限的用户可复制模板为自己的报表再编辑，管理者维护共享模板。财务报表只对可读财务流水的用户显示。\n\n## 用户权限\n\n| 岗位 | 权限原则 |\n|---|---|\n| 项目经理、副经理 | 项目全域管理、审核、导出，保留审计 |\n| 总工程师 | 设计、技术、质量资料及所参与审批的申请，只读复核 |\n| 安全总监 | 安全资料与对应审批资料，只读复核 |\n| 商务经理 | 商务资料、采购与变更申请审批；不自动开放财务流水 |\n| 财务总监及财税人员 | 财税资料，相关采购/合同审批；允许读取项目资源费用 |\n| 部门经理 | 本部门资料、共享资料，以及本人审批链所需申请；可审核、导出 |\n| 部门录入员 | 本部门台账新增、修改；共享资料只读；不得审核、自审、删除或导出 |\n\n其他原有账号和非组织角色授权不覆盖。每个审批节点需可查看该申请全部字段。\n\n## 申请审批流程\n\n';
+for(const flow of workflowSpecs)md+='- **'+flow.name+'**：'+flow.tables.map(key=>tableSpecs.find(t=>t.key===key)?.name||({wbs:'项目WBS',activities:'计划作业数据',organization:'项目组织架构'} as any)[key]).join('、')+'。\n';
+md+='\n录入员保存草稿后提交审核；按所属数据表自动匹配审批链。退回后修改再提交，最后一个节点通过才进入已审核统计。申请人不能出现在审批链内，部门负责人若需申报应由录入员代录，避免自审。在途审批保留提交时的流程版本。其他未配置的旧表仍使用原通用流程。\n\n## 各项目执行结果\n\n';for(const r of results)md+='- '+r.project+'：'+JSON.stringify(r.counts)+'\n';
+md+='\n## 新项目复用\n\n新建项目默认勾选“使用标准项目模板”：初始化空表、字段、同项目引用、6个共享视图、9类报表、17类审批链，复用现有26个岗位账号并分配项目角色。取消勾选可创建空白项目。不复制现有业务记录、数量、金额、项目名称、日期或在途审批，不重置账号密码。原项目的真实数据保留。模板源文件为“标准项目模板.json”，关联目标采用模板键，新项目建立时转换为新的项目内ID。\n';
+const templateKeys=[...tableSpecs.map(t=>t.key),'wbs','organization','activities',...publicViewSpecs.map(v=>v.key),'stock_balance'];const templateIds=Object.fromEntries(templateKeys.map(key=>[key,key]));
+const blueprint={format:'ProjectStudio.StandardProject',version:2,description:'空白业务模板；无记录、数量、金额或项目特定数据；关联键在新项目中重新绑定',departments:Object.keys(deptCodes),baseFields:baseFields(),nativeTables:[...['wbs','organization'].map(key=>({key,fields:[{id:'code',name:'编码',type:'text',required:true},{id:'name',name:key==='wbs'?'WBS名称':'组织名称',type:'text',required:true},{id:'parent',name:'上级节点',type:'reference',target_key:key,display_column:'name'},{id:'description',name:'职责 / 工作范围',type:'text'},{id:'owner',name:'负责人',type:'text'}]})),{key:'activities',fields:[...planCore,{id:'wbs',name:'所属WBS',type:'reference',target_key:'wbs',display_column:'name'}]}],tables:tableSpecs,sharedViews:publicViewSpecs,inventoryView:{source:'movements',groupBy:['stock_key','material_code','material_name','unit','warehouse','batch'],sum:'signed_quantity',status:'approved'},reports:reportSpecs(templateIds,'{{项目名称}}','{{项目本币}}'),workflows:workflowSpecs,sharedReadTables:sharedKeys,positions:results[0]?.assignments||[],businessRecords:[]};
+const blueprintPath=process.env.BUSINESS_TEMPLATE_BLUEPRINT||'/tmp/standard-project-template.json';await writeFile(blueprintPath,JSON.stringify(blueprint,null,2),{mode:0o600});
+md+=await exportConstructionBlueprints(blueprint,blueprintPath);
+const doc=process.env.BUSINESS_TEMPLATE_DOCUMENT||'/tmp/business-template-guide.md';await writeFile(doc,md,{mode:0o600});console.log(JSON.stringify({projects:results.length,totals:results.reduce((out:any,r:any)=>{for(const [key,value]of Object.entries(r.counts))out[key]=(out[key]||0)+Number(value);return out;},{}),manifest,document:doc}));await pool.end();

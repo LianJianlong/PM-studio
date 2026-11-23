@@ -1,0 +1,3 @@
+CREATE TABLE IF NOT EXISTS security_events(id bigserial PRIMARY KEY,event text NOT NULL,actor_id uuid,outcome text NOT NULL,address text,created_at timestamptz NOT NULL DEFAULT now());
+CREATE INDEX IF NOT EXISTS security_events_time ON security_events(created_at DESC);
+CREATE TABLE IF NOT EXISTS ai_changes(id uuid PRIMARY KEY,project_id uuid NOT NULL REFERENCES projects(id) ON DELETE CASCADE,user_id uuid NOT NULL REFERENCES users(id) ON DELETE CASCADE,method text NOT NULL,path text NOT NULL,body jsonb NOT NULL,status text NOT NULL DEFAULT 'pending' CHECK(status IN ('pending','executing','done','failed','cancelled')),result jsonb,created_at timestamptz NOT NULL DEFAULT now(),expires_at timestamptz NOT NULL DEFAULT now()+interval '10 minutes');
